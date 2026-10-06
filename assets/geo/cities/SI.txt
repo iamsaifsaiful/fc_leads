@@ -1,0 +1,301 @@
+Ljubljana
+Maribor
+Celje
+Kranj
+Velenje
+Koper
+Novo Mesto
+Ptuj
+Trbovlje
+Kamnik
+Jesenice
+Nova Gorica
+Domzale
+Skofja Loka
+Murska Sobota
+Izola
+Postojna
+Logatec
+Kocevje
+Vrhnika
+Slovenj Gradec
+Slovenska Bistrica
+Grosuplje
+Krsko
+Ravne na Koroskem
+Ajdovscina
+Brezice
+Litija
+Zagorje ob Savi
+Menges
+Idrija
+Radovljica
+Lucija
+Crnomelj
+Hrastnik
+Sezana
+Bled
+Medvode
+Rogaska Slatina
+Zalec
+Slovenske Konjice
+Sentjur
+Sevnica
+Prevalje
+Ilirska Bistrica
+Ruse
+Piran
+Cerknica
+Trzic
+Miklavz na Dravskem Polju
+Trzin
+Sempeter pri Gorici
+Ribnica
+Ziri
+Tolmin
+Trebnje
+Ljutomer
+Lasko
+Vir
+Solkan
+Dravograd
+Ankaran
+Metlika
+Mezica
+Gornja Radgona
+Sencur
+Lendava
+Zelezniki
+Lenart v Slov. Goricah
+Bistrica pri Trzicu
+Portoroz
+Zrece
+Sostanj
+Brezovica pri Ljubljani
+Lesce
+Radlje ob Dravi
+Vrtojba
+Spodnje Hoce
+Race
+Lavrica
+Crna na Koroskem
+Beltinci
+Polzela
+Senovo
+Muta
+Vojnik
+Ig
+Jagodje
+Skofljica
+Radenci
+Vnanje Gorice
+Ormoz
+Radece
+Borovnica
+Koroska Bela
+Rakek
+Pivka
+Mozirje
+Kromberk
+Limbus
+Sempeter v Savinj. Dolini
+Slovenski Javornik
+Semic
+Straza
+Ivancna Gorica
+Lovrenc na Pohorju
+Mislinja
+Store
+Rence
+Britof
+Verd
+Kisovec
+Sentilj v Slov. Goricah
+Bohinjska Bistrica
+Smarje pri Jelsah
+Vipava
+Zgornji Duplek
+Sv. Anton
+Hrusica
+Naklo
+Prebold
+Radizel
+Odranci
+Radomlje
+Kokrica
+Notranje Gorice
+Kamnica
+Log pri Brezovici
+Bovec
+Cerklje na Gorenjskem
+Cerkno
+Vodice
+Dekani
+Mekinje
+Vuzenica
+Mlaka pri Kranju
+Dob
+Rakican
+Rogatec
+Preserje pri Radomljah
+Pekre
+Turnisce
+Spodnja Idrija
+Smarje-Sap
+Dol pri Hrastniku
+Bakovci
+Zgornje Bitnje
+Miren
+Dragomer
+Smartno pri Litiji
+Smarca
+Kranjska Gora
+Spodnji Duplek
+Sentjernej
+Spodnje Skofije
+Mirna
+Rogoza
+Bresternica
+Bistrica ob Dravi
+Razvanje
+Divaca
+Oplotnica
+Hotinja Vas
+Pamece
+Horjul
+Selnica ob Dravi
+Topolsica
+Deskle
+Cernelavci
+Kanal
+Prvacina
+Zgornje Pirnice
+Dornava
+Kidricevo
+Smartno pri Slovenj Gradcu
+Trnovlje pri Celju
+Moste
+Hrvatini
+Pobegi
+Gotovlje
+Seca
+Zgornja Polskava
+Gorenja Vas
+Bilje
+Izlake
+Crensovci
+Mojstrana
+Poljcane
+Pragersko
+Sempas
+Krog
+Prade
+Sredisce ob Dravi
+Kobarid
+Rozna Dolina
+Ljubno ob Savinji
+Lipovci
+Ravne
+Selnica ob Muri
+Ljubecna
+Lokavec
+Sv. Duh
+Golnik
+Zuzemberk
+Hrastje
+Gornji Grad
+Morje
+Zasip
+Gancani
+Kotlje
+Legen
+Fram
+Leskovec pri Krskem
+Zabukovica
+Sentvid pri Sticni
+Mirna Pec
+Dobrovnik
+Benedikt
+Dobrova
+Velika Polana
+Pesnica
+Verzej
+Moravce
+Komenda
+Nazarje
+Vitanje
+Preddvor
+Sodrazica
+Starse
+Dolenjske Toplice
+Gorisnica
+Vransko
+Volcja Draga
+Moravske Toplice
+Sv. Trojica v Slov. Goricah
+Velike Lasce
+Kostanjevica na Krki
+Grad
+Kozje
+Komen
+Smartno ob Paki
+Puconci
+Mokronog
+Majsperk
+Kobilje
+Zirovnica
+Videm
+Zgornje Jezersko
+Dobrna
+Kozina
+Leskova Dolina
+Zgornja Kungota
+Podcetrtek
+Apace
+Zgornje Gorje
+Krizevci pri Ljutomeru
+Recica ob Savinji
+Videm pri Ptuju
+Markovci
+Cankova
+Ribnica na Pohorju
+Cirkulane
+Salovci
+Lukovica pri Domzalah
+Gornji Petrovci
+Luce
+Tabor
+Tisina
+Zetale
+Podlehnik
+Jurovski Dol
+Braslovce
+Kuzma
+Hrib-Loski Potok
+Dobrovo
+Trnovska Vas
+Podvelka
+Vitomarci
+Sentrupert
+Smarjeta
+Jursinci
+Nova Vas
+Sveti Tomaz
+Bistrica ob Sotli
+Spodnja Hajdina
+Rogasovci
+Razkrizje
+Makole
+Skocjan
+Dol pri Ljubljani
+Hodos
+Solcava
+Sveti Jurij
+Destrnik
+Sv. Ana v Slov. Goricah
+Cerkvenjak
+Dobje pri Planini
+Osilnica
+Zavrc
+Kostel
+Loski Potok

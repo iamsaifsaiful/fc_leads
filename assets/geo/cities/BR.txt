@@ -1,0 +1,1975 @@
+Brasilia
+Sao Paulo
+Rio de Janeiro
+Salvador
+Fortaleza
+Belo Horizonte
+Curitiba
+Manaus
+Recife
+Belem
+Porto Alegre
+Goiania
+Guarulhos
+Campinas
+Nova Iguacu
+Maceio
+Sao Luis
+Duque de Caxias
+Natal
+Teresina
+Sao Bernardo do Campo
+Campo Grande
+Jaboatao
+Osasco
+Santo Andre
+Joao Pessoa
+Jaboatao dos Guararapes
+Contagem
+Ribeirao Preto
+Sao Jose dos Campos
+Uberlandia
+Sorocaba
+Cuiaba
+Aparecida de Goiania
+Aracaju
+Feira de Santana
+Londrina
+Juiz de Fora
+Belford Roxo
+Joinville
+Niteroi
+Sao Joao de Meriti
+Ananindeua
+Florianopolis
+Santos
+Ribeirao das Neves
+Vila Velha
+Serra
+Diadema
+Campos dos Goytacazes
+Maua
+Betim
+Caxias do Sul
+Sao Jose do Rio Preto
+Olinda
+Carapicuiba
+Campina Grande
+Piracicaba
+Macapa
+Itaquaquecetuba
+Bauru
+Montes Claros
+Canoas
+Mogi das Cruzes
+Sao Vicente
+Jundiai
+Pelotas
+Anapolis
+Vitoria
+Maringa
+Guaruja
+Porto Velho
+Franca
+Blumenau
+Foz do Iguacu
+Ponta Grossa
+Paulista
+Limeira
+Viamao
+Suzano
+Caucaia
+Petropolis
+Uberaba
+Rio Branco
+Cascavel
+Novo Hamburgo
+Vitoria da Conquista
+Barueri
+Taubate
+Governador Valadares
+Praia Grande
+Varzea Grande
+Volta Redonda
+Santa Maria
+Santa Luzia
+Gravatai
+Caruaru
+Boa Vista
+Rio Verde
+Ipatinga
+Sumare
+Juazeiro do Norte
+Embu
+Imperatriz
+Colombo
+Taboao da Serra
+Jacarei
+Marilia
+Presidente Prudente
+Sao Leopoldo
+Itabuna
+Sao Carlos
+Hortolandia
+Mossoro
+Itapevi
+Sete Lagoas
+Sao Jose
+Palmas
+Parauapebas
+Americana
+Petrolina
+Divinopolis
+Maracanau
+Planaltina
+Santarem
+Camacari
+Santa Barbara d'Oeste
+Rio Grande
+Cachoeiro de Itapemirim
+Itaborai
+Rio Claro
+Indaiatuba
+Passo Fundo
+Cotia
+Francisco Morato
+Aracatuba
+Araraquara
+Ferraz de Vasconcelos
+Arapiraca
+Lages
+Barra Mansa
+Nossa Senhora do Socorro
+Dourados
+Criciuma
+Chapeco
+Barreiras
+Sobral
+Itajai
+Ilheus
+Angra dos Reis
+Nova Friburgo
+Rondonopolis
+Itapecerica da Serra
+Guarapuava
+Parnamirim
+Caxias
+Nilopolis
+Pocos de Caldas
+Maraba
+Luziania
+Cabo
+Macae
+Ibirite
+Lauro de Freitas
+Paranagua
+Parnaiba
+Itu
+Castanhal
+Sao Caetano do Sul
+Queimados
+Pindamonhangaba
+Sapucaia
+Jaragua do Sul
+Mogi Guacu
+Jequie
+Itapetininga
+Patos de Minas
+Braganca Paulista
+Timon
+Sao Jose dos Pinhais
+Teresopolis
+Uruguaiana
+Porto Seguro
+Alagoinhas
+Palhoca
+Barbacena
+Cachoeirinha
+Santa Rita
+Toledo
+Jau
+Cubatao
+Pinhais
+Simoes Filho
+Varginha
+Sinop
+Pouso Alegre
+Eunapolis
+Botucatu
+Jandira
+Ribeirao Pires
+Conselheiro Lafaiete
+Resende
+Araucaria
+Atibaia
+Varzea Paulista
+Garanhuns
+Araruama
+Catanduva
+Franco da Rocha
+Cabo Frio
+Ji Parana
+Araras
+Poa
+Vitoria de Santo Antao
+Umuarama
+Apucarana
+Santa Cruz do Sul
+Guaratingueta
+Linhares
+Araguaina
+Esmeraldas
+Birigui
+Assis
+Barretos
+Colatina
+Teofilo Otoni
+Guaiba
+Guarapari
+Coronel Fabriciano
+Itaguai
+Rio das Ostras
+Itabira
+Votorantim
+Sertaozinho
+Santana de Parnaiba
+Bage
+Passos
+Salto
+Uba
+Ourinhos
+Trindade
+Arapongas
+Araguari
+Corumba
+Erechim
+Japeri
+Vespasiano
+Campo Largo
+Tatui
+Patos
+Timoteo
+Muriae
+Cambe
+Bayeux
+Bento Goncalves
+Caraguatatuba
+Itanhaem
+Santana do Livramento
+Almirante Tamandare
+Crato
+Valinhos
+Sao Lourenco da Mata
+Nova Lima
+Brusque
+Barra do Pirai
+Alegrete
+Caieiras
+Barra do Corda
+Igarassu
+Paulo Afonso
+Ituiutaba
+Esteio
+Sarandi
+Itaperuna
+Santana
+Jardim Paulista
+Codo
+Araxa
+Redencao
+Abreu e Lima
+Itajuba
+Lavras
+Avare
+Formosa
+Leme
+Cruzeiro do Sul
+Itumbiara
+Marica
+Ubatuba
+Tres Lagoas
+Sao Joao del Rei
+Mogi Mirim
+Abaetetuba
+Sao Bento do Sul
+Itauna
+Sao Mateus
+Jatai
+Sao Joao da Boa Vista
+Lorena
+Santa Cruz do Capibaribe
+Sao Sebastiao
+Tucurui
+Embu Guacu
+Sapiranga
+Para de Minas
+Campo Mourao
+Cachoeira do Sul
+Santo Antonio de Jesus
+Paranavai
+Joao Monlevade
+Matao
+Bacabal
+Cacapava
+Aruja
+Cruzeiro
+Patrocinio
+Tres Rios
+Bebedouro
+Sao Cristovao
+Alfenas
+Ijui
+Altamira
+Paracatu
+Carpina
+Iguatu
+Votuporanga
+Paragominas
+Lins
+Jaboticabal
+Vicosa
+Sao Sebastiao do Paraiso
+Balsas
+Itatiba
+Santa Ines
+Tubarao
+Pato Branco
+Paulinia
+Lajeado
+Cruz Alta
+Aquiraz
+Itacoatiara
+Gurupi
+Itaituba
+Santo Angelo
+Parintins
+Curvelo
+Itabaiana
+Cacador
+Ouro Preto
+Caldas Novas
+Irece
+Catalao
+Tres Coracoes
+Rio Largo
+Valenca
+Vilhena
+Peruibe
+Itapeva
+Cataguases
+Saquarema
+Tupa
+Fernandopolis
+Senador Canedo
+Itapira
+Gravata
+Pirassununga
+Unai
+Caratinga
+Itapetinga
+Mococa
+Sao Borja
+Carazinho
+Santa Rosa
+Telemaco Borba
+Guanambi
+Aracruz
+Ariquemes
+Farroupilha
+Francisco Beltrao
+Picos
+Lencois Paulista
+Braganca
+Arcoverde
+Vacaria
+Cajamar
+Janauba
+Vinhedo
+Formiga
+Cianorte
+Itapipoca
+Ponta Pora
+Estancia
+Cacoal
+Sao Gabriel
+Concordia
+Pacatuba
+Viana
+Sao Pedro da Aldeia
+Caico
+Seropedica
+Cabedelo
+Manhuacu
+Penapolis
+Mairipora
+Montenegro
+Ipojuca
+Campos do Jordao
+Camaqua
+Crateus
+Manacapuru
+Andradina
+Barra do Garcas
+Biguacu
+Batatais
+Rio do Sul
+Pirapora
+Icara
+Bezerros
+Serra Talhada
+Horizonte
+Rolandia
+Marechal Deodoro
+Sao Roque
+Coari
+Taquaritinga
+Belo Jardim
+Benevides
+Nova Odessa
+Quixada
+Pedro Leopoldo
+Porto Ferreira
+Balneario Camboriu
+Serrinha
+Ibitinga
+Congonhas
+Boituva
+Uniao da Vitoria
+Floriano
+Parobe
+Cornelio Procopio
+Senhor do Bonfim
+Ponte Nova
+Escada
+Taquara
+Sousa
+Guaxupe
+Goianesia
+Cruz das Almas
+Navegantes
+Cosmopolis
+Capanema
+Jacobina
+Itamaraju
+Campo Belo
+Itaberaba
+Sao Jose do Rio Pardo
+Santo Amaro
+Leopoldina
+Santiago
+Breves
+Cachoeiras de Macacu
+Mongagua
+Irati
+Registro
+Tiangua
+Lagarto
+Moreno
+Mariana
+Cameta
+Olimpia
+Timbauba
+Tefe
+Piripiri
+Itarare
+Ibipora
+Orlandia
+Camocim
+Mairinque
+Indaial
+Aracati
+Inhumas
+Monte Carmelo
+Goiana
+Cajazeiras
+Jales
+Guarabira
+Tres Pontas
+Xinguara
+Imbituba
+Ararangua
+Lagoa da Prata
+Marechal Candido Rondon
+Caninde
+Sao Joaquim da Barra
+Videira
+Limoeiro
+Salgueiro
+Penedo
+Castro
+Brumado
+Rio Negrinho
+Pesqueira
+Monte Alto
+Palmares
+Santos Dumont
+Pacajus
+Jaguaquara
+Amparo
+Garca
+Uniao dos Palmares
+Piraquara
+Sao Lourenco
+Porto Feliz
+Salinopolis
+Frutal
+Sao Miguel dos Campos
+Sirinhaem
+Chapadinha
+Bom Jesus da Lapa
+Venancio Aires
+Artur Nogueira
+Estancia Velha
+Bom Despacho
+Monte Mor
+Mafra
+Macaiba
+Catu
+Serrana
+Laguna
+Russas
+Itabirito
+Pedreira
+Paraguacu Paulista
+Mineiros
+Pinheiro
+Canoinhas
+Ipiau
+Presidente Epitacio
+Cabreuva
+Araripina
+Tucuma
+Lagoa Santa
+Mandaguari
+Rio Grande da Serra
+Pederneiras
+Posto Fiscal Rolim de Moura
+Nanuque
+Espirito Santo do Pinhal
+Morada Nova
+Diamantina
+Santa Cruz do Rio Pardo
+Eusebio
+Barra Bonita
+Capao Bonito
+Beberibe
+Ituverava
+Dom Pedrito
+Itapema
+Rosario do Sul
+Cristalina
+Navirai
+Sao Francisco do Sul
+Vargem Grande do Sul
+Coelho Neto
+Acu
+Paracambi
+Rio Bonito
+Capao da Canoa
+Bertioga
+Oriximina
+Barreiros
+Currais Novos
+Capivari
+Paraiba do Sul
+Xique Xique
+Cerquilho
+Aquidauana
+Santo Antonio da Platina
+Delmiro Gouveia
+Pocoes
+Conceicao do Coite
+Jacarezinho
+Itapecuru Mirim
+Januaria
+Tramandai
+Jardinopolis
+Oliveira
+Itaqui
+Osorio
+Surubim
+Itapolis
+Paicandu
+Americo Brasiliense
+Quixeramobim
+Santa Helena de Goias
+Aparecida
+Sao Gotardo
+Morrinhos
+Coroata
+Guajara Mirim
+Guaira
+Medianeira
+Tome Acu
+Presidente Venceslau
+Barbalha
+Alem Paraiba
+Boa Esperanca
+Timbo
+Santa Isabel
+Gaspar
+Sao Manuel
+Canela
+Arcos
+Caete
+Santo Antonio de Padua
+Sao Francisco
+Machado
+Xanxere
+Ilhabela
+Torres
+Porangatu
+Capitao Poco
+Cravinhos
+Ceara Mirim
+Pontal
+Coaraci
+Salto de Pirapora
+Paranaiba
+Curitibanos
+Bocaiuva
+Quirinopolis
+Charqueadas
+Tiete
+Itapage
+Ourilandia do Norte
+Sao Luiz Gonzaga
+Campo Maior
+Tremembe
+Jaguariuna
+Coruripe
+Barra do Bugres
+Humaita
+Tucano
+Guapimirim
+Campina Grande do Sul
+Louveira
+Adamantina
+Sao Sebastiao do Passe
+Minacu
+Palmeira das Missoes
+Itaitinga
+Matozinhos
+Bom Jesus do Itabapoana
+Agudos
+Jaguariaiva
+Pilar
+Vera Cruz
+Guariba
+Jaragua
+Panambi
+Garibaldi
+Presidente Dutra
+Grajau
+Coxim
+Candelaria
+Novo Horizonte
+Uruacu
+Barcarena
+Ribeirao
+Iturama
+Tobias Barreto
+Euclides da Cunha
+Jaguarao
+Ibate
+Bandeirantes
+Limoeiro do Norte
+Pontes e Lacerda
+Almenara
+Ouricuri
+Vigia
+Sao Joao dos Inhamuns
+Igarapava
+Visconde do Rio Branco
+Porto Uniao
+Bariri
+Altos
+Santa Rita do Sapucai
+Varzea da Palma
+Igrejinha
+Barra dos Coqueiros
+Pitangueiras
+Acarau
+Ubaitaba
+Nova Venecia
+Ico
+Sao Miguel do Guama
+Ipora
+Ribeira do Pombal
+Sao Mateus do Maranhao
+Tabatinga
+Candido Mota
+Joao Pinheiro
+Jaru
+Piedade
+Jose Bonifacio
+Bom Conselho
+Sao Fidelis
+Sao Jose de Ribamar
+Santa Cruz
+Santa Vitoria do Palmar
+Lucas
+Mamanguape
+Cajati
+Brumadinho
+Guararapes
+Niquelandia
+Aguai
+Entre Rios
+Brejo Santo
+Brejo da Madre de Deus
+Piui
+Santo Estevao
+Ipira
+Caetite
+Conceicao do Araguaia
+Taquari
+Sao Pedro
+Promissao
+Mangaratiba
+Rio Pardo
+Aripuana
+Barrinha
+Marau
+Igarape Miri
+Mucuri
+Andradas
+Ouro Branco
+Miracema
+Ouro Preto do Oeste
+Mata de Sao Joao
+Ipu
+Itaperucu
+Carmo do Paranaiba
+Nazare da Mata
+Biritiba Mirim
+Rio Branco do Sul
+Canavieiras
+Alenquer
+Arraial do Cabo
+Santana do Ipanema
+Descalvado
+Piracaia
+Marialva
+Lago da Pedra
+Goiatuba
+Granja
+Santa Fe do Sul
+Santa Cruz das Palmeiras
+Ibaiti
+Pimenta Bueno
+Salinas
+Osvaldo Cruz
+Cordeiropolis
+Lapa
+Nazare
+Rancharia
+Santana do Paraiso
+Marataizes
+Sao Lourenco do Sul
+Carangola
+Pompeu
+Piraju
+Morro Agudo
+Lajedo
+Colinas
+Buritizeiro
+Afogados da Ingazeira
+Ilha Solteira
+Obidos
+Sao Mateus do Sul
+Mateus Leme
+Pires do Rio
+Soledade
+Sao Bento
+Santaluz
+Boa Viagem
+Sao Francisco do Conde
+Santa Rita do Passa Quatro
+Acopiara
+Juatuba
+Lagoa Vermelha
+Urucuca
+Tupaciguara
+Santa Quiteria
+Taiobeiras
+Rio Preto da Eva
+Socorro
+Estrela
+Igarape Acu
+Rio Real
+Toritama
+Campo Formoso
+Miguel Pereira
+Capinzal
+Propria
+Iguape
+Jardim
+Tangua
+Guanhaes
+Rio das Pedras
+Sao Luis de Montes Belos
+Sao Goncalo do Amarante
+Guararema
+Itambe
+Joacaba
+Santa Maria da Vitoria
+Armacao de Buzios
+Mirandopolis
+Catende
+Laranjeiras
+Quarai
+Nova Cruz
+Sao Joao Nepomuceno
+Trairi
+Jaguaribe
+Palotina
+Rio Negro
+Forquilhinha
+Pindare Mirim
+Ibiuna
+Monte Alegre
+Goianira
+Campo Verde
+Dois Vizinhos
+Igaracu do Tiete
+Jaciara
+Caxambu
+Maracaju
+Iacu
+Coromandel
+Serra Negra
+Una
+Jaguarari
+Santo Antonio do Monte
+Aguas Belas
+Campos Novos
+Pereira Barreto
+Amargosa
+Casa Branca
+Tijucas
+Maues
+Baturite
+Muritiba
+Barao de Cocais
+Braco do Norte
+Itai
+Campos Gerais
+Posto da Mata
+Itaberai
+Corinto
+Maracas
+Pedro II
+Cururupu
+Aracuai
+Nova Russas
+Pomerode
+Neropolis
+Varzea Alegre
+Teutonia
+Claudio
+Guaiuba
+Jaguaruana
+Pombal
+Pirapozinho
+Morro do Chapeu
+Alvares Machado
+Barras
+Conceicao do Jacuipe
+Gandu
+Moju
+Taquarituba
+Pocone
+Santa Rosa de Viterbo
+Jose de Freitas
+Igarape
+Guaramirim
+Vargem Grande
+Cambara
+Conchal
+Portel
+Itupiranga
+Laranjal Paulista
+Cambui
+Paracuru
+Vassouras
+Ruy Barbosa
+Oeiras
+Tres Coroas
+Portao
+Esperantina
+Ribeirao da Ilha
+Freguesia do Ribeirao da Ilha
+Dois Corregos
+Maragogipe
+Pedra Azul
+Frederico Westphalen
+Barra
+Sarzedo
+Barra de Sao Francisco
+Paty do Alferes
+Nova Xavantina
+Sao Joao da Barra
+Itupeva
+Jatoba
+Sao Luis do Quitunde
+Flores da Cunha
+Sena Madureira
+Almeirim
+Colorado
+Murici
+Julio de Castilhos
+Abaete
+Buique
+Castelo
+Cangucu
+Astorga
+Itaparica
+Nova Vicosa
+Penha
+Capelinha
+Pedra Branca
+Guapore
+Posse
+Tambau
+Ibirataia
+Livramento do Brumado
+Prata
+Itubera
+Joao Camara
+Veranopolis
+Catole do Rocha
+Guacui
+Alegre
+Itapuranga
+Pentecoste
+Imbituva
+Miracema do Tocantins
+Prudentopolis
+Condado
+Ibicarai
+Sao Raimundo Nonato
+Santa Cruz Cabralia
+Cajuru
+Sao Joao dos Patos
+Butia
+Sao Goncalo do Sapucai
+Pinheiral
+Gameleira
+Eloi Mendes
+Conceicao da Barra
+Sobradinho
+Baixo Guandu
+Nova Olimpia
+Sao Sepe
+Aimores
+Pilar do Sul
+Pirai
+Carlos Barbosa
+Goias
+Cupira
+Casimiro de Abreu
+Sao Sebastiao do Cai
+Viseu
+Nepomuceno
+Atalaia
+Guaratuba
+Canguaretama
+Mascote
+Esplanada
+Pitangui
+Piracuruca
+Bambui
+Rio Brilhante
+Esperanca
+Anastacio
+Sao Miguel do Araguaia
+Aguas de Lindoia
+Ceres
+Matriz de Camaragibe
+Brotas
+Pitanga
+Palmeira
+Nossa Senhora da Gloria
+Ipameri
+Sao Marcos
+Tapes
+Palmital
+Cassilandia
+Santa Gertrudes
+Martinopolis
+Belo Oriente
+Jacutinga
+Ibia
+Laranjeiras do Sul
+Paraipaba
+Santo Amaro da Imperatriz
+Simao Dias
+Areia Branca
+Brodosqui
+Ibirama
+Cicero Dantas
+Tres de Maio
+Sao Domingos do Maranhao
+Guara
+Miguelopolis
+Apiai
+Loanda
+Tanabi
+Sao Jose do Egito
+Soure
+Sertania
+Guaraciaba do Norte
+Ivoti
+Barreiro do Jaiba
+Santo Antonio de Posse
+Bela Vista
+Monte Azul Paulista
+Custodia
+Floresta
+Macau
+Itamarandiba
+Herval
+Carauari
+Pompeia
+Extremoz
+Tamandare
+Nova Prata
+Jarinu
+Timbiras
+Camanducaia
+Perdoes
+Monteiro
+Lagoa do Itaenga
+Buriti Bravo
+Bastos
+Barra Velha
+Campos Sales
+Estreito
+Piuma
+Espinosa
+Itapemirim
+Mari
+Quatro Barras
+Cacapava do Sul
+Jandaia do Sul
+Pirajui
+Tupancireta
+Barreirinhas
+Guaranesia
+Gloria do Goita
+Ibotirama
+Porto Calvo
+Aparecida do Taboado
+Itororo
+Capim Grosso
+Mendes
+Tres Passos
+Santo Anastacio
+Pindobacu
+Lavras da Mangabeira
+Regente Feijo
+Encruzilhada do Sul
+Penalva
+Eirunepe
+Santa Quiteria do Maranhao
+Viradouro
+Ipero
+Itabaianinha
+Cha Grande
+Ipueiras
+Mombaca
+Sao Jeronimo
+Solanea
+Sacramento
+Barroso
+Tabira
+Riachao do Jacuipe
+Silva Jardim
+Sidrolandia
+Iracemapolis
+Campo Alegre
+Aragarcas
+Arari
+Seabra
+Itaocara
+Apodi
+Piracanjuba
+Santo Antonio do Amparo
+Itapecerica
+Itapissuma
+Amaraji
+Carandai
+Jeremoabo
+Encantado
+Vicosa do Ceara
+Monte Santo de Minas
+Rio Verde de Mato Grosso
+Mocajuba
+Tapiramuta
+Tarauaca
+Senador Pompeu
+Sao Felix do Xingu
+Varjota
+Agua Preta
+Ipubi
+Orleans
+Pirai do Sul
+Aguas Vermelhas
+Alagoa Grande
+Tuntum
+Parelhas
+Carmo do Cajuru
+Arroio do Meio
+Oros
+Monte Aprazivel
+Augusto Correa
+Muzambinho
+Sao Joaquim
+Buritis
+Piritiba
+Carolina
+Paranapanema
+Macatuba
+Conceicao das Alagoas
+Antonina
+Cachoeira
+Rubiataba
+Padre Bernardo
+Itapaci
+Arroio Grande
+Cabrobo
+Maragogi
+Fonte Boa
+Nova Petropolis
+Santa Helena
+Capela
+Buerarema
+Ipaba
+Buri
+Valparaiso
+Pombos
+Itaporanga
+Satuba
+Valenca do Piaui
+Conde
+Coronel Vivida
+Conceicao da Feira
+Ladario
+Vitoria do Mearim
+Paraguacu
+Lajinha
+Wenceslau Braz
+Nova Granada
+Diamantino
+Itatinga
+Anicuns
+Uniao
+Saubara
+Ubata
+Cordeiro
+Nova Era
+Rolante
+Campos Belos
+Dom Pedro
+Manhumirim
+Rio Formoso
+Itajuipe
+Schroeder
+Prado
+Jequitinhonha
+Vazante
+Sao Miguel do Iguacu
+Aracoiaba da Serra
+Sao Jose de Mipibu
+Demerval Lobao
+Medeiros Neto
+Sao Gabriel da Cachoeira
+Teodoro Sampaio
+Celso Ramos
+Pinhao
+Resplendor
+Paraty
+Santa Cecilia
+Araci
+Cajueiro
+Cruzeiro do Oeste
+Itamaraca
+Pontal do Parana
+Engenheiro Beltrao
+Itau de Minas
+Madre de Deus
+Porto Franco
+Sao Lourenco do Oeste
+Senges
+Mandaguacu
+Sombrio
+Tres Barras
+Boquim
+Sao Goncalo dos Campos
+Jucas
+Lucelia
+Pio XII
+Triunfo
+Inhambupe
+Brasilia de Minas
+Porto Belo
+Santana do Acarau
+Clevelandia
+Santa Maria da Boa Vista
+Pirapora do Bom Jesus
+Medina
+Parambu
+Itambacuri
+Cedro
+Sao Joaquim de Bicas
+Altinopolis
+Macaubas
+Otacilio Costa
+Nossa Senhora das Dores
+Sao Joao Batista
+Novo Oriente
+Porto Barra do Ivinheima
+Lambari
+Acucena
+Bonito
+Marco
+Angatuba
+Agrestina
+Carmo do Rio Claro
+Ibipeba
+Boca do Acre
+Horizontina
+Luz
+Cassia
+Macaparana
+Formosa do Rio Preto
+Acajutiba
+Bela Vista do Paraiso
+Sao Francisco de Assis
+Conchas
+Tamboril
+Iuna
+Bela Vista de Goias
+Ampere
+Cerqueira Cesar
+Panorama
+Iguai
+Bady Bassitt
+Sao Jose do Belmonte
+Maraial
+Ibiruba
+Barro Alto
+Maracacume
+Porteirinha
+Chopinzinho
+Barauna
+Guapiacu
+Tapejara
+Manicore
+Mimoso do Sul
+Cantagalo
+America Dourada
+Saco dos Limoes
+Benjamin Constant
+Francisco Sa
+Junqueiropolis
+Juquitiba
+Morro da Fumaca
+Camamu
+Agua Branca
+Sertanopolis
+Pedras de Fogo
+Castro Alves
+Siqueira Campos
+Itaiba
+Caarapo
+Piquete
+Areia
+Ubajara
+Bom Sucesso
+Cananeia
+Cafelandia
+Ecoporanga
+Caapora
+Correia Pinto
+Miguel Calmon
+Taguatinga
+Rio Pomba
+Extrema
+Chapada dos Guimaraes
+Pontalina
+Pirenopolis
+Regeneracao
+Inhapim
+Presidente Olegario
+Palmeiras de Goias
+Paraisopolis
+Afonso Claudio
+Bom Jardim
+Sao Joaquim do Monte
+Amontada
+Itanhem
+Terra Santa
+Juquia
+Lima Duarte
+Mairi
+Carambei
+Faxinal
+Pariquera Acu
+Goianinha
+Aracoiaba
+Lagoa da Canoa
+Forquilha
+Arroio dos Ratos
+Taquaritinga do Norte
+Juruti
+Sao Lourenco da Serra
+Cocal
+Sao Francisco de Paula
+Alpinopolis
+Iraucuba
+Vitorino Freire
+Raposos
+Florestopolis
+Itirapina
+Severinia
+Carlos Chagas
+Pradopolis
+Miranda
+Correntina
+Esperantinopolis
+Campina Verde
+Missao Velha
+Santa Maria de Jetiba
+Itacarambi
+Espera Feliz
+Luzilandia
+Matipo
+Feira Nova
+Caririacu
+Terra Boa
+Presidente Bernardes
+Feijo
+Cafarnaum
+Costa Rica
+Sao Geraldo do Araguaia
+Santa Maria do Para
+Umbauba
+Tocantins
+Cacequi
+Dores do Indaia
+Baependi
+Sao Miguel
+Carutapera
+Cruzilia
+Borda da Mata
+Sao Jose da Laje
+Acara
+Passa Quatro
+Conselheiro Pena
+Corbelia
+Bela Cruz
+Fundao
+Buritama
+Elias Fausto
+Sao Joao do Piaui
+Bicas
+Maracana
+Porto Murtinho
+Bom Jesus
+Passira
+Riacho de Santana
+Campos Altos
+Tibagi
+Princesa Isabel
+Serro
+Barra da Estiva
+Corupa
+Milagres
+Valente
+Santa Adelia
+Mutum
+Itatiaia
+Nao Me Toque
+Assai
+Santo Antonio
+Porciuncula
+Campanha
+Capinopolis
+Itacare
+Poxoreo
+Bom Jesus do Galho
+Caraubas
+Monte Alegre de Minas
+Caconde
+Riachao
+Bom Jesus dos Perdoes
+Neopolis
+Barroquinha
+Coracao de Jesus
+Fartura
+Conceicao do Rio Verde
+Sao Jose da Tapera
+Charqueada
+Coreau
+Messias
+Ipua
+Itarantim
+Paraibano
+Sao Simao
+Peabiru
+Nova Olinda do Norte
+Pocao de Pedras
+Baiao
+Olindina
+Ibimirim
+Urbano Santos
+Ibatiba
+Pindorama
+Urucui
+Itajobi
+Umirim
+Tutoia
+Parnarama
+Girua
+Poco Verde
+Maruim
+Cacule
+Sao Pedro do Sul
+Sao Benedito do Rio Preto
+Reriutaba
+Uruburetama
+Canhotinho
+Matias Barbosa
+Alvinopolis
+Porto Real
+Natividade
+Nobres
+Itacorubi
+Capela do Alto
+Auriflama
+Maracai
+Placido de Castro
+Ribas do Rio Pardo
+Montanha
+Presidente Medici
+Borba
+Colonia Leopoldina
+Altinho
+Mundo Novo
+Duartina
+Coremas
+Cunha
+Raposa
+Araripe
+Curaca
+Papagaios
+Lagoa Formosa
+Batalha
+Rio Tinto
+Campestre
+Joanopolis
+Rio Casca
+Sao Paulo de Olivenca
+Borborema
+Manga
+Senador Guiomard
+Santo Antonio do Sudoeste
+Canto do Buriti
+Flores
+Miracatu
+Santa Vitoria
+Jaguaruna
+Brejo
+Jitauna
+Boqueirao
+Crixas
+Carmo
+Ortigueira
+Jucurutu
+Quipapa
+Barro
+Sao Jose da Coroa Grande
+Aguas Formosas
+Amarante do Maranhao
+Itirucu
+Pao de Acucar
+Luis Correia
+Uaua
+Castilho
+Carinhanha
+Cuite
+Porecatu
+Silvania
+Assare
+Nova Soure
+Joao Alfredo
+Farias Brito
+Itanhandu
+Quixere
+Barreirinha
+Lapao
+Mozarlandia
+Altania
+Riachao das Neves
+Monte Azul
+Pedregulho
+Ribeiropolis
+Brasileia
+Pedra
+Codajas
+Iranduba
+Pinheiro Machado
+Sao Bernardo
+Terra Nova
+Jacupiranga
+Itaquitinga
+Belem de Sao Francisco
+Camapua
+Independencia
+Iguaba Grande
+Itabera
+Reserva
+Monte Siao
+Botelhos
+Caninde de Sao Francisco
+Moncao
+Novo Aripuana
+Nova Londrina
+Areal
+Astolfo Dutra
+Caiaponia
+Jardim de Piranhas
+Guiratinga
+Terra Roxa
+Alto Parana
+Tupi Paulista
+Ribeirao Bonito
+Exu
+Curuca
+Ipaucu
+Cipo
+Matelandia
+Alhandra
+Boa Esperanca do Sul
+Canarana
+Picui
+Arraias
+Aurora
+Urupes
+Conceicao do Mato Dentro
+Areado
+Urussanga
+Ibicui
+Padre Paraiso
+Aquidaba
+Riolandia
+Cardoso
+Itagi
+Pianco
+Maribondo
+Turiacu
+Pastos Bons
+Rosario Oeste
+Itapui
+Sume
+Rio Piracicaba
+Queimadas
+Miguel Alves
+Elesbao Veloso
+Realeza
+Novo Cruzeiro
+Joao Neiva
+Vicencia
+Quata
+Terra Rica
+Espumoso
+Taruma
+Chavantes
+Santo Augusto
+Hidrolandia
+Quatis
+Carira
+Camocim de Sao Felix
+Paratinga
+Uruana
+Sao Jose do Campestre
+Anguera
+Marapanim
+Alvorada
+Sao Raimundo das Mangabeiras
+Urucurituba
+Oeiras do Para
+Cambuquira
+Nisia Floresta
+Goianapolis
+Pacaembu
+Cacu
+Andrelandia
+Arinos
+Guapo
+Sao Joao de Pirabas
+Barra de Santo Antonio
+Sao Joao Evangelista
+Alto Piquiri
+Lauro Muller
+Mutuipe
+Jataizinho
+Nhandeara
+Residencia Moacir PU5BHV
+Manaquiri
+Joaquim Nabuco
+Envira
+Teixeira
+Santa Maria do Suacui
+Porto de Moz
+Piranhas
+Piacabucu
+Itagiba
+Edeia
+Belmonte
+Guajara
+Alexandria
+Fortuna
+Chorozinho
+Parauna
+Ribeirao Branco
+Sabinopolis
+Conceicao do Almeida
+Guia Lopes da Laguna
+Mar de Espanha
+Remigio
+Nortelandia
+Iguatemi
+Autazes
+Girau do Ponciano
+Sananduva
+Anadia
+Sao Felipe
+Cerro Largo
+Rio Pardo de Minas
+Mucurici
+Jardim do Serido
+Guaratinga
+Centralina
+Buriti dos Lopes
+Sao Domingos do Prata
+Buriti Alegre
+Porto da Folha
+Cambuci
+Mirante do Paranapanema
+Pendencias
+Bernardino de Campos
+Sao Paulo do Potengi
+Santo Amaro das Brotas
+Santo Antonio do Ica
+Costeira do Pirajubae
+Guabiraba
+Alterosa
+Rialma
+Iaciara
+Ibiapina
+Martinho Campos
+Alagoa Nova
+Santa Teresa
+Irara
+Firminopolis
+Eldorado
+Arenapolis
+Divino das Laranjeiras
+Joaima
+Nova Aurora
+Cidreira
+Mirabela
+Santo Antonio do Taua
+Ibiracu
+Paulo Ramos
+Recreio
+Taperoa
+Paulista Florida
+Sao Caetano de Odivelas
+Sao Joao do Paraiso
+Juazeirinho
+Patu
+Amarante
+Malacacheta
+Turmalina
+Umarizal
+Alto Araguaia
+Belem do Brejo do Cruz
+Serra Branca
+Ibateguara
+Inga
+Cruz
+Moreira Sales
+Araioses
+Santa Branca
+Nova Floresta
+Candido Mendes
+Urucara
+Castelo do Piaui
+Mantenopolis
+Sideropolis
+Major Isidoro
+Mirai
+Montanhas
+Traipu
+Palmares do Sul
+Sao Joao da Ponte
+Centenario do Sul
+Pirpirituba
+Cantanhede
+Juripiranga
+Muniz Freire
+Itaguacu
+Pancas
+Ourem
+Pau Brasil
+Lagoa Seca
+Japaratuba
+General Salgado
+Ubaira
+Tangara
+Anori
+Santana do Matos
+Campo do Brito
+Sao Miguel do Tapuio
+Itapirapua
+Pitimbu
+Uirauna
+Vianopolis
+Pocinhos
+Mato Verde
+Flexeiras
+Guaraniacu
+Nhamunda
+Junqueiro
+Angicos
+Petrolina de Goias
+Araruna
+Touros
+Arara
+Pauini
+Sao Jose de Piranhas
+Brejinho
+Orizona
+Santa Terezinha
+Inhapi
+Baixa Grande
+Alagoinha
+Muana
+Cacimba de Dentro
+Sao Jose do Calcado
+Paramirim
+Sao Pedro do Piaui
+Monte Santo
+Passagem Franca
+Bananeiras
+Minas Novas
+Barcelos
+Bataipora
+Ibirapitanga
+Sao Desiderio
+Ares
+Ponto Novo
+Poco Branco
+Jaicos
+Palmas de Monte Alto
+Mancio Lima
+Simplicio Mendes
+Abadiania
+Inhuma
+Frei Paulo
+Jacarau
+Afua
+Aroeiras
+Paripiranga
+Mirador
+Afonso Bezerra
+Sao Joao
+Pecanha
+Jeronimo Monteiro
+Nuporanga
+Cumaru
+Matinha
+Monte Alegre de Sergipe
+Ocara
+Carai
+Rio Novo do Sul
+Upanema
+Careiro da Varzea
+Governador Dix Sept Rosado
+Tanhacu
+Chui
+Quebrangulo
+Coracao de Maria
+Porto
+Paranhos
+Mazagao
+Prainha
+Igaci
+Gurupa
+Santana do Mundau
+Pirapemas
+Cristinapolis
+Alfredo Chaves
+Varzelandia
+Santo Antonio do Leverger
+Pedro Velho
+Canutama
+Boquira
+Paraiso
+Rio Novo
+Jua dos Vieiras
+Bujaru
+Sao Tome
+Terenos
+Domingos Martins
+Carmo do Rio Verde
+Carnaiba
+Porto Real do Colegio
+Lagoa Nova
+Orobo
+Jetiba
+Marechal Floriano
+Jutai
+Cruz do Espirito Santo
+Bueno Brandao
+Tupanatinga
+Xapuri
+Senador Jose Porfirio
+Bequimao
+Alcantara
+Anajatuba
+Gurinhem
+Irituia
+Oliveira dos Brejinhos
+Malhador
+Novo Lino
+Alvaraes
+Carire
+Salgado
+Caetes
+Desterro
+Taquarana
+Humberto de Campos
+Lagoa
+Itaueira
+Fagundes
+Iraquara
+Candido de Abreu
+Santa Monica
+Iconha
+Beneditinos
+Corrego Grande
+Morro da Cruz
+Itapicuru
+Indiaroba
+Pio IX
+Itatuba
+Tavares
+Cerro Cora
+Gilbues
+Itinga
+Manaira
+Ituacu
+Capoeiras
+Morros
+Rio Bananal
+Sao Domingos
+Mogeiro
+Monsenhor Gil
+Araua
+Encruzilhada
+Laje
+Pantanal
+Vargem Alta
+Mata Grande
+Ipanguacu
+Cacimbinhas
+Riachao do Dantas
+Taipu
+Igreja Nova
+Umbuzeiro
+Dois Riachos
+Tonantins
+Conceicao do Castelo
+Tiradentes
+Alto Longa
+Tomar do Geru
+Maraa
+Barao de Melgaco
+Simoes
+Quijingue
+Paraiso das Aguas
+Salgado de Sao Felix
+Palmeirais
+Japoata
+Mulungu
+Santa Isabel do Rio Negro
+Monte Verde
+Portelandia
+Limoeiro do Ajuru
+Manoel Urbano
+Itarana
+Imaculada
+Matias Olimpio
+Marilandia
+Pimenteiras
+Juru
+Anage
+Cavalcante
+Dona Ines
+Carianos
+Icatu
+Moita Bonita
+Montes Altos
+Araguaiana
+Irupi
+Beira Rio
+Natuba
+Anitapolis
+Tremedal
+Puxinana
+Massaranduba
+Laranja da Terra
+Fernando de Noronha (Distrito Estadual)
+Ilha Grande
+Carvoeira
+Gararu
+Itainopolis
+Olivenca
+Uarini
+Limoeiro de Anadia
+Rio Tavares
+Aguia Branca
+Coite do Noia
+Severiano Melo
+Armacao
+Santa Leopoldina
+Pantano do Sul
+Jundia
+Atins
+Minador do Negrao
+Porto Walter
+Marechal Thaumaturgo
+Poco das Trincheiras
+Pinheiros
+Tapera
+Jacareacanga
+Sao Goncalo
+Rodeio
+Porangaba
+Capitolio
+Boraceia
+Alta Floresta
+Araguana
+Campo Limpo Paulista
+Lago dos Rodrigues
+Lucas do Rio Verde
+Teixeira de Freitas
+Vargem Grande Paulista
+Cambebba
+Butia Inferior
+Nova Olina do Marnhao

@@ -39,6 +39,7 @@ class PlacesApi {
     String query, {
     required String apiKey,
     String? pageToken,
+    String? regionCode,
   }) async {
     if (apiKey.trim().isEmpty) {
       throw PlacesException('Add your Google Places API key in Settings first.');
@@ -57,6 +58,7 @@ class PlacesApi {
               'textQuery': query,
               'pageSize': 20,
               if (pageToken != null) 'pageToken': pageToken,
+              if (regionCode != null && regionCode.isNotEmpty) 'regionCode': regionCode.toLowerCase(),
             }),
           )
           .timeout(const Duration(seconds: 20));

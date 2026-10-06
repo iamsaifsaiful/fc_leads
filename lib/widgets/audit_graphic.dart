@@ -25,6 +25,7 @@ class AuditGraphic extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final accent = Brand.accent(settings.accent);
     final agency = settings.agencyName.trim().isEmpty ? 'FansConnector' : settings.agencyName.trim();
     final contact = [
       if (settings.agencyWebsite.trim().isNotEmpty) settings.agencyWebsite.trim(),
@@ -40,15 +41,15 @@ class AuditGraphic extends StatelessWidget {
           child: Stack(
             children: [
               const Positioned.fill(child: ColoredBox(color: Brand.navy)),
-              const Positioned(right: -180, top: -180, child: _Ring(size: 520, alpha: 0x40)),
-              const Positioned(right: -90, top: -90, child: _Ring(size: 340, alpha: 0x66)),
+              Positioned(right: -180, top: -180, child: _Ring(size: 520, color: accent.withAlpha(0x40))),
+              Positioned(right: -90, top: -90, child: _Ring(size: 340, color: accent.withAlpha(0x66))),
               Positioned(
                 right: 40,
                 top: 40,
                 child: Container(
                   width: 80,
                   height: 80,
-                  decoration: const BoxDecoration(color: Brand.gold, shape: BoxShape.circle),
+                  decoration: BoxDecoration(color: accent, shape: BoxShape.circle),
                 ),
               ),
               Padding(
@@ -58,11 +59,11 @@ class AuditGraphic extends StatelessWidget {
                   children: [
                     _Header(agency: agency),
                     const SizedBox(height: 36),
-                    const Expanded(child: _Headline()),
+                    Expanded(child: _Headline(accent: accent)),
                     const SizedBox(height: 32),
                     _AuditCard(clientName: clientName, items: items),
                     const SizedBox(height: 40),
-                    _Footer(contact: contact),
+                    _Footer(contact: contact, accent: accent),
                   ],
                 ),
               ),
@@ -75,9 +76,9 @@ class AuditGraphic extends StatelessWidget {
 }
 
 class _Ring extends StatelessWidget {
-  const _Ring({required this.size, required this.alpha});
+  const _Ring({required this.size, required this.color});
   final double size;
-  final int alpha;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +87,7 @@ class _Ring extends StatelessWidget {
       height: size,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        border: Border.all(color: Brand.gold.withAlpha(alpha), width: 2),
+        border: Border.all(color: color, width: 2),
       ),
     );
   }
@@ -135,12 +136,13 @@ class _Header extends StatelessWidget {
 }
 
 class _Headline extends StatelessWidget {
-  const _Headline();
+  const _Headline({required this.accent});
+  final Color accent;
 
   @override
   Widget build(BuildContext context) {
     // Scales down instead of overflowing if a font renders wider.
-    return const FittedBox(
+    return FittedBox(
       fit: BoxFit.scaleDown,
       alignment: Alignment.topLeft,
       child: SizedBox(
@@ -151,17 +153,17 @@ class _Headline extends StatelessWidget {
           children: [
             Text(
               'FREE DIGITAL AUDIT',
-              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 22, letterSpacing: 3, color: Brand.gold),
+              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 22, letterSpacing: 3, color: accent),
             ),
-            SizedBox(height: 18),
+            const SizedBox(height: 18),
             Text.rich(
               TextSpan(
                 children: [
-                  TextSpan(text: 'Customers are looking.\n'),
-                  TextSpan(text: 'Are they finding you?', style: TextStyle(color: Brand.gold)),
+                  const TextSpan(text: 'Customers are looking.\n'),
+                  TextSpan(text: 'Are they finding you?', style: TextStyle(color: accent)),
                 ],
               ),
-              style: TextStyle(
+              style: const TextStyle(
                 fontFamily: Brand.display,
                 fontWeight: FontWeight.w800,
                 fontSize: 88,
@@ -170,8 +172,8 @@ class _Headline extends StatelessWidget {
                 color: Brand.cream,
               ),
             ),
-            SizedBox(height: 20),
-            Text(
+            const SizedBox(height: 20),
+            const Text(
               'Your business is on Google Maps. But how visible are you on your '
               'website, social media, Google Search and in AI answers? We checked.',
               style: TextStyle(fontSize: 29, height: 1.4, color: Brand.mist),
@@ -268,8 +270,9 @@ class _AuditRow extends StatelessWidget {
 }
 
 class _Footer extends StatelessWidget {
-  const _Footer({required this.contact});
+  const _Footer({required this.contact, required this.accent});
   final String contact;
+  final Color accent;
 
   @override
   Widget build(BuildContext context) {
@@ -301,7 +304,7 @@ class _Footer extends StatelessWidget {
         const SizedBox(width: 24),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 22),
-          decoration: BoxDecoration(color: Brand.gold, borderRadius: BorderRadius.circular(18)),
+          decoration: BoxDecoration(color: accent, borderRadius: BorderRadius.circular(18)),
           child: const Row(
             mainAxisSize: MainAxisSize.min,
             children: [

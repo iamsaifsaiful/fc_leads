@@ -2,10 +2,11 @@
 
 An Android app for client outreach:
 
-1. **Search** Google Maps for local businesses (e.g. "restaurants in Dhanmondi").
-2. **Audit** each one automatically: Google Maps profile, website, social media links, basic SEO and AI-answer readiness (AEO · GEO).
-3. **Design** a personalised 1080×1350 graphic with the business's results.
-4. **Send** it by WhatsApp (opens the chat with that number) or email (opens the email app with subject, message and graphic). You tap Send.
+1. **Search** Google Maps by business type (55 types grouped by sector, matched to FansConnector's services), country (250) and city (135,000, largest first), or type your own search. Recent searches are one tap away.
+2. **Audit** each business automatically: Google Maps profile, website, social media links, basic SEO and AI-answer readiness (AEO · GEO). Social links found on the website are listed; missing ones can be found on Google or added by hand.
+3. **Design** a personalised 1080×1350 graphic with the business's results, in one of four accent colours.
+4. **Send** by WhatsApp (step 1 opens their chat with the message typed in, step 2 sends the graphic) or email (opens the email app with recipient, subject, message and graphic). Messages can be edited per lead; defaults live in the Templates tab. You tap Send — WhatsApp and email apps never let another app send for you.
+5. **Track** every lead: status (New → Contacted → Replied → Interested → Won/Lost), follow-up date, notes. The Leads tab filters by status, contact, website, follow-up, country and type, and exports CSV. Home shows the pipeline and follow-ups due.
 
 ## Setup
 
@@ -39,6 +40,7 @@ flutter run
 
 ## Notes
 
+- City data: GeoNames (CC BY 4.0), via the `all-the-cities` package; country list from `countries-list` (MIT).
 - Google Maps does not give email addresses; the app looks for them on the business's website.
 - Places API calls that include phone, website and rating are billed by Google. Check current pricing in Google Cloud.
 - Send messages one by one and only to businesses that are a real fit. Bulk unsolicited messages can get a WhatsApp number banned.

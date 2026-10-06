@@ -3,28 +3,39 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../models/settings.dart';
 
 class SettingsStore {
-  static const _prefix = 'settings.';
+  static const _p = 'settings.';
 
   Future<AppSettings> load() async {
     final p = await SharedPreferences.getInstance();
     const d = AppSettings();
+    String s(String key, String fallback) => p.getString('$_p$key') ?? fallback;
     return AppSettings(
-      apiKey: p.getString('${_prefix}apiKey') ?? d.apiKey,
-      senderName: p.getString('${_prefix}senderName') ?? d.senderName,
-      agencyName: p.getString('${_prefix}agencyName') ?? d.agencyName,
-      agencyWebsite: p.getString('${_prefix}agencyWebsite') ?? d.agencyWebsite,
-      whatsapp: p.getString('${_prefix}whatsapp') ?? d.whatsapp,
-      email: p.getString('${_prefix}email') ?? d.email,
+      apiKey: s('apiKey', d.apiKey),
+      senderName: s('senderName', d.senderName),
+      agencyName: s('agencyName', d.agencyName),
+      agencyWebsite: s('agencyWebsite', d.agencyWebsite),
+      whatsapp: s('whatsapp', d.whatsapp),
+      email: s('email', d.email),
+      accent: p.getInt('${_p}accent') ?? d.accent,
+      defaultCountry: s('defaultCountry', d.defaultCountry),
+      whatsappTemplate: s('whatsappTemplate', d.whatsappTemplate),
+      emailSubjectTemplate: s('emailSubjectTemplate', d.emailSubjectTemplate),
+      emailTemplate: s('emailTemplate', d.emailTemplate),
     );
   }
 
   Future<void> save(AppSettings s) async {
     final p = await SharedPreferences.getInstance();
-    await p.setString('${_prefix}apiKey', s.apiKey.trim());
-    await p.setString('${_prefix}senderName', s.senderName.trim());
-    await p.setString('${_prefix}agencyName', s.agencyName.trim());
-    await p.setString('${_prefix}agencyWebsite', s.agencyWebsite.trim());
-    await p.setString('${_prefix}whatsapp', s.whatsapp.trim());
-    await p.setString('${_prefix}email', s.email.trim());
+    await p.setString('${_p}apiKey', s.apiKey.trim());
+    await p.setString('${_p}senderName', s.senderName.trim());
+    await p.setString('${_p}agencyName', s.agencyName.trim());
+    await p.setString('${_p}agencyWebsite', s.agencyWebsite.trim());
+    await p.setString('${_p}whatsapp', s.whatsapp.trim());
+    await p.setString('${_p}email', s.email.trim());
+    await p.setInt('${_p}accent', s.accent);
+    await p.setString('${_p}defaultCountry', s.defaultCountry);
+    await p.setString('${_p}whatsappTemplate', s.whatsappTemplate);
+    await p.setString('${_p}emailSubjectTemplate', s.emailSubjectTemplate);
+    await p.setString('${_p}emailTemplate', s.emailTemplate);
   }
 }

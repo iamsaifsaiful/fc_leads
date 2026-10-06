@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'models/audit.dart';
+import 'models/lead.dart';
 
 /// FansConnector outreach palette: navy, cream and gold.
 class Brand {
@@ -16,6 +17,17 @@ class Brand {
   static const muted = Color(0xFF55606E);
   static const mist = Color(0xFFC9D1DC);
   static const white = Color(0xFFFFFFFF);
+
+  /// Accent colours the graphic can use (Settings → Graphic colour).
+  static const accents = <Color>[
+    Color(0xFFF2B33D),
+    Color(0xFF5FD3A6),
+    Color(0xFFFF7A59),
+    Color(0xFF8FB8FF),
+  ];
+  static const accentNames = ['Gold', 'Mint', 'Coral', 'Sky'];
+
+  static Color accent(int i) => accents[i.clamp(0, accents.length - 1)];
 
   static const display = 'Bricolage';
   static const body = 'Instrument';
@@ -34,6 +46,16 @@ class Brand {
         AuditStatus.bad => const Color(0xFF8A2412),
       };
 }
+
+/// Colour for each pipeline status (dots and chips).
+Color statusColor(LeadStatus s) => switch (s) {
+      LeadStatus.newLead => const Color(0xFF8FA3BF),
+      LeadStatus.contacted => const Color(0xFF3D7BD9),
+      LeadStatus.replied => const Color(0xFFC9861A),
+      LeadStatus.interested => const Color(0xFF8E5BD0),
+      LeadStatus.won => const Color(0xFF2E8B57),
+      LeadStatus.lost => const Color(0xFFB4532F),
+    };
 
 ThemeData buildTheme() {
   const scheme = ColorScheme(

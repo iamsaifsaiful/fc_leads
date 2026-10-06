@@ -1,28 +1,34 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/lead.dart';
 
-/// Saved leads, newest first, kept on the phone.
-class LeadStore {
+/// Saved leads, newest first, kept on the phone. Screens listen to it and
+/// refresh when a lead is saved or removed.
+class LeadStore extends ChangeNotifier {
   static const _key = 'leads.v1';
+  List<Lead>? _cache;
 
   Future<List<Lead>> all() async {
+    if (_cache != null) return List.of(_cache!);
     final p = await SharedPreferences.getInstance();
     final raw = p.getString(_key);
-    if (raw == null || raw.isEmpty) return [];
-    try {
-      final list = jsonDecode(raw) as List;
-      final leads = list
-          .whereType<Map>()
-          .map((m) => Lead.fromJson(Map<String, dynamic>.from(m)))
-          .toList()
-        ..sort((a, b) => b.savedAt.compareTo(a.savedAt));
-      return leads;
-    } catch (_) {
-      return [];
+    var leads = <Lead>[];
+    if (raw != null && raw.isNotEmpty) {
+      try {
+        leads = (jsonDecode(raw) as List)
+            .whereType<Map>()
+            .map((m) => Lead.fromJson(Map<String, dynamic>.from(m)))
+            .toList();
+      } catch (_) {
+        leads = [];
+      }
     }
+    leads.sort((a, b) => b.savedAt.compareTo(a.savedAt));
+    _cache = leads;
+    return List.of(leads);
   }
 
   Future<Lead?> find(String businessId) async {
@@ -44,6 +50,8 @@ class LeadStore {
   }
 
   Future<void> _write(List<Lead> leads) async {
+    _cache = leads;
+    notifyListeners();
     final p = await SharedPreferences.getInstance();
     await p.setString(_key, jsonEncode(leads.map((l) => l.toJson()).toList()));
   }

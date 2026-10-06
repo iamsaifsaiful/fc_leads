@@ -1,0 +1,1400 @@
+Bern
+Zurich
+Geneve
+Basel
+Lausanne
+Winterthur
+Sankt Gallen
+Lugano
+Luzern
+Zurich (Kreis 11)
+Biel/Bienne
+Zurich (Kreis 3)
+Zurich (Kreis 9)
+Thun
+Koniz
+La Chaux-de-Fonds
+Zurich (Kreis 10)
+Rapperswil
+Schaffhausen
+Zurich (Kreis 7)
+Fribourg
+Chur
+Neuchatel
+Vernier
+Zurich (Kreis 6)
+Zurich (Kreis 2)
+Zurich (Kreis 9) / Altstetten
+Zurich (Kreis 12)
+Sitten
+Lancy
+Zurich (Kreis 4) / Aussersihl
+Emmen
+Kriens
+Yverdon-les-Bains
+Zug
+Uster
+Montreux
+Frauenfeld
+Zurich (Kreis 3) / Sihlfeld
+Dietikon
+Baar
+Zurich (Kreis 6) / Unterstrass
+Riehen
+Dubendorf
+Meyrin
+Carouge
+Wettingen
+Allschwil
+Zurich (Kreis 11) / Oerlikon
+Zurich (Kreis 11) / Seebach
+Renens
+Kreuzlingen
+Jona
+Onex
+Zurich (Kreis 11) / Affoltern
+Zurich (Kreis 10) / Hongg
+Gossau
+Muttenz
+Wil
+Nyon
+Bellinzona
+Zurich (Kreis 9) / Albisrieden
+Olten
+Oberwinterthur (Kreis 2)
+Kloten
+Pully
+Stadt Winterthur (Kreis 1)
+Littau
+Baden
+Zurich (Kreis 2) / Wollishofen
+Horgen
+Grenchen
+Vevey
+Sierre
+Zurich (Kreis 10) / Wipkingen
+Zurich (Kreis 8)
+Aarau
+Herisau
+Seen (Kreis 3)
+Adliswil
+Steffisburg
+Monthey
+Zurich (Kreis 3) / Alt-Wiedikon
+Pratteln
+Solothurn
+Burgdorf
+Martigny-Ville
+Locarno
+Freienbach
+Langenthal
+Schwyz
+Binningen
+Morges
+Wohlen
+Cham
+Thalwil
+Wadenswil
+Bulach
+Einsiedeln
+Thonex
+Zurich (Kreis 4) / Hard
+Wetzikon
+Arbon
+Liestal
+Schlieren
+Wulflingen (Kreis 6)
+Spiez
+Muri
+Horw
+Uzwil
+Bulle
+Kussnacht
+Zurich (Kreis 5)
+Wallisellen
+Munchenstein
+Kusnacht
+Ebikon
+Versoix
+Zofingen
+Amriswil
+Zurich (Kreis 12) / Hirzenbach
+Delemont
+Worb
+Mattenbach (Kreis 7)
+Davos
+Lyss
+Munsingen
+Rheinfelden
+Gland
+Altstatten
+Spreitenbach
+Plan-les-Ouates
+Prilly
+La Tour-de-Peilz
+Chene-Bougeries
+Zurich (Kreis 12) / Schwamendingen-Mitte
+Rotkreuz
+Uster / Kirch-Uster
+Buchs
+Oftringen
+Zurich (Kreis 4) / Langstrasse
+Le Locle
+Ecublens
+Birsfelden
+Richterswil
+Oberwil
+Aesch
+Effretikon
+Villars-sur-Glane
+Neuhausen
+Zurich (Kreis 7) / Hottingen
+Zurich (Kreis 3) / Friesenberg
+Zurich (Kreis 6) / Oberstrass
+Zurich (Kreis 5) / Gewerbeschule
+Arth
+Munchenbuchsee
+Veyrier
+Le Grand-Saconnex
+Bernex
+Flawil
+Therwil
+Ruti
+Weinfelden
+Sarnen
+Mohlin
+Suhr
+Belp
+Arlesheim
+Zuchwil
+Urdorf
+Gstaad
+Brugg
+Eschenbach
+Zollikofen
+Zurich (Kreis 7) / Witikon
+Goldach
+Hunenberg
+Rorschach
+Romanshorn
+Affoltern am Albis
+Veltheim (Kreis 5)
+Langnau
+Lutry
+Altdorf
+Toss (Kreis 4)
+Wittenbach
+Steinhausen
+Zurich (Kreis 2) / Enge
+Hochdorf
+Kirchberg
+Wattwil
+Chiasso
+Sursee
+Pfaffikon
+Obersiggenthal
+Unterageri
+Ingenbohl
+Hegnau
+Chene-Bourg
+Neuenhof
+Mannedorf
+Biberist
+Reinach
+Giubiasco
+Schubelbach
+Aigle
+Moutier
+Epalinges
+Oberriet
+Payerne
+Marly
+Aadorf
+Oberentfelden
+Naters
+Pregassona
+Regensdorf
+Stans
+Rothrist
+Bussigny
+Lenzburg
+Lengnau
+Mendrisio
+Dudingen
+Siebnen
+Embrach
+Bassersdorf
+Zurich (Kreis 7) / Fluntern
+Langnau am Albis
+Wollerau
+Thalwil / Dorfkern
+Igis
+Aarburg
+Domat
+Zurich (Kreis 7) / Hirslanden
+Nidau
+Windisch
+Lachen
+Au
+Frutigen
+Ollon
+Minusio
+Conthey
+Zermatt
+Bagnes
+Saanen
+Crissier
+Visp
+Granichen
+Bremgarten
+Meggen
+Porrentruy
+Blecherette
+Kilchberg
+Sirnach
+Dornach
+Thal
+Ruswil
+Grabs
+Viganello
+Untersiggenthal
+Trimbach
+Zurich (Kreis 1)
+Malters
+Frenkendorf
+Dietlikon / Dietlikon (Dorf)
+Horgen / Horgen (Dorfkern)
+Derendingen
+Bolligen
+Losone
+Neuenkirch
+Bex
+Mattenbach (Kreis 7) / Deutweg
+Collombey
+Fully
+Bottmingen
+Biasca
+Sissach
+Balsthal
+Zollikon
+Oberengstringen
+Murten/Morat
+Massagno
+Stafa
+Les Avanchets
+Peseux
+Gelterkinden
+Teufen
+Glarus
+Uetendorf
+Appenzell
+Oberuzwil
+Pfaffikon / Pfaffikon (Dorfkern)
+Adligenswil
+Saviese
+Zurich (Kreis 8) / Muhlebach
+Uznach
+Buochs
+Herzogenbuchsee
+Heimberg
+Wurenlos
+Villmergen
+Hinwil
+Chavannes
+Hergiswil
+Menziken
+Basse-Nendaz
+Diepoldsau
+Sankt Margrethen
+Oberwinterthur (Kreis 2) / Guggenbuhl
+Oberwinterthur (Kreis 2) / Talacker
+Buchrain
+Goldau
+Altendorf
+Le Mont-sur-Lausanne
+Urtenen
+Blonay
+Kuttigen
+Saint-Imier
+Alpnach
+Kerns
+Laufen
+Zurich (Kreis 12) / Saatlen
+Sumiswald
+Unterseen
+Rumlang
+Orbe
+Uster / Ober-Uster
+Chatel-Saint-Denis
+Ascona
+Interlaken
+Bad Ragaz
+Estavayer-le-Lac
+Sargans
+Greifensee
+Wallisellen / Wallisellen-Ost
+Herrliberg
+Walenstadt
+Brig
+Zurich (Kreis 8) / Seefeld
+Ettingen
+Echallens
+St. Moritz
+Zurich (Kreis 8) / Weinegg
+Oetwil
+Flamatt
+Mannedorf / Dorfkern
+Lausen
+Boudry
+Gerlafingen
+Schattdorf
+Ebnat-Kappel
+Flums
+Bettlach
+Birmensdorf
+Sennwald
+Hombrechtikon
+Veltheim (Kreis 5) / Rosenberg
+Langnau / Langnau (Dorf)
+Schonenwerd
+Preverenges
+Wangen
+Dielsdorf
+Ruschlikon
+Meiringen
+Huttwil
+Vechigen
+Stadt Winterthur (Kreis 1) / Lind
+Munchwilen
+Oensingen
+Frick
+Konolfingen
+Bubendorf
+Berikon
+Ehrendingen
+Erlenbach
+Sachseln
+Bronschhofen
+Romont
+Stansstad
+Saint-Prex
+Kerzers
+Fullinsdorf
+Rolle
+Zumikon
+Meilen
+Oberrieden
+Cortaillod
+Seon
+Sevelen
+Wetzikon / Kempten
+Villeneuve
+Strengelbach
+Moudon
+Sigriswil
+Hagendorf
+Morbio Inferiore
+Wulflingen (Kreis 6) / Oberfeld
+Le Landeron
+Zuzwil
+Ennetburgen
+Mellingen
+Sainte-Croix
+Bad Zurzach
+Feusisberg
+Triengen
+Zollikerberg
+Tramelan
+Schwerzenbach
+Egnach
+Aarwangen
+Rebstein
+Dietikon / Oberdorf
+Vetroz
+Rupperswil
+Veltheim (Kreis 5) / Blumenau
+Uster / Nieder-Uster
+Thayngen
+Gebenstorf
+Seen (Kreis 3) / Waser
+Marin-Epagnier
+Le Chenit
+Kolliken
+Wangi
+Wolhusen
+Klosters Serneus
+Schmitten
+Obfelden
+Lutzelfluh
+Jegenstorf
+Niederlenz
+Balgach
+Egg
+Engelberg
+Oberrohrdorf
+Heiden
+Burglen
+Speicher
+Nafels
+Gordola
+Seuzach Dorf
+Cheseaux
+Reiden
+Stabio
+Aarberg
+Zurich (Kreis 4) / Werd
+Root
+Birr
+Menzingen
+Erstfeld
+Troistorrents
+Bevaix
+Weggis
+Niederbipp
+Wetzikon / Ober-Wetzikon
+Niedergosgen
+Wichtrach
+Hilterfingen
+Horgen / Allmend
+Kaltbrunn
+Degersheim
+Rudolfstetten
+Fehraltorf
+Sempach
+Lostorf
+Wurenlingen
+Brittnau
+Feldmeilen
+Grindelwald
+Schupfheim
+Saint-Maurice
+Bruttisellen
+La Tour-de-Treme
+Fleurier
+Geroldswil
+Matten
+Bellevue
+Roggwil
+Niederurnen
+Caslano
+Agno
+Kehrsatz
+Niederglatt
+Toss (Kreis 4) / Eichliacker
+Utzenstorf
+Ruti / Dorfzentrum, Sudl. Teil
+Wettswil / Wettswil (Dorf)
+Sins
+Kaiseraugst
+Oberglatt
+Giswil
+Muotathal
+Adelboden
+Rumlang / Rumlang (Dorfkern)
+Langendorf
+Wallisellen / Wallisellen-West
+Ibach
+Lens
+Morschwil
+La Neuveville
+Saxon
+Balerna
+Savigny
+Magden
+Uetikon
+Poschiavo
+Eschlikon
+Confignon
+Muhen
+Tagerwilen
+Schanis
+Butschwil
+Leuk
+Tavannes
+Sulgen
+Zurich (Kreis 10) / Rutihof
+Pieterlen
+Schoftland
+Schmerikon
+Bassecourt
+Dagmersellen
+Rheineck
+Vouvry
+Entlebuch
+Luterbach
+Richterswil / Richterswil (Dorfkern)
+Seengen
+Uitikon
+Elgg
+Walchwil
+Hausen am Albis / Hausen (Dorf)
+Hegnau / Sunnebuel-Eich
+Schupfen
+Ayent
+Breitenbach
+Gachnang
+Rafz
+Schotz
+Steckborn
+Oberkirch
+Kusnacht / Heslibach
+Stein am Rhein
+Jonschwil
+Beringen
+Safenwil
+Escholzmatt
+Schindellegi
+Prangins
+Neftenbach / Dorf Neftenbach
+Samstagern
+Randogne
+Hermiswil
+Stadt Winterthur (Kreis 1) / Neuwiesen
+Waldkirch
+Willisau
+Dottikon
+Romanel-sur-Lausanne
+Bosingen
+Turbenthal
+Gipf-Oberfrick
+Unterkulm
+Vallorbe
+Zurich (Kreis 1) / Rathaus
+Saint-Blaise
+Courroux
+Ruti / Westlicher Dorfteil
+Klingnau
+Leysin
+Wald
+Erlen
+Satigny
+Beckenried
+Murgenthal
+Steinen
+Tann
+Chateau-d'Oex
+Stadt Winterthur (Kreis 1) / Heiligberg
+Mollis
+Givisiez
+Zizers
+Belmont-sur-Lausanne
+Bachenbulach
+Turgi
+Gams
+Illnau
+Embrach / Embrach (Dorfkern)
+Berg
+Grosswangen
+Mosnang
+Egerkingen
+Mattenbach (Kreis 7) / Gutschick
+Seedorf
+Nottwil
+Oberburg
+Selzach
+Netstal
+Brienz
+Buttisholz
+Stettlen
+Hausen
+Reichenburg
+Beromunster
+Ruti / Oberdorf
+Obermeilen
+Oberdiessbach
+Subingen
+Rohr
+Niederhasli
+Chavornay
+Hedingen
+Tafers
+Trimmis
+Vandœuvres
+Ins
+Dietikon / Hofacker
+Signau
+Muralto
+Hegnau / Dammboden-Grindel
+Zweisimmen
+Couvet
+Grossaffoltern
+Mettmenstetten
+Cossonay
+Wattenwil
+Niederrohrdorf
+Gommiswald
+Monchaltorf
+Gais
+Zurich (Kreis 2) / Unter-Leimbach
+Laupen
+Chermignon-d'en Haut
+Toss (Kreis 4) / Schlosstal
+Schafisheim
+Avenches
+Batterkinden
+Muhleberg
+Grandson
+Orsieres
+Volketswil / Volketswil (Dorf)
+Quarten
+Rickenbach bei Wil
+Wadenswil / Buelen
+Anieres
+Aubonne
+Samedan
+Lauperswil
+Ennenda
+Sementina
+Horgen / Scheller-Stockerstrasse
+Unterengstringen
+Tuggen
+Niederhelfenschwil
+Chalais
+Chardonne
+Bonaduz
+Lauterbrunnen
+Glattbrugg
+Zunzgen
+Effretikon / Watt
+Seen (Kreis 3) / Buelwiesen
+Menznau
+Chamoson
+Dietikon / Vorstadt
+Schenkon
+Lenzerheide
+Kusnacht / Goldbach
+Wulflingen (Kreis 6) / Harti
+Marstetten-Dorf
+Schlieren / Spital
+Glattfelden
+Thusis
+Au / Mittel-Dorf
+Eggiwil
+Wadenswil / Dorf (Wadenswil)
+Wulflingen (Kreis 6) / Lindenplatz
+Kirchlindach
+Fischingen
+Schwanden
+Adliswil / Adliswil (Stadtkern)
+Flims
+Horgen / Oberdorf
+Wetzikon / Unter-Wetzikon
+Ringgenberg
+Kloten / Rutlen
+Stein
+Villars-sur-Ollon
+Mullheim
+Tauffelen
+Orpund
+Merenschwand
+Saint-Aubin-Sauges
+Birmenstorf
+Munsterlingen
+Meisterschwanden
+Ermatingen
+Maienfeld
+Rubigen
+Staufen
+Schiers
+Benken
+Russikon
+Wolfhausen
+Yvonand
+Matzingen
+Puidoux
+Kusnacht / Itschnach
+Novazzano
+Lotzwil
+Riva San Vitale
+Attalens
+Pfungen
+Seen (Kreis 3) / Ganzenbuhl
+Camorino
+Domdidier
+Sankt Niklaus
+Elgg / Stadtchen und Umgebung
+Krauchthal
+Monte Carasso
+Grimisuat
+Ruderswil
+Evilard
+Sarmenstorf
+Ilanz
+Courrendlin
+Nurensdorf
+Unteriberg
+Arosa
+Ardon
+Urnasch
+Wilderswil
+Untervaz
+Montana
+Montagnola
+Claro
+Reconvilier
+Belfaux
+Ballwil
+Ebmatingen
+Toffen
+Horn
+Lenk
+Othmarsingen
+Wallisellen / Rieden
+Bonstetten
+Erlinsbach
+Founex
+Udligenswil
+Holstein
+Oberdorf
+Courtetelle
+Kilchberg / Kilchberg (Dorfkern)
+Silenen
+Penthalaz
+Nebikon
+Kloten / Holberg
+Wimmis
+Bonigen
+Hettlingen
+Wiedlisbach
+Riddes
+Mogelsberg
+Wetzikon / Robenhausen
+Eggersriet
+Stadt Winterthur (Kreis 1) / Tossfeld
+Pfeffingen
+Saignelegier
+Leytron
+Wilchingen
+Disentis
+Waltenschwil
+Lucens
+Troinex
+Scuol
+Hagglingen
+Bulach / Seematt
+Mattenbach (Kreis 7) / Endliker
+Geuensee
+Hitzkirch
+Feuerthalen
+Inwil
+Puplinge
+Zwingen
+Castel San Pietro
+Broc
+Gattikon
+Kaisten
+Deitingen
+Affeltrangen
+Ueberstorf
+Chexbres
+Seen (Kreis 3) / Oberseen
+Coppet
+Walzenhausen
+Dietikon / Almend
+Courgenay
+Fallanden
+Rothenthurm
+Wynigen
+Hohenrain
+Felsberg
+Wolfenschiessen
+Cernier
+Tann / Tann (Dorfkern)
+Wolfwil
+Obergosgen
+Gontenschwil
+Bubikon
+Malans
+Pfaffnau
+Worben
+Wigoltingen
+Thierachern
+Ottenbach
+Grone
+Pfaffikon / Irgenhausen
+Diemtigen
+Seftigen
+Illnau / Unter-Illnau
+Bilten
+Riggisberg
+Verbier
+Laufenburg
+Hallau
+Fluelen
+Caux
+Aeschi b. Spiez
+Lauffohr (Brugg)
+Hindelbank
+Madiswil
+Affoltern / Unterdorf
+Sonnhalde
+Gersau
+Koppigen
+Wadenswil / Untermosen-Fuhr
+Weisslingen
+Bas-Vully
+Oberrieden / Berg
+Dietikon / Kreuzacker
+Buron
+Ruthi
+Lichtensteig
+Wangen an der Aare
+Zell
+Kloten / Geissberg
+Nunningen
+Plaffeien
+Saint-Leonard
+Fluhli
+Benglen
+Endingen
+Rueggisberg
+Oberurnen
+Gunzwil
+Eiken
+Lungern
+Arzier
+Malleray
+Neunkirch
+Werthenstein
+Cadenazzo
+Raron
+Riaz
+Thalwil / See
+Zurich (Kreis 2) / Mittel-Leimbach
+Altnau
+Romerswil
+Hildisrieden
+Bottighofen
+Oberlunkhofen
+Schlieren / Engstingerquartier
+Canobbio
+Pontresina
+Busserach
+Bulach / Gstuckt
+Binzikon
+Alterswil
+Sankt Antoni
+Kollbrunn
+Zurich (Kreis 5) / Escher-Wyss
+Cevio
+Oberwinterthur (Kreis 2) / Zinzikon
+Urdorf / Bodenfeld
+Pfyn
+Vuadens
+Gorgier
+Brissago
+Wadenswil / Leihof-Muhlebach
+Oberegg
+Walkringen
+Saint-Cergue
+Acquarossa
+Sankt Gallenkappel
+Meinier
+Otelfingen
+Oberbuchsiten
+Oberrieden / Mitte
+Ormalingen
+Ettiswil
+Rorbas
+Uerikon
+Cully
+Bioggio
+Killwangen
+Glattbrugg / Rohr/Platten-Balsberg
+Rehetobel
+Grellingen
+Uster / Gschwader
+Biglen
+Affoltern / Oberdorf
+Effretikon / Rappenhalde-Bannhalde
+Weiningen
+Roschenz
+Thalwil / Nord
+Itingen
+Vicques
+Dallenwil
+Andwil
+Schinznach Dorf
+Bevilard
+La Sarraz
+Kunten
+Martigny-Combe
+Erlenbach im Simmental
+Comano
+Hasle
+Schleitheim
+Waldstatt
+Knutwil
+Vionnaz
+Charmey
+Erlenbach / links des Dorfbachs oberhalb Bahnlinie
+Corminboeuf
+Corsier
+Ruschegg
+Alle
+Affoltern / Hasenbuel
+Pfaffhausen
+Jonen
+Danikon
+Kloten / Kloten (Zentrum)
+Uttigen
+Laupersdorf
+Teufenthal
+Stadt Winterthur (Kreis 1) / Altstadt
+Vordemwald
+Dombresson
+Wauwil
+Chezard-Saint-Martin
+Koblenz
+Wiesendangen / Wiesendangen (Dorf)
+Fontainemelon
+Gruyeres
+Cazis
+Diegten
+Sorengo
+Guggisberg
+Eich
+Trogen
+Le Noirmont
+Freienstein
+Fraubrunnen
+Vernayaz
+Buhler
+Saas-Fee
+Wynau
+Auw
+Tagelswangen
+Gunzgen
+Binz
+Saillon
+Sattel
+Cadro
+Schwarzenberg
+Kloten / Freienberg (Chanzler-Chlini Chaseren)
+Dallikon / Dallikon (Dorf)
+Melide
+Riedholz
+Grolley
+Henggart
+Arch
+Kusnacht / Dorf
+Sellenburen
+Marsens
+Heimiswil
+Thalwil / Berg
+Marthalen
+Giffers
+Grut
+Nanikon
+Airolo
+Evolene
+Cornaux
+Amden
+Chippis
+Brutten
+Auvernier
+Adliswil / Hundli-Zopf
+Glattbrugg / Wydacker/Bettacker/Lattenwiesen
+Kallnach
+Oberwinterthur (Kreis 2) / Hegi
+Magadino
+Arisdorf
+Wadenswil / Boller-Giessen
+Zaziwil
+Tesserete
+Trubschachen
+Luchsingen
+Lodrino
+Fulenbach
+Wagenhausen
+Ligornetto
+Cugy
+Froideville
+Schwellbrunn
+Attinghausen
+Faido
+Reigoldswil
+Eschenz
+Courfaivre
+Ersigen
+Trub
+Corgemont
+Hittnau / Hittnau (Dorf)
+Genolier
+Buchholterberg
+Vitznau
+Adliswil / Sood
+Brislach
+Uttwil
+Bach
+Oberengstringen / Sonnenberg
+Lutisburg
+Stadt Winterthur (Kreis 1) / Bruhlberg
+Toss (Kreis 4) / Vorder-Dattnau
+Villnachern
+Dachsen
+Erlenbach / rechts des Dorfbachs oberhalb Bahnlinie
+Montagny
+Melchnau
+Embrach / Kellersacker
+Les Geneveys-sur-Coffrane
+Gimel
+Krummenau
+Boltigen
+Hochfelden
+Visperterminen
+Oberbipp
+Wettswil / Ausser-Dorf
+Steinmaur
+Boniswil
+Neerach
+Bulach / Soliganter
+Uster / Nossikon
+Biere
+Leukerbad
+Mumpf
+Jongny
+Seuzach / Seuzach (Dorf)
+Vex
+Niederburen
+Eriswil
+Bowil
+Seltisberg
+Adliswil / Oberleimbach
+Gockhausen
+Wadenswil / Hangenmoos
+Homburg
+Gonten
+Oberglatt / Oberglatt (Dorfkern)
+La Roche
+Weesen
+Egliswil
+Elsau-Raterschen
+Luthern
+Kloten / Horainli
+Dubendorf / Vogelquartier
+Attiswil
+Kloten / Balsberg
+Wila
+Rohrbach
+Gampel
+Dietlikon / Eichwiesen
+Wahlen
+Villigen
+Huttwilen
+Lyssach
+Veltheim
+Altishofen
+Grachen
+Jussy
+Sankt Stephan
+Paudex
+Cadempino
+Treyvaux
+Breil
+Pery
+Rodersdorf
+Waldenburg
+Guttingen
+Muntschemier
+Oberglatt / Bahnhofquartier
+Heremence
+Dardagny
+Andelfingen
+Court
+Schinznach Bad
+Sales
+Avry-sur-Matran
+Begnins
+Seeberg
+Hadlikon
+Oberhelfenschwil
+Ramsen
+Perroy
+Linden
+Schonenbuch
+Baretswil
+Aristau
+Dietikon / Guggenbuhl
+Bellmund
+Ferenbalm
+Boncourt
+Uerkheim
+Zurich (Kreis 1) / Lindenhof
+Kleinlutzel
+Salmsach
+Malvaglia
+Fontenais
+Leibstadt
+Dubendorf / Kunklerstrasse
+Adliswil / Sonnenberg
+Matzendorf
+Frauenkappelen
+Les Ponts-de-Martel
+Schachen
+Opfikon
+Les Breuleux
+Laufelfingen
+Oberengstringen / Zentrum
+Oberruti
+Urdorf / Moos
+Muhlethurnen
+Unterlunkhofen
+Mesocco
+Affoltern / Sonnenberg
+Eichberg
+Andermatt
+Rhazuns
+Thalwil / Sud
+Hochwald
+Laax
+Wadenswil / Eichweid
+Wyssachen
+Au / Unter-Dorf
+Sulz
+Trun
+Grusch
+Celerina
+Schlieren / Boden
+Salgesch
+Travers
+Stalden
+Emmetten
+Wulflingen (Kreis 6) / Niederfeld
+Dorf
+Praroman
+Wildhaus
+Flurlingen
+Muhlehalde
+Wikon
+Radelfingen
+Dietikon / Schonenwerd
+Haggenschwil
+Richterswil / Dorfkern
+Churwalden
+Schlieren / Freiestrasse
+Liesberg
+Zuoz
+Palezieux
+Sankt Peterzell
+Schlieren / Zentrum
+Varen
+Esslingen
+Cugnasco
+Apples
+Mauensee
+Glovelier
+Oron-la-Ville
+Meinisberg
+Champery
+Lumino
+Bettingen
+Beatenberg
+Arzo
+Gutenswil
+Durrenasch
+Buttwil
+Seen (Kreis 3) / Waldegg
+Orvin
+Haag (Rheintal)
+Welschenrohr
+Thundorf
+Nanikon / Nanikon (Dorfkern)
+Mannedorf / Ausserfeld
+Les Brenets
+Lavertezzo
+Leuzigen
+Courtelary
+Langnau / Vitaquartier
+Tamins
+Baltschieder
+Charrat
+Blumenstein
+Luzein
+Kloten / Spitz
+Brusio
+Niederglatt / Niederglatt (Dorfkern)
+Kilchberg / Bachler-Stocken
+Obfelden / Toussen
+Ganterschwil
+Zurich (Kreis 11) / Schwandenholz
+Seglingen
+Zurich (Kreis 12) / Auzelg
+Uhwiesen
+Richterswil / Burghalde
+Greifensee / Pfisterholzli
+Melano
+Jenaz
+Schlieren / Kamp
+Meierskappel
+Salvan
+Oberengstringen / Rauchacher
+Adliswil / Tal
+Tanay
+Lohningen
+Kandersteg
+Gryon
+Regensdorf / Feldblumen-Riedthofstrasse
+Effretikon / Rikon
+Muolen
+Saas-Grund
+Kriegstetten
+Grand-Savagnier
+Hofstetten
+Rue
+Erlach
+Hinteregg
+Kindhausen / Kindhausen (Dorf)
+Heitenried
+Le Vaud
+Les Bois
+Obfelden / Oberlunnern
+Aire-la-Ville
+Oberschrot
+Kleinandelfingen
+Villaz-Saint-Pierre
+Trelex
+Regensdorf / Obstgarten
+Zurich (Kreis 1) / City
+Wegenstetten
+Linthal
+Schwerzenbach / Blatten
+Knonau
+Monchaltorf / Dorf
+Grossacker/Opfikon
+Kappelen
+Elsau-Raterschen / Raterschen
+Pura
+Trachselwald
+Neudorf
+Birchwil
+Stetten
+Greifensee / Mullerwis / Seilerwis
+Wittnau
+Gravesano
+Mezieres
+Dubendorf / Wasserfurren
+Staffelbach
+Rechthalten
+Burgistein
+Courgevaux
+Zernez
+Langenbruck
+Stettfurt
+Hori
+Tegerfelden
+Uetikon / Grossdorf
+Kollbrunn / Kollbrunn (Dorfkern)
+Regensdorf / Hofacher-Geeren
+Durrenroth
+Bariswil
+Kusnacht / Schiedhalden
+Durnten
+Langrickenbach
+Bottens
+Bauma
+Turtmann
+Schwerzenbach / Chimli
+Messen
+Dubendorf / Sonnenberg
+Seuzach Dorf / Breite-Weid
+Goldingen
+Kloten / Hostrass
+Verscio
+Urdorf / Oberurdorf
+Vorderthal
+Vals Platz
+Ependes
+Buus
+Fiesch
+Himmelried
+Evionnaz
+Bodio
+Silvaplana
+Chancy
+Wolflinswil
+Scharans
+Pampigny
+Densburen
+Schwaderloch
+Bavois
+Haslen
+Saint-Livres
+Pailly
+Darligen
+Ballens
+Saubraz
+Grancy
+Gottlieben
+Mollens
+Tiefencastel
+Sottens
+Bauen
+Hinterrhein
+Arvigo
+Buseno
+Cauco
+Santa Maria in Calanca
+Promontogno
+La Punt Chamues-ch
+Ostermundigen
+Landquart
+St-Legier-La Chiesaz
+L'Abbaye
+Diessenhofen
+Rottenschwil
+Munchenwiler
+Veyras
+Kanerkinden
+Saint Saphorin
+Cuarnens
+Bunzen
+Biberstein
+Braggio
+Saint-George
+Berolle
+Mauraz
+Chavannes-le-Veyron
+La Chaux
+Chevilly
+Moiry
+Ferreyres
+Orny
+Pompaples
+Penthereaz
+Vuarrens
+Rueyres
+Tagertschi
+Kirchleerau
+Matran
+Oberhof
+Besenburen
+Tenniken
+Gansingen
+Vuisternens-devant-Romont
+Wettswil
+Oberkulm
+Savosa
+Aeugst am Albis
+Pont-la-Ville
+Servion
+Cheserex
+Hohentannen
+Valeyres-sous-Montagny
+Bedigliora
+Uebeschi
+Kleinbosingen
+Niedermuhlern
+Cheseaux-Noreaz
+Rochefort
+Corcelles-le-Jorat
+Ruegsau
+Auswil
+Rumligen
+Donat
+Surpierre
+Oberhunigen
+Les Clees
+Busswil bei Melchnau
+Walliswil bei Niederbipp
+Ruti bei Lyssach

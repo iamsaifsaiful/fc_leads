@@ -1,6 +1,8 @@
 import 'dart:convert';
 
+import 'package:fc_leads/logic/audit_builder.dart';
 import 'package:fc_leads/main.dart';
+import 'package:fc_leads/models/lead.dart';
 import 'package:fc_leads/screens/home_shell.dart';
 import 'package:fc_leads/services/places_api.dart';
 import 'package:fc_leads/services/settings_controller.dart';
@@ -12,6 +14,7 @@ import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'fixtures.dart';
 import 'places_api_test.dart' show sampleResponse;
 
 Widget _app({PlacesApi? places}) => FcLeadsApp(
@@ -19,57 +22,81 @@ Widget _app({PlacesApi? places}) => FcLeadsApp(
       services: AppServices(places: places),
     );
 
+/// A tall screen so every section is built without scrolling.
+void _bigScreen(WidgetTester tester) {
+  tester.view.physicalSize = const Size(1200, 3200);
+  tester.view.devicePixelRatio = 1.0;
+  addTearDown(tester.view.resetPhysicalSize);
+  addTearDown(tester.view.resetDevicePixelRatio);
+}
+
+Future<void> _tab(WidgetTester tester, String label) async {
+  await tester.tap(find.descendant(of: find.byType(NavigationBar), matching: find.text(label)));
+  await tester.pumpAndSettle();
+}
+
 void main() {
   setUp(() => SharedPreferences.setMockInitialValues({}));
 
-  testWidgets('first launch asks for an API key', (tester) async {
+  testWidgets('first launch shows the home screen and asks for setup', (tester) async {
+    _bigScreen(tester);
     await tester.pumpWidget(_app());
     await tester.pumpAndSettle();
-    expect(find.text('Find clients'), findsOneWidget);
+    expect(find.text('Find your next client'), findsOneWidget);
     expect(find.textContaining('Add your Google Places API key'), findsOneWidget);
+    expect(find.text('Leads saved'), findsOneWidget);
   });
 
-  testWidgets('settings are saved on the phone', (tester) async {
+  testWidgets('agency details are saved in Settings', (tester) async {
+    _bigScreen(tester);
     await tester.pumpWidget(_app());
     await tester.pumpAndSettle();
-    await tester.tap(find.text('Settings').last);
-    await tester.pumpAndSettle();
+    await _tab(tester, 'Settings');
 
     await tester.enterText(find.widgetWithText(TextField, 'API key'), 'abc123');
-    // The list builds lazily, so scroll until the field exists.
-    await tester.scrollUntilVisible(
-      find.widgetWithText(TextField, 'Your name'),
-      200,
-      scrollable: find.descendant(of: find.byType(ListView), matching: find.byType(Scrollable)).first,
-    );
-    await tester.pumpAndSettle();
     await tester.enterText(find.widgetWithText(TextField, 'Your name'), 'Saiful');
-    await tester.ensureVisible(find.widgetWithText(FilledButton, 'Save'));
+    await tester.enterText(find.widgetWithText(TextField, 'Agency name'), 'Nova Studio');
+    await tester.tap(find.text('Mint'));
+    await tester.pump();
     await tester.tap(find.widgetWithText(FilledButton, 'Save'));
     await tester.pumpAndSettle();
 
     final prefs = await SharedPreferences.getInstance();
     expect(prefs.getString('settings.apiKey'), 'abc123');
     expect(prefs.getString('settings.senderName'), 'Saiful');
-    expect(prefs.getString('settings.agencyName'), 'FansConnector');
+    expect(prefs.getString('settings.agencyName'), 'Nova Studio');
+    expect(prefs.getInt('settings.accent'), 1);
   });
 
-  testWidgets('search, open a business and see its audit graphic', (tester) async {
+  testWidgets('pick a type, search a city, open a business and compose WhatsApp', (tester) async {
+    _bigScreen(tester);
     SharedPreferences.setMockInitialValues({'settings.apiKey': 'KEY'});
+    late Map<String, dynamic> sent;
     final places = PlacesApi(
-      client: MockClient((_) async => http.Response(jsonEncode(sampleResponse), 200)),
+      client: MockClient((request) async {
+        sent = jsonDecode(request.body) as Map<String, dynamic>;
+        return http.Response(jsonEncode(sampleResponse), 200);
+      }),
     );
     await tester.pumpWidget(_app(places: places));
     await tester.pumpAndSettle();
-    expect(find.textContaining('Add your Google Places API key'), findsNothing);
+    await _tab(tester, 'Search');
 
-    await tester.enterText(find.byType(TextField).first, 'cafes in Dhanmondi');
-    await tester.testTextInput.receiveAction(TextInputAction.search);
+    expect(find.textContaining('Bangladesh'), findsWidgets);
+    expect(find.text('Dhaka'), findsOneWidget);
+
+    await tester.tap(find.text('Business type'));
     await tester.pumpAndSettle();
+    await tester.tap(find.text('Cafes & coffee shops'));
+    await tester.pumpAndSettle();
+    expect(find.text('Searching for: cafes in Dhaka, Bangladesh'), findsOneWidget);
 
+    await tester.tap(find.text('Search Google Maps'));
+    await tester.pumpAndSettle();
+    expect(sent['textQuery'], 'cafes in Dhaka, Bangladesh');
+    expect(sent['regionCode'], 'bd');
     expect(find.text('Rahim Tea House'), findsOneWidget);
     expect(find.text('Green Leaf Dental'), findsOneWidget);
-    expect(find.text('No website'), findsOneWidget);
 
     await tester.tap(find.text('No website only'));
     await tester.pumpAndSettle();
@@ -77,44 +104,60 @@ void main() {
 
     await tester.tap(find.text('Rahim Tea House'));
     await tester.pumpAndSettle();
-
     expect(find.byType(AuditGraphic), findsOneWidget);
     expect(find.text('Missing'), findsWidgets);
-    expect(find.text('Few reviews'), findsWidgets);
-    expect(find.widgetWithText(FilledButton, 'Send on WhatsApp'), findsOneWidget);
-    final phone = tester.widget<TextField>(find.widgetWithText(TextField, 'WhatsApp number (with country code)'));
-    expect(phone.controller!.text, '8801711234567');
+    expect(find.text('Pitch these services'), findsOneWidget);
+    expect(find.text('Website Design'), findsOneWidget);
+    expect(find.text('Find them on Google:'), findsOneWidget);
 
-    // The lead was saved.
-    await tester.pageBack();
+    await tester.tap(find.text('Send on WhatsApp'));
     await tester.pumpAndSettle();
-    await tester.tap(find.text('Leads'));
-    await tester.pumpAndSettle();
-    expect(find.text('Rahim Tea House'), findsWidgets);
-    expect(find.text('Not contacted yet'), findsOneWidget);
+    expect(find.text('Open chat with this message'), findsOneWidget);
+    expect(find.text('8801711234567'), findsOneWidget);
+    expect(find.textContaining('Hi Rahim Tea House team'), findsOneWidget);
   });
 
-  testWidgets('changing a row updates the graphic', (tester) async {
-    SharedPreferences.setMockInitialValues({'settings.apiKey': 'KEY'});
-    final places = PlacesApi(
-      client: MockClient((_) async => http.Response(jsonEncode(sampleResponse), 200)),
-    );
-    await tester.pumpWidget(_app(places: places));
+  testWidgets('leads can be filtered by status', (tester) async {
+    _bigScreen(tester);
+    final now = DateTime.now();
+    final leads = [
+      Lead(business: noWebsite, items: buildAudit(noWebsite, null), savedAt: now, city: 'Dhaka'),
+      Lead(
+        business: withWebsite,
+        items: buildAudit(withWebsite, goodSite),
+        savedAt: now.subtract(const Duration(days: 1)),
+        status: LeadStatus.won,
+        whatsappSentAt: now,
+      ),
+    ];
+    SharedPreferences.setMockInitialValues({
+      'leads.v1': jsonEncode(leads.map((l) => l.toJson()).toList()),
+    });
+    await tester.pumpWidget(_app());
     await tester.pumpAndSettle();
-    await tester.enterText(find.byType(TextField).first, 'cafes');
-    await tester.testTextInput.receiveAction(TextInputAction.search);
-    await tester.pumpAndSettle();
-    await tester.tap(find.text('Rahim Tea House'));
-    await tester.pumpAndSettle();
+    await _tab(tester, 'Leads');
 
-    await tester.ensureVisible(find.text('Social media').first);
+    expect(find.text('2 of 2 leads'), findsOneWidget);
+    await tester.tap(find.text('Won 1'));
     await tester.pumpAndSettle();
-    await tester.tap(find.text('Social media').first);
-    await tester.pumpAndSettle();
-    await tester.tap(find.widgetWithText(ListTile, 'Inactive').first);
-    await tester.pumpAndSettle();
+    expect(find.text('1 of 2 leads'), findsOneWidget);
+    expect(find.text('Green Leaf Dental'), findsOneWidget);
+    expect(find.text('Rahim Tea House'), findsNothing);
 
-    // Shown in the audit list and on the graphic.
-    expect(find.text('Inactive'), findsNWidgets(2));
+    await tester.tap(find.text('Clear filters'));
+    await tester.pumpAndSettle();
+    expect(find.text('2 of 2 leads'), findsOneWidget);
+  });
+
+  testWidgets('templates show placeholders and a preview', (tester) async {
+    _bigScreen(tester);
+    await tester.pumpWidget(_app());
+    await tester.pumpAndSettle();
+    await _tab(tester, 'Templates');
+
+    expect(find.text('{business}'), findsOneWidget);
+    await tester.tap(find.text('Preview'));
+    await tester.pumpAndSettle();
+    expect(find.text('Preview for a sample café'), findsOneWidget);
   });
 }

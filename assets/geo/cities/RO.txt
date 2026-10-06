@@ -1,0 +1,3827 @@
+Bucharest
+Sector 3
+Sector 6
+Sector 2
+Iasi
+Cluj-Napoca
+Timisoara
+Craiova
+Constanta
+Galati
+Sector 4
+Brasov
+Sector 5
+Ploiesti
+Sector 1
+Braila
+Oradea
+Bacau
+Arad
+Pitesti
+Sibiu
+Targu-Mures
+Baia Mare
+Buzau
+Botosani
+Satu Mare
+Ramnicu Valcea
+Suceava
+Piatra Neamt
+Drobeta-Turnu Severin
+Targu Jiu
+Tulcea
+Targoviste
+Bistrita
+Resita
+Slatina
+Focsani
+Vaslui
+Hunedoara
+Giurgiu
+Roman
+Barlad
+Deva
+Alba Iulia
+Zalau
+Sfantu Gheorghe
+Turda
+Medias
+Slobozia
+Alexandria
+Pascani
+Petrosani
+Medgidia
+Lugoj
+Campina
+Miercurea-Ciuc
+Tecuci
+Sighetu Marmatiei
+Mangalia
+Ramnicu Sarat
+Dej
+Odorheiu Secuiesc
+Reghin-Sat
+Sighisoara
+Caracal
+Navodari
+Fetesti
+Curtea de Arges
+Dorohoi
+Fagaras
+Lupeni
+Voluntari
+Sacele
+Falticeni
+Husi
+Mioveni
+Vulcan
+Turnu Magurele
+Tarnaveni
+Aiud
+Caransebes
+Rosiorii de Vede
+Sebes
+Borsa
+Campia Turzii
+Oltenita
+Petrila
+Zarnesti
+Cugir
+Codlea
+Moinesti
+Radauti
+Fetesti-Gara
+Gherla
+Comanesti
+Motru
+Carei
+Orastie
+Buftea
+Dragasani
+Bals
+Moreni
+Targu Neamt
+Blaj
+Targu Secuiesc
+Corabia
+Baicoi
+Gheorgheni
+Campulung Moldovenesc
+Bailesti
+Filiasi
+Calafat
+Cernavoda
+Buhusi
+Breaza
+Salonta
+Adjud
+Ludus
+Viseu de Sus
+Urziceni
+Baia Sprie
+Bocsa
+Pantelimon
+Vatra Dornei
+Brad
+Gura Humorului
+Simleu Silvaniei
+Mizil
+Ocna Mures
+Popesti-Leordeni
+Rasnov
+Zimnicea
+Cisnadie
+Gaesti
+Pucioasa
+Darmanesti
+Vicovu de Sus
+Avrig
+Marghita
+Simeria
+Targu Frumos
+Dabuleni
+Negresti-Oas
+Valenii de Munte
+Moldova Noua
+Ovidiu
+Comarnic
+Targu Ocna
+Sannicolau Mare
+Stefanesti
+Pecica
+Chitila
+Calan
+Santana
+Poiana Mare
+Scornicesti
+Orsova
+Oravita
+Rovinari
+Tandarei
+Draganesti-Olt
+Jilava
+Sinaia
+Darabani
+Tomesti
+Videle
+Storesti
+Urlati
+Holboca
+Bolintin Vale
+Matca
+Strehaia
+Otelu Rosu
+Sovata
+Boldesti-Scaeni
+Nehoiu
+Belcesti
+Harlau
+Pechea
+Ianca
+Jibou
+Lipova
+Topoloveni
+Dolhasca
+Covasna
+Liesti
+Beclean
+Murfatlar
+Breaza de Sus
+Hateg
+Jimbolia
+Dofteana
+Beius
+Costesti
+Agnita
+Deleni
+Vladimirescu
+Bumbesti-Jiu
+Calinesti
+Seini
+Nasaud
+Valea Calugareasca
+Otopeni
+Macin
+Bucov
+Alesd
+Cormaia
+Victoria
+Valea lui Mihai
+Sabaoani
+Filipestii de Padure
+Nicolae Balcescu
+Ciurea
+Babadag
+Titu
+Harsova
+Ineu
+Negresti
+Sascut
+Mihail Kogalniceanu
+Uricani
+Busteni
+Homocea
+Poienile de sub Munte
+Liteni
+Munteni
+Podu Iloaiei
+Cumpana
+Modelu
+Ivesti
+Curtici
+Budesti
+Oituz
+Cristuru Secuiesc
+Borcea
+Cernica
+Zorleni
+Eforie Sud
+Marginea
+Berca
+Tasnad
+Simian
+Baraolt
+Huedin
+Magurele
+Babeni
+Iernut
+Siret
+Barcanesti
+Branesti
+Preutesti
+Vadu Pasii
+Intorsura Buzaului
+Cobadin
+Borlesti
+Moisei
+Puchenii Mari
+Lovrin
+Marasesti
+Panciu
+Hotarele
+Aricestii-Rahtivani
+Bascov
+Valu lui Traian
+Vanatori-Neamt
+Anina
+Roznov
+Apahida
+Salcea
+Targu Carbunesti
+Dragalina
+Joita
+Vernesti
+Pipirig
+Milcovul
+Recas
+Calimanesti
+Targsoru Vechi
+Turceni
+Brazii de Sus
+Milisauti
+Zlatna
+Popesti
+Roata de Jos
+Bicaz
+Vidra
+Razvad
+Potlogi
+Tamaseni
+Sadova
+Bragadiru
+Corbii Mari
+Sangeorz-Bai
+Baleni Sarbi
+Raucesti
+Orbeasca de Sus
+Dragomiresti
+Chisineu-Cris
+Dumbraveni
+Miroslava
+Saveni
+Prejmer
+Chiajna
+Buruenesti
+Nadlac
+Cudalbi
+Baciu
+Margineni-Munteni
+Odobesti
+Chirnogi
+Siria
+Gataia
+Vorona Teodoru
+Cotnari
+Balcani
+Segarcea
+Poduri
+Campeni
+Motatei
+Corod
+Piatra Soimului
+Vasilati
+Racaciuni
+1 Decembrie
+Peretu
+Castelu
+Vacaresti
+Filipestii de Targ
+Adancata
+Pogoanele
+Sangeorgiu de Mures
+Suraia
+Tismana
+Gilau
+Plopeni
+Comana
+Raducaneni
+Brahasestii de Sus
+Murgeni
+Tibanesti
+Blejoi
+Buzias
+Scobinti
+Cornesti
+Ulmi
+Band
+Brebu Manastirei
+Somcuta Mare
+Fieni
+Amara
+Scheia
+Floresti
+Mihailesti
+Tulucesti
+Sarichioi
+Sagna
+Asau
+Girov
+Sarmasu
+Bixad
+Doljesti
+Balesti
+Vadu Moldovei
+Insuratei
+Cornu Luncii
+Balan
+Maieru
+Armasesti
+Cajvana
+Peris
+Glina
+Tarlungeni
+Cojasca
+Ciacova
+Helegiu
+Manesti
+Halmeu
+Gruiu
+Udesti
+Lumina
+Blagesti
+Malini
+Merei
+Pancota
+Faget
+Cordun
+Mediesu Aurit
+Umbraresti
+Teius
+Daneti
+Dumbrava Rosie
+Tibana
+Maracineni
+Veresti
+Copalau
+Varbilau
+Techirghiol
+Sacueni
+Carpinis
+Luncavita
+Ulmeni
+Cogealac
+Cioranii de Jos
+Grivita
+Smeeni
+Tileagd
+Volovat
+Mircea Voda
+Todiresti
+Slanic
+Feldru
+Cosereni
+Ungureni-Jianu
+Vlahita
+Dragodana
+Dancu
+Izvoarele
+Livada
+Racari
+Cleja
+Siculeni
+Dor Marunt
+Mircesti
+Bucsani
+Balotesti
+Paunesti
+Doftana
+Barbuletu
+Baia
+Popricani
+Horezu
+Vanju-Mare
+Praid
+Orasu Nou
+Arbore
+Valeni
+Poiana Lacului
+Afumati
+Laza
+Turt
+Parjol
+Calarasi
+Crevedia
+Fundulea
+Brezoi
+Letcani
+Baltatesti
+Agas
+Visina
+Dobroesti
+Starchiojd
+Brosteni
+Albesti
+Plopsoru
+Periam
+Borca
+Rediu
+Lehliu-Gara
+Stei
+Diosig
+Cosmesti
+Corni
+Frasin
+Magureni
+Botoroaga
+Lunca
+Gugesti
+Ungheni
+Gheraesti
+Calugareni
+Varasti
+Ciprian Porumbescu
+Plosca
+Sarmasag
+Domnesti-Sarbi
+Hudesti
+Telega
+Ardud
+Tamasi
+Piatra Olt
+Feldioara
+Sandominic
+Viziru
+Podari
+Ighiu
+Ghidigeni
+Tuzla
+Lucieni
+Vinga
+Buzoesti
+Gurghiu
+Babaita
+Zvoristea
+Bosanci
+Barsana
+Valea Stanciului
+Mihaesti
+Deta
+Stulpicani
+Crasna
+Biled
+Remetea
+Ruginoasa
+Rodna
+Galanesti
+Baiculesti
+Cefa
+Falciu
+Sacalaz
+Sebis
+Voinesti
+Sancraiu de Mures
+Nicoresti
+Tarnova
+Rucar
+Bolintin Deal
+Lespezi
+Snagov
+Suciu de Sus
+Manastirea
+Abrud
+Sancraieni
+Corund
+Zanesti
+Rozavlea
+Gura Vaii
+Frumusica
+Macea
+Varias
+Halchiu
+Focuri
+Islaz
+Potcoava
+Baile Herculane
+Petresti
+Leordeni
+Savinesti
+Vama
+Scorteni
+Tanacu
+Barcea
+Posta Calnau
+Berceni
+Parscov
+Vicovu de Jos
+Teaca
+Ciupercenii Noi
+Gura Vitioarei
+Corcova
+Lechinta
+Geoagiu
+Cetate
+Aninoasa
+Adamus
+Facaeni
+Panet
+Stanilesti
+Draganesti
+Pietrosani
+Amarastii de Jos
+Ditrau
+Urechesti
+Talmaciu
+Roseti
+Sasciori
+Halaucesti
+Albestii Pamanteni
+Valea Moldovei
+Tulnici
+Sipote
+Barla
+Gornesti
+Viisoara
+Vedea
+Tufesti
+Mugeni
+Sanpetru Mare
+Jijila
+Calafindesti
+Runcu
+Maglavit
+Trusesti
+Secusigiu
+Copalnic Manastur
+Dudestii Vechi
+Miercurea Nirajului
+Ostroveni
+Matasaru
+Lunguletu
+Cochirleanca
+Albesti-Paleologu
+Balcesti
+Zetea
+Beresti-Tazlau
+Saliste
+Drajna de Jos
+Mihai Viteazu
+Erbiceni
+Tatarusi
+Banesti
+Paltinoasa
+Joseni
+Mavrodin
+Stolniceni-Prajescu
+Tutova
+Predeal
+Corbeni
+Rupea
+Stefanesti-Sat
+Berbesti
+Lenauheim
+Banca
+Fantanele
+Berezeni
+Negru Voda
+Baneasa
+Petricani
+Dobresti
+Brusturi
+Perisoru
+Fratesti
+Vanatori
+Podoleni
+Ostrov
+Fratautii Noi
+Cristesti
+Tudor Vladimirescu
+Avrameni
+Colceag
+Rafov
+Bratca
+Gorgota
+Nimigea de Sus
+Gaiseni
+Piscu Vechi
+Fundeni
+Nusfalau
+Sageata
+Domnesti
+Tatarani
+Zagon
+Cosesti
+Matasari
+Carta
+Agigea
+Leu
+Rasinari
+Comisani
+Tiganesti
+Grumazesti
+Greci
+Isaccea
+Recea
+Giarmata
+Caiuti-Sat
+Suharau
+Gura Sutii
+Sihlea
+Ciocanesti
+Osica de Sus
+Copsa Mica
+Caianu Mic
+Satulung
+Cotusca
+Sirna
+Certeze
+Topraisar
+Corbasca
+Celaru
+Telciu
+Maicanesti
+Gogosu
+Targu Trotus
+Straja
+Mogosoaia
+Sanandrei
+Jebel
+Draguseni
+Chiscani
+Bordusani
+Berzunti
+Sangeru
+Plenita
+Perieni
+Garla-Mare
+Livezi-Vale
+Poiana Campina
+Ticleni
+Ghimes-Faget
+Lazuri
+Trifesti
+Gradistea
+Bucu
+Vurpar
+Frumusita
+Ceptura de Sus
+Tifesti
+Viseu de Jos
+Mastacani
+Ruscova
+Corbu
+Bran
+Zemes
+Curcani
+Lunca de Jos
+Poiana Teiului
+Bucecea
+Batar
+Faraoani
+Ernei
+Tudora
+Horodnic de Sus
+Jurilovca
+Dragutesti
+Delesti
+Bodesti
+Salistea de Sus
+Frumusani
+Dridu
+Dersca
+Cerasu
+Mocesti
+Felnac
+Dobrotesti
+Motca
+Bradu
+Izbiceni
+Stalpeni
+Havarna
+Podu Turcului
+Suseni
+Sanislau
+Cavnic
+Pades
+Paulesti
+Bezdead
+Tartasesti
+Radovanu
+Lungani
+Cornetu
+Baltati
+Slobozia Bradului
+Miresu Mare
+Puiesti
+Farcasele
+Moroeni
+Mihaileni
+Duda
+Cosoveni
+Baluseni
+Ludesti
+Rachitoasa
+Tritenii de Jos
+Josenii Bargaului
+Piscu
+Ghindari
+Malu Mare
+Clinceni
+Beceni
+Moldovita
+Lipanesti
+Topolog
+Desa
+Scoarta
+Ciorogarla
+Balauseri
+Ghimbav
+Jiana Veche
+Vanatorii Mici
+Vladeni
+Cislau
+Azuga
+Strejnicu
+Leresti
+Slanic-Moldova
+Mogosesti
+Schitu-Golesti
+Bistra
+Peciu Nou
+Bogati
+Crevedia Mare
+Granicesti
+Hartiesti
+Forasti
+Costuleni
+Tataranu
+Ogrezeni
+Letea Veche
+Hodac
+Botosana
+Mahmudia
+Hoghiz
+Argetoaia
+Poienile
+Ghiroda
+Dulcesti
+Tia Mare
+Mitreni
+Selimbar
+Ciucsangeorgiu
+Rusanesti
+Galicea Mare
+Malnas
+Pargaresti
+Sangeorgiu de Padure
+Caseiu
+Sita Buzaului
+Codaesti
+Cotesti
+Botiz
+Padina
+Galda de Jos
+Movilita
+Odoreu
+Becicherecu Mic
+Malureni
+Danes
+Maldaeni
+Cenei
+Jegalia
+Comlosu Mare
+Suhaia
+Sutesti
+Draganesti-Vlasca
+Seica Mare
+Poarta Alba
+Boroaia
+Ziduri
+Buhoci
+Rosia
+Dumesti
+Zabala
+Independenta
+Doicesti
+Studina
+Baile Dranceni
+Acatari
+Vinderei
+Plopii Slavitesti
+Bucesti
+Prundu
+Ghelinta
+Niculitel
+Repedea
+Stanisesti
+Glodeanu-Sarat
+Pui
+Moeciu de Jos
+Filipesti
+Goicea
+Buntesti
+Horgesti
+Traian
+Limanu
+Iara
+Magura
+Calinesti-Oas
+Vatra Moldovitei
+Turburea
+Dorna Candrenilor
+Icusesti
+Podenii Noi
+Rebrisoara
+Fratautii Vechi
+Sanzieni
+Rona de Sus
+Mica
+Bradesti
+Garoafa
+Manasia
+Spantov
+Bradut
+Finta Mare
+Buciumeni
+Supuru de Jos
+Eforie Nord
+Romani
+Prundeni
+Luizi-Calugara
+Orlea
+Satchinez
+Glodeanu-Silistea
+Curtisoara
+Titesti
+Bala
+Bolotesti
+Baia de Aries
+Baile Olanesti
+Fartatesti
+Comarna
+Tomsani
+Mogosani
+Poroschia
+Stoenesti
+Ceplenita
+Bivolari
+Zatreni
+Ciolpani
+Ipotesti
+Foglas
+Agapia
+Voila
+Strunga
+Sicula
+Andrieseni
+Banloc
+Alunu
+Uliesti
+Tinca
+Ozun
+Vorniceni
+Poiana Cracaoani
+Nojorid
+Dumitra
+Magiresti
+Tintesti
+Somova
+Sag
+Adjudeni
+Danesti
+Batanii Mari
+Sulina
+Ruginesti
+Cacica
+Bara
+Dumbravita
+Pleasa
+Ibanesti
+Savadisla
+Branistea
+Melinesti
+Ciumani
+Gurahont
+Sona
+Capleni
+Ciumeghiu
+Zimandu Nou
+Garbovi
+Radaseni
+Tibucani
+Lipovat
+Barca
+Cornu de Sus
+Bocicoiu Mare
+Ulmu
+Maruntei
+Patulele
+Dumbrava
+Ciucea
+Zabrani
+Solca
+Silistea
+Merisani
+Lopatari
+Corbi
+Simnicu de Sus
+Ionesti
+Uivar
+Ciortesti
+Tauteu
+Secuieni
+Iancu Jianu
+Topliceni
+Dornesti
+Salva
+Glodeni
+Vetis
+Balilesti
+Tesila
+Beresti-Sat
+Iclod
+Ocnita
+Nucet
+Schitu-Duca
+Prundu Bargaului
+Sanmihaiu Roman
+Mehadia
+Cojocna
+Rachiti
+Tiha Bargaului
+Curtesti
+Dragomiresti-Vale
+Baia de Fier
+Marzanesti
+Mironeasa
+Frata
+Harman
+Stoilesti
+Calvini
+Vadu Crisului
+Moara Carp
+Saru Dornei
+Craciunelu de Jos
+Cuza Voda
+Sanduleni
+Ciceu-Giurgesti
+Tiganasi
+Patrauti
+Falcoiu
+Craciunesti
+Cerna
+Sanmartin
+Pancesti
+Tichilesti
+Mosnita Noua
+Mosoaia
+Sinesti
+Deda
+Plataresti
+Rusetu
+Giroc
+Livezile
+Ceanu Mare
+Scanteia
+Scrioastea
+Buzescu
+Moftinu Mare
+Ganeasa
+Vata de Jos
+Baba Ana
+Criscior
+Poporogi
+Cerat
+Unirea
+Cenad
+Bicazu Ardelean
+Zapodeni
+Teregova
+Zavoi
+Nereju
+Vizantea-Manastireasca
+Sendriceni
+Vaideeni
+Romanesti
+Pestisani
+Stefanestii de Jos
+Baita
+Pufesti
+Musatesti
+Bucovat
+Vadeni
+Giubega
+Slobozia-Mandra
+Stramtura
+Brastavatu
+Mereni
+Blejesti
+Ocna Sugatag
+Durnesti
+Orbeni
+Ieud
+Fundu Moldovei
+Corlateni
+Salcioara
+Targu Bujor
+Salard
+Teremia Mare
+Batos
+Jaristea
+Moara Vlasiei
+Buturugeni
+Borod
+Sarmas
+Simand
+Micesti
+Dudesti
+Galicea
+Straoane
+Siretel
+Hangu
+Mogosesti-Siret
+Faurei
+Ortisoara
+Paulis
+Berzovia
+Ceica
+Ocna Sibiului
+Bacesti
+Jina
+Galbinasi
+Urecheni
+Motoseni
+Campurile de Jos
+Timisesti
+Breznita Ocol
+Ghioroc
+Radomiresti
+Margineni
+Cernatesti
+Miercurea Sibiului
+Bogdanesti
+Mitocu Dragomirnei
+Valea Nucarilor
+Teisani
+Gherghita
+Ilia
+Perieti
+Cernat
+Valea Mare
+Smardan
+Axente Sever
+Sanpaul
+Isalnita
+Bobota
+Cernisoara
+Culciu Mic
+Mera
+Iana
+Masloc
+Surduc
+Lunca Banului
+Poiana
+Iedera de Jos
+Barnova
+Selaru
+Satu Nou Calopar
+Valea Ursului
+Rasova
+Santandrei
+Butea
+Oinacu
+Gohor
+Bucovineni
+Amarastii de Sus
+Susani
+Breasta
+Solont
+Cristinesti
+Bretcu
+Albota de Jos
+Solesti
+Ciorasti
+Tunari
+Farcasesti
+Sinmartin
+Stancuta
+Dealu
+Cristian
+Turia
+Oteleni
+Bralostita
+Movileni
+Bod
+Parincea
+Iacobeni
+Gura Teghii
+Ip
+Sieu-Magherus
+Bujoreni
+Ditesti
+Muntenii de Jos
+Munteni Buzau
+Bechet
+Bazna
+Colibasi
+Dobrosloveni
+Fulga de Sus
+Cetariu
+Eremitu
+Daneasa
+Turulung
+Cartojani
+Sintereag
+Mintiu Gherlii
+Dobra
+Ileana
+Costeiu
+Barbatesti
+Pastraveni
+Sagu
+Lupsanu
+Frecatei
+Barcani
+Chiojdu
+Budeasa Mica
+Corbeanca
+Stolnici
+Perisani
+Pildesti
+Slivilesti
+Blidesti
+Pausesti-Maglasi
+Ganesti
+Vulturesti
+Ghioca
+Rosiesti
+Lapus
+Segarcea Vale
+Magura Ilvei
+Lupsa
+Feleacu
+Murighiol
+Glavanesti
+Cernesti
+Maxineni
+Hlipiceni
+Contesti
+Bahnea
+Barbulesti
+Jilavele
+Gradinari
+Palanca
+Cujmir
+Piatra
+Ungureni
+Astileu
+Semlac
+Putna
+Cupseni
+Cocora
+Zagra
+Sacel
+Lipnita
+Farcasa
+Vadastrita
+Palazu Mare
+Cateasca
+Casin
+Bahna
+Micula
+Manoleasa
+Liebling
+Livezeni
+Horodniceni
+Raciu
+Plugari
+Rapanasu
+Pietroasele
+Ion Roata
+Paltin
+Simonesti
+Probota
+Hereclean
+Hiliseu-Horia
+Batarci
+Alunis
+Toflea
+George Enescu
+Dumbravesti
+Bustuchin
+Tamna
+Brodina
+Pielesti
+Valcele
+Turcoaia
+Storobaneasa
+Capusu Mare
+Dobreni
+Borascu
+Tigveni
+Vadastra
+Lungesti
+Steierdorf
+Finis
+Fauresti
+Apateu
+Oboga
+Moldovenesti
+Dracsani
+Tunelu-Teliu
+Sintea Mare
+Gighera
+Rebricea
+Cazanesti
+Mihalt
+Viperesti
+I. L. Caragiale
+Frumoasa
+Chilia Veche
+Slimnic
+Poienari
+Gorbanesti
+Priboieni
+Optasi
+Todireni
+Prisacani
+Atel
+Manastirea Humorului
+Ciochina
+Uriu
+Galbenu
+Frumosu
+Baraganul
+Cilieni
+Lazarea
+Schela
+Cavadinesti
+Produlesti
+Gura Raului
+Nanov
+Tulghes
+Muntele Mic
+Costisa
+Berveni
+Chiselet
+Chirnogeni
+Sotrile
+Devesel
+Crangeni
+Comani
+Ciresu
+Chiochis
+Damoc
+Balc
+Sohatu
+Rau de Mori
+Halmagiu
+Tarcau
+Troianul
+Soimus
+Masca
+Catalina
+Pestera
+Holod
+Bocsig
+Biharia
+Soldanu
+Racova
+Teliu
+Bucium-Orlea
+Ghiosesti
+Zavoaia
+Prigoria
+Ostrovu Mare
+Brusturoasa
+Singureni
+Ciobanu
+Remetea Mare
+Lueta
+Balacita
+Bobicesti
+Ojdula
+Rosia de Amaradia
+Racoasa
+Bilca
+Mociu
+Pungesti
+Marasu
+Vetrisoaia
+Humulesti
+Golesti
+Sinca Veche
+Suncuius
+Verguleasa
+Gologanu
+Butoiesti
+Maeriste
+Predesti
+Dorobantu
+Ilva Mica
+Broscauti
+Hulubesti
+Crangurile de Sus
+Dorolt
+Buteni
+Adunatii-Copaceni
+Certeju de Sus
+Carcaliu
+Dobrun
+Costestii din Vale
+Lemnia
+Ruseni
+Gropnita
+Clejani
+Crucea
+Tacuta
+Cornu de Jos
+Valea Crisului
+Budila
+Strejesti
+Sansimion
+Jirlau
+Oglinzi
+Stefan cel Mare
+Pietroasa
+Lunca Cetatuii
+Chislaz
+Berevoesti
+Balcauti
+Vlasinesti
+Baldovinesti
+Pogana
+Bogdan Voda
+Beresti-Bistrita
+Lunca de Sus
+Scortoasa
+Gostavatu
+Orlesti
+Ratesti
+Vintila Voda
+Parava
+Diosti
+Plesoiu
+Casimcea
+Buruienesti
+Cervenia
+Trivalea-Mosteni
+Marginenii de Jos
+Olteni
+Lunca Corbului
+Bors
+Vulturu
+Rast
+Salcia
+Reviga
+Poeni
+Ciuani
+Sahateni
+Godeni
+Giulesti
+Bertea
+Ormenis
+Punghina
+Brancoveni
+Ghirdoveni
+Poiana Marului (Brasov)
+Podgoria
+Pomezeu
+Sanpetru
+Beriu
+Pianu de Sus
+Paltinis
+Deveselu
+Iaslovat
+Pietrosita
+Capatanesti
+Gropeni
+Foltesti
+Plopana
+Cornereva
+Abram
+Jamu Mare
+Crivina
+Braesti
+Tufeni
+Bolbosi
+Oniceni
+Grojdibodu
+Stauceni
+Cotofanesti
+Horia
+Lunca Ilvei
+Beliu
+Prajeni
+Grajduri
+Cerneti
+Hidiselu de Sus
+Racovita
+Pietrari
+Buda
+Bertestii de Jos
+Sura Mare
+Lugasu de Jos
+Varfurile
+Gheraseni
+Gioseni
+Savarsin
+Parcovaci
+Sapanta
+Beltiug
+Valcau de Jos
+Mateesti
+Loamnes
+Stanesti
+Viseu de Mijloc
+Scarisoara
+Nuseni
+Marsa
+Roma
+Redea
+Vitanesti
+Valea Dragului
+Darlos
+Crampoia
+Vartoapele de Jos
+Piscolt
+Giurgita
+Rotunda
+Orlat
+Aghiresu-Fabrici
+Hoceni
+Cozmesti
+Gherta Mica
+Pojejena
+Mosna
+Bozovici
+Osorhei
+Bogdand
+Viile Satu Mare
+Zamostea
+Sugag
+Stalpu
+Galateni
+Nuci
+Cociuba Mare
+Cotu Vames
+Porumbacu de Jos
+Lita
+Urdari
+Voitinel
+Slobozia-Campineanca
+Sapoca
+Coarnele Caprei
+Carasova
+Lipovu
+Denta
+Laslea
+Osesti
+Ostra
+Poienesti
+Seleus
+Alexandru Vlahuta
+Salacea
+Obreja
+Sarulesti
+Hodod
+Soimari
+Sendreni
+Gruia
+Brateiu
+Rieni
+Gavojdia
+Sacosu Turcesc
+Serbanesti
+Vagiulesti
+Metes
+Vintu de Jos
+Urzicuta
+Schitu
+Horlesti
+Gura Calitei
+Siminicea
+Pojorata
+Sieu
+Valea Mare-Podgoria
+Negri
+Ciocile
+Salsig
+Gramesti
+Nicolae Titulescu
+Salatig
+Dangeni
+Rasuceni
+Daia
+Valea Danului
+Morteni
+Apold
+Damuc
+Rosiori
+Hida
+Bicaz-Chei
+Tansa
+Stroesti
+Gornet
+Gura Ocnitei
+Bunesti
+Gaiceana
+Borosneu Mare
+Alexandru Odobescu
+Izvoru Barzii
+Daia Romana
+Branceni
+Bozieni
+Milosesti
+Malu
+Slobozia Conachi
+Stejari
+Copaceni
+Tintea
+Oltenesti
+Pecineaga
+Slatina-Timis
+Cetateni
+Berislavesti
+Unguras
+Oprisor
+Oltina
+Rebra
+Darova Noua
+Bucosnita
+Belint
+Valea Voievozilor
+Unteni
+Vrancioaia
+Salcia Tudor
+Mesesenii de Jos
+Bordei Verde
+Stoicanesti
+Aliman
+Baru Mic
+Bethausen
+Grunji
+Tazlau
+Remeti
+Otesani
+Logresti
+Partestii de Jos
+Ciocarlia
+Gratia
+Tetoiu
+Eselnita
+Somes-Odorhei
+Giulvaz
+Gorban
+Darvari
+Sercaia
+Malusteni
+Bughea de Jos
+Rauseni
+Creaca
+Baia de Cris
+Rosiile
+Mileanca
+Feliceni
+Lazareni
+Rociu
+Picior de Munte
+Bontida
+Carpen
+Auseu
+Caldararu
+Barzava
+Pischia
+Tarsoltel
+Vulcana Bai
+Darasti-Ilfov
+Cosbuc
+Rosu
+Dealu Morii
+Bogdana
+Tuglui
+Martinis
+Gangiova
+Remetea Chioarului
+Pomarla
+Madaras
+Derna
+Abramut
+Napradea
+Miclesti
+Malu Spart
+Lesu
+Coteana
+Calnic
+Morunglav
+Almas
+Lehliu
+Soimi
+Matei
+Carligele
+Botiza
+Seitin
+Malovat
+Topolovatu Mare
+Izvoru
+Biertan
+Persinari
+Targusor
+Imper
+Apata
+Gheaba
+Tomnatic
+Lupac
+Luciu
+Hantesti
+Beresti
+Aroneanu
+Bisoca
+Axintele
+Polovragi
+Sant
+Olcea
+Ponoarele
+Brebeni
+Suici
+Nadrag
+Dobarceni
+Galesti
+Marca
+Poian
+Ramnicelu
+Prigor
+Victor Vlad Delamarina
+Nicseni
+Brebu Megiesesc
+Petrachioaia
+Budacu de Jos
+Bradeanu
+Apalina
+Baile Govora
+Movila Miresii
+Mandra
+Racos
+Putineiu
+Constantin Daicoviciu
+Carlogani
+Stiubieni
+Fitionesti
+Bivolarie
+Oarja Sat
+Tulca
+23 August
+Bughea de Sus
+Chetani
+Apa
+Harsesti
+Curtuiseni
+Valea Seaca
+Babeti
+Orbeasca de Jos
+Gheorghe Doja
+Romos
+Magesti
+Teslui
+Dolhesti
+Bilbor
+Albeni
+Visani
+Davidesti
+Borsec
+Toplet
+Negrasi
+Cermei
+Nasturelu
+Babana
+Hinova
+Almasu
+Solovastru
+Seaca
+Atid
+Greaca
+Vadu Izei
+Suplacu de Barcau
+Stoina
+Nalbant
+Mirosi
+Horoatu Crasnei
+Cernele
+Poiana Tapului
+Daesti
+Pericei
+Gherghesti
+Telesti
+Valea Iasului
+Buciumi
+Poiana Cristei
+Camarasu
+Gaujani
+Tautii-Magheraus
+Stremt
+Movila Banului
+Sepreus
+Reteag
+Valea Argovei
+Danciulesti
+Sieut
+Amaru
+Salasu de Sus
+Poiana Sibiului
+Bacani
+Dragosloveni
+Crivat
+Chinteni
+Sancel
+Petelea
+Leorda
+Boteni
+Arpasu de Jos
+Plopis
+Cainenii Mici
+Bautar
+Doba
+Surdila-Gaiseanca
+Ghergheasa
+Sic
+Vetel
+Vascau
+Gostinari-Vacaresti
+Mija
+Balta Doamnei
+Mihai Bravu
+Galgau Almasului
+Traisteni
+Goranu
+Tormac
+Dealu Alunis
+Malu cu Flori
+Ghimpati
+Novaci
+Baleni
+Catina
+Luminis
+Calatele
+Ploiestiori
+Dragotesti
+Mozaceni
+Garcov
+Cretesti
+Tasca
+Magherani
+Santimbru
+Vitomiresti
+Reghiu
+Barza
+Giuvarasti
+Curatele
+Vulpeni
+Ghindaresti
+Patarlagele
+Petrova
+Vladesti
+Cazasu
+Cocu
+Alimanesti
+Smardioasa
+Burila Mare
+Tarcea
+Harmaneasa
+Baiut
+Trestieni
+Gornet-Cricov
+Amzacea
+Ograda
+Dobrovat
+Sichevita
+Ciofrangeni
+Izvoru de Sus
+Urleta
+Capu Codrului
+Sivita
+Brahasesti
+Popeni
+Silistea Gumesti
+Zarand
+Strugari
+Caraula
+Andrid
+Budureasa
+Galautas
+Lunca Muresului
+Scutelnici
+Fizesu Gherlii
+Covasint
+Ciugud
+Ceptura de Jos
+Armenis
+Nocrich
+Belin
+Parva
+Rus
+Campani de Pomezeu
+Nana
+Lalosu
+Nedelea
+Creteni
+Calmatuiu
+Sabareni
+Dobromir
+Ceamurlia de Jos
+Dascalu
+Cotofenii din Dos
+Muereasca
+Istria
+Camarzana
+Livezi
+Vlad Tepes
+Sucevita
+Tautii de Sus
+Costache Negri
+Santau
+Desesti
+Cuca
+Tamadau Mare
+Turnu Rosu
+Halmasd
+Cioranii de Sus
+Ciupercenii Vechi
+Chiesd
+Lisa
+Priponesti
+Ilva Mare
+Spermezeu
+Grinties
+Sirineasa
+Prajila
+Laceni
+Ghidfalau
+Uda
+Iablanita
+Garceni
+Ploscuteni
+Comana de Sus
+Maureni
+Tinosu
+Bagaciu
+Tanganu
+Graniceri
+Ileanda
+Tureni
+Cungrea
+Boldur
+Ciceu
+Tepu
+Leordina
+Toporu
+Suletea
+Socond
+Mariselu
+Balasesti
+Batarasti
+Ardeoani
+Prunisor
+Ciulnita
+Valea Caselor
+Slatioara
+Teliucu Inferior
+Sofronea
+Sieu-Odorhei
+Scurtesti
+Dragesti
+Boldu
+Provita de Jos
+Ardusat
+Ghindaoani
+Cata
+Salcuta
+Moldoveni
+Gura Vadului
+Daeni
+Certesti
+Vorona
+Costinesti
+Rastoaca
+Campulung la Tisa
+Cauas
+Grosi
+Spring
+Chiraftei
+Cosoba
+Balaci
+Hanu Conachi
+Prajesti
+Avramesti
+Vulcana-Pandele
+Dragoslavele
+Alexeni
+Viscri
+Isverna
+Gheorghe Lazar
+Maierus
+Crucisor
+Tureac
+Slon
+Jibert
+Stefan Voda
+Balteni
+Bodoc
+Apele Vii
+Dealu Danicei
+Galatii Bistritei
+Ceahlau
+Saravale
+Valea Rosie
+Brezoaia
+Saulesti
+Barsau de Sus
+Chiojdeni
+Bistret
+Sarasau
+Darasti-Vlasca
+Filipeni
+Vinerea
+Mihalaseni
+Cherechiu
+Valeni-Dambovita
+Radna
+Capreni
+Sadu
+Orastioara de Sus
+Sibot
+Nanesti
+Copacel
+Godinesti
+Cozieni
+Catelu
+Cizer
+Blajel
+Stroiesti
+Grindu
+Corocaiesti
+Frasinet
+Ogra
+Voiteg
+Garcina
+Garbou
+Maneciu-Ungureni
+Teis
+Zau de Campie
+Luna
+Vutcani
+Criseni
+Tupilati
+Nufaru
+Gostinu
+Zlatunoaia
+Banisor
+Micasasa
+Stancea
+Niculesti
+Fratostita
+Turcinesti
+Namoloasa-Sat
+Visinesti
+Nades
+Moravita
+Umbraresti-Deal
+Poboru
+Stefesti
+Dragoesti
+Buces
+Bulz
+Negoi
+Silistea Snagovului
+Lanurile
+Homorod
+Decindeni
+Tanasoaia
+Oarja
+Slobozia Moara
+Vacareni
+Hanesti
+Ion Creanga
+Babiciu
+Gheboaia
+Valea Marului
+Nistoresti
+Butimanu
+Iepuresti
+Provita de Sus
+Margina
+Cut
+Suplac
+Unguriu
+Salistea-Deal
+Ciucurova
+Iratosu
+Husasau de Tinca
+Belciugatele
+Satu Nou
+Gura Foii
+Baisoara
+Coroiesti
+Tiream
+Poiana Stampei
+Varciorog
+Pomi
+Sura Mica
+Apostolache
+Voineasa
+Talpa-Trivalea
+Panaci
+Bucinisu
+Stejaru
+Dobarlau
+Miraslau
+Grosii Tiblesului
+Iecea Mare
+Breaza de Jos
+Cucuieti
+Conop
+Ceauru
+Scaesti
+Botesti
+Salciile
+Ulma
+Dragugesti
+Condeesti
+Dragos Voda
+Plopu
+Suditi
+Icoana
+Roesti
+Maxut
+Aiudul de Sus
+Moacsa
+Campuri
+Andrasesti
+Musetesti
+Tariceni
+Rabagani
+Luica
+Biliesti
+Capu Campului
+Fierbintii de Sus
+Dudestii Noi
+Izvoarele Sucevei
+Balusesti
+Ripiceni
+Iclanzel
+Heci
+Urmenis
+Valea Chioarului
+Pacureti
+Gagesti
+Salatrucu
+Albestii Ungureni
+Socodor
+Miorcani
+Vaculesti
+Adamclisi
+Ocna Dejului
+Mirsid
+Gogosari
+Sipotu
+Oarda
+Seimeni
+Adunati
+Seaca de Camp
+Draganesti de Vede
+Rascaeti
+Musenita
+Alimpesti
+Cotmeana
+Garbesti
+Socol
+Bosorod
+Oreavu
+Lipia
+Moieciu de Jos
+Valea Vinului
+Muncelu de Sus
+Grozesti
+Rusii Munti
+Traian Vuia
+Vela
+Chiuza
+Dragomiresti-Deal
+Beica de Jos
+Salatrucel
+Valea Rece
+Reci
+Liliesti
+Stanita
+Scundu
+Carpinet
+Pucheni
+Moraresti
+Iazu
+Cascioarele
+Harseni
+Vladila
+Movila
+Rastolita
+Oveselu
+Pauca
+Ladesti
+Vadu Parului
+Cezieni
+Farliug
+Colonesti
+Vladaia
+Varlezi
+Letca
+Grosani
+Tataru
+Sascut-Sat
+Grebanu
+Haghig
+Cordareni
+Vultureni
+Visina Noua
+Jiblea Veche
+Cuci
+Albac
+Sabasa
+Negrilesti
+Ghermanesti
+Topile
+Suceveni
+Pesteana Jiu
+Vintileasca
+Campineanca
+Razvani
+Jiu-Paroseni
+Mihoveni
+Feresti
+Craidorolt
+Inotesti
+Barabant
+Baia de Arama
+Ghioroiu
+Sintesti
+Taut
+Sarata
+Ion Corvin
+Dochia
+Saelele
+Bradulet
+Herasti
+Balaceanca
+Tutora
+Ilisesti
+Berghin
+Taga
+Telec
+Lunca Bradului
+Magula
+Zam
+Izvoare
+Dobroteasa
+Vad
+Glodenii Gandului
+Varfu Campului
+Gageni
+Mislea
+Hoghilag
+Viforata
+Amarasti
+Valea Ciresului
+Dodeni
+Tarcaia
+Nenciulesti
+Racasdia
+Adanca
+Vatava
+Harau
+Cornea
+Nisiporesti
+Ipatele
+Batrani
+Matacina
+Cracaoani
+Bratila
+Corbita
+Rona de Jos
+Varfuri
+Tusnad
+Saulia
+Varadia de Mures
+Valea Lupului
+Slobozia-Ciorasti
+Cuzdrioara
+Subcetate
+Buchin
+Pustiana
+Ucea de Sus
+Lazaresti
+Scurtu Mare
+Iugani
+Moldova Sulita
+Schitu Frumoasa
+Stamate
+Cricau
+Berchisesti
+Caldarasti
+Concesti
+Osebiti
+Hartop
+Cabesti
+Peceneaga
+Maxenu
+Rapoltu Mare
+Ciughes
+Mihai Voda
+Sohodol
+Tatarastii de Jos
+Vale
+Maldaresti
+Zadareni
+Homoraciu
+Cetatea de Balta
+Nazna
+Gostinari
+Dolhestii-Mari
+Mitoc
+Garbova
+Tarnava
+Homorodu de Jos
+Poieni-Solca
+Bujoru
+Pesceana
+Verendin
+Luna de Sus
+Grecesti
+Tur
+Colonia Bod
+Crasna Viseului
+Boranesti
+Saschiz
+Birchis
+Naeni
+Miroslavesti
+Horodnic de Jos
+Gainesti
+Andreiasu de Jos
+Cuzaplac
+Luncoiu de Jos
+Vlasca
+Valea Ciorii
+Remus
+Bordeasca Veche
+Galsa
+Noslac
+Voivozi
+Valea Viilor
+Maia
+Dragomir
+Totesti
+Iscroni
+Panticeu
+Valea Ramnicului
+Baldana
+Arsura
+Ungra
+Serbauti
+Pesac
+Sperieteni
+Dognecea
+Chiriacu
+Glogova
+Doclin
+Vargata
+Cehal
+Micfalau
+Capalna
+Beleti
+Vermesti
+Teasc
+Marcesti
+Carlibaba
+Draganu-Olteni
+Scurta
+Ideciu de Jos
+Beiu
+Capalnita
+Terpezita
+Sanpetru German
+Pogaceaua
+Boldesti
+Bijghir
+Lelesti
+Tarna Mare
+Zizin
+Tuta
+Samarinesti
+Livadia
+Jorasti
+Bulzesti
+Pilu
+Castranova
+Miron Costin
+Merenii de Jos
+Bania
+Cheveresu Mare
+Mosteni
+Intorsura
+Ologeni
+Turdas
+Voivodeni
+Lapusnicu Mare
+Ghindeni
+Vrata
+Buduslau
+Padina Mica
+Suatu
+Naipu
+Ghiorac
+Priseaca
+Nepos
+Bogata
+Naruja
+Romanu
+Fundu Racaciuni
+Miroslovesti
+Dersida
+Baita de sub Codru
+Cilibia
+Rafaila
+Bucuresci
+Valea Mare Pravat
+Olari
+Udupu
+Strejestii de Sus
+Ciohorani
+Barsa
+Bestepe
+Fardea
+Mastacan
+Hunia
+Gemenele
+Valea Larga
+Damienesti
+Vanjulet
+Ticvaniu Mare
+Stolniceni
+Topalu
+Grozavesti
+Pasareni
+Carbunesti
+Valcelele
+Malaia
+Draghiceni
+Burla
+Bajura
+Grabat
+Talpigi
+Sacadat
+Podenii Vechi
+Varghis
+Farcasu de Jos
+Arieseni
+Zambreasca
+Toaca
+Soars
+Pantelimon de Jos
+Gusoeni
+Darza
+Farau
+Nadab
+Glimboca
+Ciuperceni
+Albota
+Sard
+Petrestii de Jos
+Dumbrava de Sus
+Retevoiesti
+Bratesti
+Valea Lunga Alba Romania
+Negoiesti
+Sandulesti
+Negreni
+Forotic
+Camar
+Carjoaia
+Chibed
+Zebil
+Teiu
+Malu Rosu
+Margau
+Brodoc
+Petris
+Ghilad
+Mischii
+Dorobanti
+Rancaciov
+Lazuri de Beius
+Surani
+Bacioiu
+Foieni
+Dichiseni
+Stelnica
+Sacelu
+Cleanov
+Boghesti
+Aschileu Dorna
+Bascenii de Jos
+Agighiol
+Chisoda
+Ramniceni
+Sancraiu
+Silistea Crucii
+Ilieni
+Hurezani
+Dumeni
+Dabaca
+Bilciuresti
+Andrei Saguna
+Fulga de Jos
+Garda de Sus
+Stiuca
+Garliciu
+Rusca Montana
+Tortoman
+Leleasca
+Vartop
+Varteju
+Bosia
+Draxini
+Checea
+Ciresoaia
+Branisca
+Bordesti
+Avram Iancu
+Cicarlau
+Sarulesti-Gara
+Cocorastii Mislii
+Barticesti
+Tabarasti
+Beidaud
+Bodestii de Jos
+Oneaga
+Brabova
+Puscasi
+Prapor
+Cogeasca
+Chiojdeanca
+Catamaresti-Deal
+Golaiesti
+Pristol
+Balaceanu
+Bacia
+Manastireni
+Peregu Mare
+Farcaseni
+Largu
+Gottlob
+Potlogeni
+Tiur
+Cincu
+Eftimie Murgu
+Breznita-Motru
+Florica
+Sanmihaiu Almasului
+Ciclova-Romana
+Manastiur
+Calina
+Densus
+Rojiste
+Fierbinti
+Valea Viseului
+Bulgarus
+Voicesti
+Cornatelu
+Gulia
+Aita Mare
+Paraie
+Salciua de Sus
+Garleni
+Bucium
+Mofleni
+Perisor
+Poplaca
+Tutana
+Sarbeni
+Pir
+Romuli
+Carna
+Benesat
+Mijlocenii Bargaului
+Dobrin
+Balint
+Geaca
+Viile
+Rasesti
+Talpos
+Samsud
+Lapugiu de Jos
+Dieci
+Cergau Mic
+Ramna
+Chiheru de Jos
+Balaceana
+Madulari
+Jitia
+Segarcea-Deal
+Vestem
+Chiuiesti
+Boinesti
+Pauleni-Ciuc
+Gvardinita
+Sambateni
+Seica Mica
+Vermes
+Epureni
+Cernetu
+Husnicioara
+Criciova
+Izvoru Berheciului
+Foeni
+Carani
+Crevenicu
+Rachiteni
+Macesu de Sus
+Maritei
+Nucsoara
+Chiscareni
+Oncesti
+Buhalnita
+Ocna de Jos
+Basarabi
+Bulbucata
+Recea Cristur
+Cucerdea
+Valea Teilor
+Solonet
+Nisipari
+Copacelu
+Chichis
+Marculesti
+Baile Tusnad
+Utvin
+Gardani
+Batesti
+Ghelari
+Archis
+Somusca
+Runcu Salvei
+Galdau
+Dracea
+Sasar
+Saceni
+Rosia de Secas
+Vladeni-Deal
+Branet
+Uzunu
+Tilisca
+Ceuasu de Campie
+Boboc
+Boisoara
+Macesu de Jos
+Marisel
+Dunareni
+Caciulati
+Almasu Mare
+Valea Leurzii
+Osoi
+Pocola
+Boita
+Puturi
+Bascoveni
+Saros pe Tarnave
+Gurbanesti
+Neagra Sarului
+Izvoru Crisului
+Bordenii Mari
+Surdila-Greci
+Poiana Ilvei
+Caprioru
+Fibis
+Sacu
+Halmagel
+Giurgeni
+Faragau
+Chendu
+Lilieci
+Garlenii de Sus
+Sticlaria
+Hamcearca
+Boian
+Vima Mica
+Topolita
+Boboiesti
+Slaveni
+Rogoz
+Gura Padinii
+Dobrusa
+Serboeni
+Berzasca
+Sincai
+Frunzi
+Grebenisu de Campie
+Listeava
+Smulti
+Sarateni
+Bacea
+Lunga
+Spiru Haret
+Nou
+Atintis
+Borosoaia
+Dragoiesti
+Iapa
+Beznea
+Turnu Ruieni
+Pietrarii de Sus
+Alba
+Comanca
+Padureni
+Gheboieni
+Nemtisor
+Potoceni
+Hodosa
+Sarafinesti
+Balanesti
+Anies
+Radeni
+Brezoaele
+Beba Veche
+Basesti
+Asuaju de Sus
+Progresu
+Verbita
+Coltau
+Monor
+Ribita
+Cuvin
+Apa Asau
+Poienarii Apostoli
+Loloiasca
+Sisesti
+Gherta Mare
+Bogdanita
+Dodesti
+Cerdac
+Beregsau Mare
+Dealu Mare
+Frumuseni
+Veza
+Nitchidorf
+Poiana Codrului
+Budacu de Sus
+Stancesti
+Potelu
+Necsesti
+Baisesti
+Porumbesti
+Oancea
+Rosia Montana
+Crusovu
+Corlatel
+Terebesti
+Frumuselu
+Cazaci
+Chisindia
+Cerchezu
+Vadu Soresti
+Milas
+Campurelu
+Dragu
+Boiu
+Fildu de Jos
+Borlova
+Caiuti
+Boghis
+Brehuiesti
+Nereju Mic
+Barna
+Badesti
+Beuca
+Odaia Manolache
+Brates
+Slava Rusa
+Vadu Motilor
+Rascruci
+Agarbiciu
+Neaua
+Pogonele
+Petreu
+Cristolt
+Blajeni
+Puiestii de Jos
+Cosani
+Urzica
+Gura Suhasului
+Bucsoaia
+Valea Macrisului
+Oar
+Nimigea de Jos
+Motaieni
+Mineri
+Zanoaga
+Razboieni-Cetate
+Adjudu Vechi
+Vartoapele de Sus
+Secui
+Pausesti
+Holbav
+Ciurila
+Apoldu de Jos
+Merenii de Sus
+Ciumbrud
+Barati
+Urleasca
+Dobretu
+Ilba
+Burias
+Argeselu
+Cotofenii din Fata
+Valea Grecului
+Susenii Bargaului
+Totoesti
+Pociovalistea
+Varsag
+Suhurlui
+Cotatcu
+Bursuceni
+Lancram
+Corni-Albesti
+Haghiac
+Dezna
+Purcareni
+Calopar
+Varadia
+Scortaru Nou
+Gelu
+Vanatorii Mari
+Girisu de Cris
+Rusca
+Garnic
+Bobohalma
+Dragodanesti
+Suciu de Jos
+Posada
+Habeni
+Negostina
+Badeuti
+Crivesti
+Plescuta
+Mamaia-Sat
+Minieri
+Bradeni
+Ceacu
+Pestis
+Rachitova
+Sinca Noua
+Serdanu
+Sambata de Sus
+Furcenii Noi
+Saraiu
+Rogova
+Deparati
+Coroisanmartin
+Racoviteni
+Potigrafu
+Pietrele
+Radesti
+Valea Stramba
+Maderat
+Lapos
+Cucuteni
+Santion
+Valea lui Ion
+Surdesti
+Cotumba
+Dalga-Gara
+Oestii Pamanteni
+Chirpar
+Domasnea
+Mironu
+Matesti
+Camin
+Lunca Priporului
+Cucuruzu
+Zerind
+Cordau
+Puchenii Mosneni
+Sfintesti
+Sadina
+Sauca
+Burca
+Vulcana de Sus
+Budeni
+Valea Lunga Ogrea
+Osica de Jos
+Beciu
+Bacalesti
+Gheja
+Garvan
+Dambu
+Varatec
+Colelia
+Sateni
+Fagetelu
+Muntenii de Sus
+Boureni
+Bohotin
+Ocna de Sus
+Dedrad
+Bacova
+Arcani
+Olanesti
+Drajna Noua
+Cernu
+Parta
+Balta Verde
+Letca Veche
+Sovarna
+Bengesti
+Darova
+Biia
+Doboseni
+Fierbintii de Jos
+Varbila
+Cozmeni
+Lamaseni
+Tipar
+Soci
+Milcovatu
+Bichigiu
+Satmarel
+Gemeni
+Boianu Mare
+Poloboc
+Perii Brosteni
+Mlenauti
+Sopotu Nou
+Ilovita
+Brazii
+Izvin
+Cegani
+Pietriceaua
+Meresti
+Suhulet
+Pangaracior
+Tohanu Nou
+Sprancenata
+Furculesti
+Crisan
+Studinita
+Balta
+Saniob
+Brancoveanca
+Brabeti
+Doanca
+Zlatarei
+Trip
+Oarta de Jos
+Hodora
+Bacu
+Poroina Mare
+Moscu
+Comanda
+Turcesti
+Ocland
+Talmacel
+Nedeia
+Coas
+Jirov
+Ciumesti
+Belis
+Cristur
+Aghiresu
+Saucesti
+Buza
+Agrij
+Iernuteni
+Crizbav
+Araci
+Gura Ialomitei
+Giarmata-Vii
+Corlatesti
+Valisoara
+Sarmizegetusa
+Icuseni
+Palatca
+Dorgos
+Radu Voda
+Posaga de Sus
+Tatarastii de Sus
+Piteasca
+Luncani
+Ezeris
+Ciomagesti
+Baltesti
+Plevna
+Danceu
+Deaj
+Sulita
+Soporu de Campie
+Abrud-Sat
+Basca Rozilei
+Banita
+Obrejita
+Costana
+Gurba
+Rasi
+Bancu
+Spatarei
+Uioara de Jos
+Pietrosu
+Jugur
+Prajani
+Piscu Sadovei
+Meziad
+Valenii de Mures
+Secaria
+Valea Canepii
+Bratovoesti
+Lunca Lesului
+Jugureanu
+Sindrilari
+Ocolna
+Moara Nica
+Bungetu
+Tantava
+Zarnestii de Slanic
+Ciuruleasa
+Baru
+Coronini
+Parepa-Rusani
+Aiton
+Ighisu Nou
+Moiseni
+Valea Arini
+Talpa-Ograzile
+Berliste
+Tatulesti
+Lapusel
+Tisa
+Gura Vulcanei
+Secu
+Sacaseni
+Hartoape
+Herla
+Liubcova
+Hemeius
+Bobulesti
+Colti
+Badeni
+Simon
+Pusta
+Filia
+Poiana Blenchii
+Giera
+Dolhestii Mici
+Curtea
+Sannicoara
+Galbeni
+Cuzap
+Copacele
+Ivanesti
+Breb
+Pribesti
+Geamana
+Voetin
+Jichisu de Jos
+Valea Borcutului
+Cosula
+Clit
+Ciocanari
+Jieni
+Arefu
+Sat-Sugatag
+Rucareni
+Carand
+Coseiu
+Cocoreni
+Cosmestii-Vale
+Paltineni
+Dranic
+Arini
+Telcisor
+Larga
+Dobrita
+Cuejdiu
+Crovu
+Zdrapti
+Schiulesti
+Pestisu Mare
+Comosteni
+Brebu
+Robeasca
+Ghizela
+Conduratu
+Cataloi
+Ceardac
+Bogei
+Dambovicioara
+Chircesti
+Arpasu de Sus
+Stanca
+Valcani
+Lapusnicel
+Ghimes
+Chelinta
+Brazi
+Valea Parului
+Valea Arinilor
+Vadu Rosca
+Poiana Vadului
+Milcoiu
+Glod
+Papauti
+Libotin
+Basca Chiojdului
+Tritenii de Sus
+Salistea
+Pestisu Mic
+Iedera de Sus
+Odaia Turcului
+Micestii de Campie
+Rasa
+Poienarii Burchii
+Igris
+Fagetu
+Draghinesti
+Ocina de Sus
+Tasad
+Sinteu
+Izimsa
+Bozioru
+Mosneni
+Strambeni
+Oporelu
+Aprozi
+Zoresti
+Tibeni
+Sodomeni
+Rau Alb de Jos
+Marga
+Zimbor
+Castrele Traiane
+Purani
+Copaciu
+Bajesti
+Zimnicele
+Valea Merilor
+Braiesti
+Enisala
+Calacea
+Livada de Bihor
+Valea Tarsei
+Merghindeal
+Boiu Mare
+Uda-Paciurea
+Sarbi
+Deja
+Anghelesti
+Guruieni
+Caporal Alexa
+Blajani
+Arcus
+Moara Domneasca
+Cracaul Negru
+Spinus
+Holt
+Gurbediu
+Gemenea Bratulesti
+Alunisu
+Carniceni
+Branistari
+Crangu
+Verseni
+Halanga
+Dara
+Cintei
+Bucsesti
+Poiana Marului
+Gura Putnei
+Carbunari
+Nires
+Marginenii de Sus
+Gavanesti
+Ciocarlia de Sus
+Valea Dacilor
+Poieni
+Pesteana de Jos
+Cuciulata
+Bircii
+Rachita
+Dambau
+Boghicea
+Smirna
+Fiser
+Ciochiuta
+Blanzi
+Namoloasa
+Moftinu Mic
+Gheorghieni
+Teleormanu
+Caraclau
+Joldesti
+Trestiana
+Coropceni
+Ciofliceni
+Telna
+Scheiu de Jos
+Ciuchici
+Pantazi
+Topana
+Sacosu Mare
+Roscani
+Buesti
+Rubla
+Oroftiana
+Vranesti
+Sannicolau Roman
+Lacu Sarat
+Calomfiresti
+Vrani
+Rovine
+Buznea
+Baduleasa
+Arghira
+Ghimpeteni
+Capeni
+Tolici
+Olteanca
+Voievodeasa
+Surdulesti
+Peceiu
+Chesint
+Augustin
+Baranca
+Bata
+Letca Noua
+Caraseu
+Racauti
+Rudeni
+Ranzesti
+Porumbenii Mari
+Huta Certeze
+Pleasov
+Falcau
+Castau
+Dambroca
+Razboieni
+Balsa
+Rachieri
+Mosnita Veche
+Marin
+Pogonesti
+Zagar
+Sanger
+Piscu Nou
+Otetelisu
+Aghires
+Dorna-Arini
+Orodel
+Barlogu
+Arinis
+Rimetea
+Plutonita
+Drajna de Sus
+Iazu Nou
+Dragus
+Zmeu
+Trei Sate
+Faclia
+Coconi
+Badeana
+Racarii de Sus
+Lozna
+I. C. Bratianu
+Talea
+Draghici
+Covrigi
+Manau
+Draganeasa
+Siclau
+Dobrotinet
+Zorlentu Mare
+Voslabeni
+Baile Borsa
+Goruna
+Merii Petchii
+Balda
+Suceagu
+Cadea
+Domnesti-Targ
+Buliga
+Adaseni
+Racu
+Plostina
+Burzuc
+Misca
+Turnu
+Orevita Mare
+Zauan
+Rasmiresti
+Plesoi
+Parhauti
+Lunca Jaristei
+Fenes
+Valea Sosii
+Cepari
+Patru Frati
+Dimacheni
+Bradicesti
+Goesti
+Darjiu
+Cociu
+Carja
+Tamasda
+Radomir
+Gosmani
+C.A. Rosetti
+Blandiana
+Urca
+Maruntisu
+Dranovatu
+Hociungi
+Manastur
+Zalha
+Tariverde
+Carligi
+Zaval
+Padea
+Moara Grecilor
+Greceanca
+Ciuslea
+Mal
+Starciu
+Giurtelecu Simleului
+Podeni
+Pietrisu
+Floroaia
+Prelipca
+Nistru
+Limpezis
+Ionaseni
+Chitorani
+Turluianu
+Nuntasi
+Pianu de Jos
+Nicolesti
+Goruni
+Pricaz
+Dragoesti-Snagov
+Murgesti
+Dezmir
+Fastaci
+Capu Piscului
+Sultana
+Iezeru
+Ruja
+Luncsoara
+Mailat
+Forau
+Cozia
+Colonia Fabricii
+Cartisoara
+Carastelec
+Lopadea Noua
+Ghertenis
+Balvanesti
+Valea Izvoarelor
+Sfarcea
+Seciu
+Cristestii Ciceului
+Chier
+Poganesti
+Igesti
+Diosod
+Jabenita
+Vadurele
+Potcoava Falcoeni
+Falastoaca
+Dragaesti Ungureni
+Viile Tecii
+Iazurile
+Lucaceni
+Harmanestii Vechi
+Valea Popii
+Puieni
+Jupanesti
+Scortaru Vechi
+Closani
+Ciucani
+Goiesti
+Valea Dulce
+Igoiu
+Mara
+Urziceanca
+Bogza
+Greblesti
+Ghizdavesti
+Albesti-Muru
+Tocileni
+Tihau
+Mandresti
+Jidvei
+Iecea Mica
+Balintesti
+Varciorova
+Saes
+Cornatel
+Filias
+Calui
+Sanpetru de Campie
+Dobric
+Chet
+Furtunesti
+Chitoc
+Lunca Prahovei
+Hodoni
+Gura Caluiu
+Pojogeni
+Pocruia
+Dalboset
+Chesereu
+Mandruloc
+Ghinesti
+Urseni
+Svinita
+Sancrai
+Matau
+Persani
+Eliseni
+Cotenesti
+Balcaciu
+Ursa
+Uda-Clocociov
+Vulcaneasa
+Plugova
+Hartagani
+Iresti
+Draut
+Bucova
+Lunca Cernii de Jos
+Barasti
+Potau
+Cheia
+Livadea
+Simisna
+Casoca
+Sebesel
+Gazarie
+Emil Racovita
+Colacu
+Altana
+Izvoru Dulce
+Zorile
+Varnita
+Decebal
+Plavalari
+Mircestii Noi
+Hotar
+Radoiesti-Deal
+Negrileasa
+Canesti
+Budai
+Toplita
+Sanmarghita
+Poienile-Mogos
+Gorganu
+Socetu
+Sarauad
+Rugasesti
+Coada Izvorului
+Bobolia
+Ursi
+Priboiu
+Sapunari
+Breazu
+Ianosda
+Odaile
+Gropsani
+Bistra Muresului
+Vasad
+Mares
+Malcoci
+Iojib
+Humele
+Ciorani
+Bucsenesti-Lotasi
+Zavoiu
+Dedulesti
+Mihaiesti
+Dubova
+Fizes
+Vorta
+Valeni-Podgoria
+Dudu
+Balaciu
+Cornutel
+Vlasceni
+Hlapesti
+Domanesti
+Cidreag
+Ostrovu
+Cismele
+Chintinici
+Stana
+Bolovanis
+Valcelele de Sus
+Patuleni
+Filioara
+Cubulcut
+Suseni Socetu
+Pietreni
+Facai
+Scheiu de Sus
+Negoesti
+Pitaru
+Dascalesti
+Argel
+Albis
+Culmea
+Margineni Slobozia
+Iadara
+Corbu Nou
+Bucsenesti
+Agris
+Greoni
+Zagavia
+Balnaca
+Acris
+Ighiel
+Busca
+Malancrav
+Barzesti
+Constantin Brancoveanu
+Babta
+Supitca
+Craiesti
+Sterpoaia
+Petrosnita
+Craciunei
+Catanele
+Stornesti
+Dostat
+Sculia
+Radovan
+Veseus
+Peregu Mic
+Orlea Noua
+Herculian
+Santa Mare
+Glavile
+Dudasu
+Dalnic
+Vaida-Camaras
+Ramesti
+Meri
+Jidostita
+Dealu Frumos
+Padurea Neagra
+Maru
+Goreni
+Viersani
+Persunari
+Cetatea
+Babeni-Oltetu
+Dumitresti
+Cehei
+Cergau Mare
+Alamor
+Popoveni
+Ferestrau-Oituz
+Badosi
+Podolenii de Sus
+Moneasa
+Martinesti
+Hurjuieni
+Comandau
+Taureni
+Orasa
+Maguri
+Dejesti
+Cherelus
+Birda
+Costestii din Deal
+Valea Cucului
+Preajba
+Oraseni-Deal
+Lunca la Tisa
+Versesti
+Rachelu
+Misentea
+Ibrianu
+Leicesti
+Galasesti
+Nadas
+Ludasi
+Stavaru
+Humoreni
+Feisa
+Galospetreu
+Chilii
+Adea
+Vintileanca
+Ghighiseni
+Agries
+Bichis
+Padina Matei
+Croitori
+Strateni
+Dobrotu
+Neudorf
+Dobridor
+Comana de Jos
+Cioroboreni
+Vieru
+Tusnadu Nou
+Silindru
+Gura Beliei
+Valea Bolvasnita
+Prohozesti
+Nerau
+Bolatau
+Gepiu
+Damacuseni
+Borcut
+Zidurile
+Vladuleni
+Poienile Izei
+Mihalceni
+Poiana Copaceni
+Manailesti
+Cipau
+Siminoc
+Piscoiu
+Clocotici
+Belin-Vale
+Agrisu Mare
+Treznea
+Tetcoiu
+Halaresti
+Valea Ierii
+Tabara
+Laculete
+Cucueti
+Alparea
+Vintere
+Oantu
+Bargauani
+Grajdana
+Ciutelec
+Bascenii de Sus
+Vizuresti
+Valenii Somcutei
+Campani
+Ceamurlia de Sus
+Radulesti
+Lacusteni
+Garagau
+Demacusa
+Ogretin
+Domnita
+Zencani
+Olesesti
+Chendrea
+Naidas
+Papiu Ilarian
+Burjuc
+Platonesti
+Cenade
+Botosesti-Paia
+Tamaseu
+Fundata
+Aricestii Zeletin
+Cioroiasi
+Santamaria-Orlea
+Andreesti
+Fantana Mare
+Valiug
+Baraganu
+Silindia
+Vadu Sapat
+Scanteiesti
+Goruia
+Fruntiseni
+Ohaba
+Rasca
+Balabanesti
+Mehadica
+Ucea de Jos
+Maguri-Racatau
+Madarjac
+Alma
+Silivasu de Campie
+Ciceu-Mihaiesti
+Raca
+Mitrofani
+Margaritesti
+Intregalde
+Gradina
+Slava Cercheza
+Vetca
+Ticusu Vechi
+Alexandru I. Cuza
+Marpod
+Calmatuiu de Sus
+Jiana
+Galgau
+Ocolis
+Otelec
+Estelnic
+Vama Buzaului
+Ignesti
+Huruiesti
+Obarsia de Camp
+Ilovat
+Uileacu de Beius
+Sasca Montana
+Carjiti
+Ludos
+Dracsenei
+Bruiu
+Chiliile
+Panatau
+Vistea de Jos
+Godeanu
+Garbau
+Sacalaseni
+Ciudanovita
+Sanmihaiu de Campie
+Balta Alba
+Ciocani
+Ceatalchioi
+Helesteni
+Saligny
+Jugureni
+Radauti-Prut
+Ponor
+Pardina
+Seaca de Padure
+Hurdugi
+Stanceni
+Dumitrita
+Sacuieu
+Razboienii de Jos
+Murgasi
+Cerbal
+Diculesti
+Cozma
+Rau Sadului
+Cocorastii Colt
+Bolvasnita
+Farcas
+Caianu
+Bobalna
+Capatanenii Pamanteni
+Craiva
+Negomir
+Licurici
+Pardosi
+Iordacheanu
+Ceparii Pamanteni
+Cruset
+Cosna
+Valea Sarii
+Sambotin
+Ususau
+Didesti
+Almaj
+Olanu
+Cicanesti
+Lelese
+Spulber
+Ibanesti-Padure
+Mazanaesti
+Stangaceaua
+Paleu
+Voloiac
+Sopot
+Sambata
+Bogda
+Valea Salciei
+Bunila
+Hasmas
+Bacles
+Dranceni
+Ohaba Lunga
+Tatarasti
+Hoparta
+Cosmina de Jos
+Gurasada
+Mogesti
+Coroieni
+Catunele
+Sistarovat
+Barastii de Vede
+Ceru-Bacainti
+Voitestii din Vale
+Cristioru de Jos
+Valea Lunga-Cricov
+Ploscos
+Brestovat
+Talpas
+Logresti Mosteni
+Secas
+Bretea Romana
+Horea
+Berlesti
+Leliceni
+General Berthelot
+Maliuc
+Pochidia
+Posestii-Pamanteni
+Bereni
+Ion Neculce
+Batrana
+Mogos
+Brebu Nou
+Bulzestii de Sus
+Varvoru de Jos
+Vartescoiu
+Varsolt
+Valcanesti
+Toboliu
+Tarsolt
+Tarlisua
+Targu Lapus
+Tantareni
+Tamboesti
+Sotanga
+Soparlita
+Sarbii-Magura
+Santana de Mures
+Samburesti
+Sandra
+Romanasi
+Reghin
+Racsa
+Parscoveni
+Parau
+Pangarati
+Obarsia-Closani
+Obarsia
+Martesti
+Marsani
+Manzalesti
+Manastirea Casin
+Mihesu de Campie
+Itesti
+Gadinti
+Ghidici
+Onesti
+Galiciuica
+Flamanzi
+Fartanesti
+Fierbinti-Targ
+Eforie
+Dagata
+Cosambesti
+Corunca
+Catcau
+Carcea
+Candesti Vale
+Candesti
+Campulung
+Cehu Silvaniei
+Catane
+Budeasa
+Bucerdea-Granoasa
+Brancovenesti
+Blandesti
+Bistrita Bargaului
+Barsesti
+Barsanesti
+Barghis
+Acas
+Bucuresti
+Albestii de Arges
+Hanes Mina

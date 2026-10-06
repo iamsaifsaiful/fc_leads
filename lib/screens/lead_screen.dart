@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../data/categories.dart';
 import '../logic/audit_builder.dart';
 import '../logic/html_analyzer.dart';
 import '../logic/messages.dart';
@@ -8,27 +9,32 @@ import '../logic/phone.dart';
 import '../models/audit.dart';
 import '../models/business.dart';
 import '../models/lead.dart';
-import '../models/website_report.dart';
 import '../services/settings_controller.dart';
 import '../services/share_service.dart';
 import '../theme.dart';
 import '../widgets/audit_graphic.dart';
+import '../widgets/compose_sheets.dart';
 import '../widgets/status_pill.dart';
+import 'dashboard_screen.dart' show formatDay;
 import 'home_shell.dart';
 
-/// One business: what was found, the personalised graphic, and the
-/// buttons that hand it to WhatsApp or email.
+/// One business: what was found, the pipeline, the personalised graphic,
+/// and the buttons that hand it to WhatsApp or email.
 class LeadScreen extends StatefulWidget {
   const LeadScreen({
     super.key,
     required this.business,
     required this.settings,
     required this.services,
+    this.seed,
   });
 
   final Business business;
   final SettingsController settings;
   final AppServices services;
+
+  /// Where it was found (category, country, city) when opened from Search.
+  final Lead? seed;
 
   @override
   State<LeadScreen> createState() => _LeadScreenState();
@@ -36,81 +42,107 @@ class LeadScreen extends StatefulWidget {
 
 class _LeadScreenState extends State<LeadScreen> {
   final _graphicKey = GlobalKey();
-  final _phone = TextEditingController();
-  final _email = TextEditingController();
+  final _notes = TextEditingController();
 
-  late List<AuditItem> _items;
-  WebsiteReport? _site;
-  Lead? _lead;
+  late Lead _lead;
+  String _phone = '';
+  bool _loaded = false;
   bool _checking = false;
-  bool _sending = false;
+  bool _busy = false;
 
   Business get _b => widget.business;
   bool get _hasRealWebsite => _b.hasWebsite && socialPlatformOf(_b.website) == null;
+  ShareService get _share => widget.services.share;
 
   @override
   void initState() {
     super.initState();
-    _items = buildAudit(_b, null);
-    _phone.text = whatsappNumber(international: _b.internationalPhone, national: _b.phone);
+    final seed = widget.seed;
+    _lead = Lead(
+      business: _b,
+      items: buildAudit(_b, null),
+      savedAt: DateTime.now(),
+      category: seed?.category ?? '',
+      countryCode: seed?.countryCode ?? '',
+      city: seed?.city ?? '',
+    );
     _load();
   }
 
   @override
   void dispose() {
-    _phone.dispose();
-    _email.dispose();
+    _notes.dispose();
     super.dispose();
   }
 
   Future<void> _load() async {
     final saved = await widget.services.leads.find(_b.id);
-    if (!mounted) return;
-    if (saved != null) {
-      setState(() {
-        _lead = saved;
-        _items = saved.items;
-        _site = saved.website;
-        _email.text = saved.email;
-      });
-      return;
+    final seed = widget.seed;
+    var lead = saved ?? _lead;
+    if (saved != null && seed != null) {
+      lead = lead.copyWith(
+        category: lead.category.isEmpty ? seed.category : null,
+        countryCode: lead.countryCode.isEmpty ? seed.countryCode : null,
+        city: lead.city.isEmpty ? seed.city : null,
+      );
     }
-    await _check();
+    final countryCode = lead.countryCode.isNotEmpty ? lead.countryCode : widget.settings.value.defaultCountry;
+    final country = await widget.services.geo.country(countryCode);
+    if (!mounted) return;
+    setState(() {
+      _lead = lead;
+      _notes.text = lead.notes;
+      _phone = whatsappNumber(
+        international: _b.internationalPhone,
+        national: _b.phone,
+        defaultCountryCode: (country?.dialCode.isNotEmpty ?? false) ? country!.dialCode : '880',
+      );
+      _loaded = true;
+    });
+    if (saved == null) await _check();
   }
 
   /// Opens the website (if any), rebuilds the audit and saves the lead.
   Future<void> _check() async {
+    var lead = _lead;
+    final links = {...lead.socialLinks};
+    final linked = _b.hasWebsite ? socialPlatformOf(_b.website) : null;
+    if (linked != null) links.putIfAbsent(linked, () => _b.website);
+
     if (_hasRealWebsite) {
       setState(() => _checking = true);
       final report = await widget.services.checker.check(_b.website);
       if (!mounted) return;
-      setState(() {
-        _site = report;
-        _checking = false;
-        if (_email.text.trim().isEmpty && report.emails.isNotEmpty) {
-          _email.text = report.emails.first;
-        }
-      });
+      for (final e in report.socialLinks.entries) {
+        links.putIfAbsent(e.key, () => e.value);
+      }
+      lead = lead.copyWith(
+        website: report,
+        email: lead.email.isEmpty && report.emails.isNotEmpty ? report.emails.first : null,
+      );
     }
-    setState(() => _items = buildAudit(_b, _site));
+    final items = buildAudit(_b, lead.website);
+    setState(() {
+      _checking = false;
+      _lead = lead.copyWith(items: items, socialLinks: links);
+    });
     await _save();
   }
 
-  Future<void> _save({DateTime? whatsappAt, DateTime? emailAt}) async {
-    final base = _lead ??
-        Lead(business: _b, items: _items, website: _site, savedAt: DateTime.now());
-    final next = Lead(
-      business: _b,
-      items: _items,
-      website: _site,
-      email: _email.text.trim(),
-      whatsappSentAt: whatsappAt ?? base.whatsappSentAt,
-      emailSentAt: emailAt ?? base.emailSentAt,
-      savedAt: DateTime.now(),
-    );
-    _lead = next;
-    await widget.services.leads.save(next);
+  Future<void> _save() => widget.services.leads.save(_lead);
+
+  void _update(Lead next) {
+    setState(() => _lead = next);
+    _save();
   }
+
+  void _toast(String text) {
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(SnackBar(content: Text(text)));
+  }
+
+  // ---- Audit rows ----
 
   Future<void> _editRow(AuditItem item) async {
     final choice = await showModalBottomSheet<(AuditStatus, String)>(
@@ -139,20 +171,56 @@ class _LeadScreenState extends State<LeadScreen> {
       ),
     );
     if (choice == null || !mounted) return;
-    setState(() {
-      _items = [
-        for (final i in _items)
-          i.area == item.area ? i.copyWith(status: choice.$1, verdict: choice.$2) : i,
-      ];
-    });
-    await _save();
+    _update(_lead.copyWith(items: [
+      for (final i in _lead.items)
+        i.area == item.area ? i.copyWith(status: choice.$1, verdict: choice.$2) : i,
+    ]));
   }
 
-  void _toast(String text) {
-    ScaffoldMessenger.of(context)
-      ..hideCurrentSnackBar()
-      ..showSnackBar(SnackBar(content: Text(text)));
+  // ---- Links ----
+
+  Future<void> _openUrl(String url) async {
+    final uri = Uri.tryParse(url.startsWith('http') || url.startsWith('tel:') ? url : 'https://$url');
+    if (uri == null) return;
+    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) _toast('Could not open $url');
   }
+
+  void _findOn(String platform, String domain) {
+    final q = [_b.name, _lead.city, 'site:$domain'].where((s) => s.isNotEmpty).join(' ');
+    _openUrl(Uri.https('www.google.com', '/search', {'q': q}).toString());
+  }
+
+  Future<void> _addLink() async {
+    final result = await showDialog<(String, String)>(
+      context: context,
+      builder: (_) => const _AddLinkDialog(),
+    );
+    if (result == null || result.$2.trim().isEmpty) return;
+    final url = result.$2.trim();
+    final platform = result.$1.isEmpty ? (socialPlatformOf(url) ?? 'Link') : result.$1;
+    _update(_lead.copyWith(socialLinks: {..._lead.socialLinks, platform: url}));
+  }
+
+  void _removeLink(String platform) {
+    final links = {..._lead.socialLinks}..remove(platform);
+    _update(_lead.copyWith(socialLinks: links));
+  }
+
+  // ---- Pipeline ----
+
+  Future<void> _pickFollowUp() async {
+    final now = DateTime.now();
+    final picked = await showDatePicker(
+      context: context,
+      initialDate: _lead.followUp ?? now.add(const Duration(days: 3)),
+      firstDate: DateTime(now.year - 1),
+      lastDate: DateTime(now.year + 2),
+      helpText: 'Follow up on',
+    );
+    if (picked != null) _update(_lead.copyWith(followUp: picked));
+  }
+
+  // ---- Sending ----
 
   Future<String?> _renderGraphic() async {
     try {
@@ -163,80 +231,115 @@ class _LeadScreenState extends State<LeadScreen> {
     }
   }
 
-  Future<void> _sendWhatsApp() async {
-    final phone = _phone.text.replaceAll(RegExp(r'\D'), '');
-    if (phone.isEmpty) {
-      _toast('Add a WhatsApp number first.');
-      return;
-    }
-    setState(() => _sending = true);
-    final path = await _renderGraphic();
-    if (path == null || !mounted) {
-      if (mounted) setState(() => _sending = false);
-      return;
-    }
-    final message = whatsappMessage(_b, _items, widget.settings.value);
-    final result = await widget.services.share.whatsapp(imagePath: path, phone: phone, text: message.body);
-    if (!mounted) return;
-    setState(() => _sending = false);
-    switch (result) {
+  bool _report(ShareResult r, String app) {
+    switch (r) {
       case ShareResult.opened:
-        await _save(whatsappAt: DateTime.now());
-        if (mounted) setState(() {});
+        return true;
       case ShareResult.notInstalled:
-        _toast('WhatsApp is not installed on this phone.');
+        _toast('$app is not installed on this phone.');
       case ShareResult.failed:
-        _toast('Could not open WhatsApp.');
+        _toast('Could not open $app${_share.lastError.isEmpty ? '' : ': ${_share.lastError}'}');
     }
+    return false;
   }
 
-  Future<void> _sendEmail() async {
-    setState(() => _sending = true);
-    final path = await _renderGraphic();
-    if (path == null || !mounted) {
-      if (mounted) setState(() => _sending = false);
-      return;
-    }
-    final message = emailMessage(_b, _items, widget.settings.value);
-    final result = await widget.services.share.email(
-      imagePath: path,
-      to: _email.text.trim(),
-      subject: message.subject,
-      body: message.body,
+  void _markSent({bool whatsapp = false, bool email = false}) {
+    final now = DateTime.now();
+    _update(_lead.copyWith(
+      whatsappSentAt: whatsapp ? now : null,
+      emailSentAt: email ? now : null,
+      status: _lead.status == LeadStatus.newLead ? LeadStatus.contacted : null,
+    ));
+  }
+
+  String _city() => _lead.city;
+
+  OutreachMessage _waTemplate() =>
+      whatsappMessage(_b, _lead.items, widget.settings.value, city: _city(), category: _lead.category);
+
+  OutreachMessage _emailTemplate() =>
+      emailMessage(_b, _lead.items, widget.settings.value, city: _city(), category: _lead.category);
+
+  Future<void> _openWhatsApp() async {
+    final template = _waTemplate().body;
+    await showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      showDragHandle: true,
+      builder: (_) => WhatsAppSheet(
+        phone: _phone,
+        text: _lead.whatsappText ?? template,
+        templateText: template,
+        onChanged: (phone, text) {
+          _phone = phone;
+          _lead = _lead.copyWith(whatsappText: text == template ? null : text);
+          _save();
+        },
+        onOpenChat: (phone, text) async {
+          final ok = _report(await _share.whatsappChat(phone: phone, text: text), 'WhatsApp');
+          if (ok) _markSent(whatsapp: true);
+          return ok;
+        },
+        onSendGraphic: (phone, caption) async {
+          final path = await _renderGraphic();
+          if (path == null) return false;
+          final ok = _report(await _share.whatsappImage(imagePath: path, phone: phone, caption: caption), 'WhatsApp');
+          if (ok) _markSent(whatsapp: true);
+          return ok;
+        },
+      ),
     );
-    if (!mounted) return;
-    setState(() => _sending = false);
-    switch (result) {
-      case ShareResult.opened:
-        await _save(emailAt: DateTime.now());
-        if (mounted) setState(() {});
-      case ShareResult.notInstalled:
-        _toast('No email app found on this phone.');
-      case ShareResult.failed:
-        _toast('Could not open an email app.');
-    }
+    if (mounted) setState(() {});
   }
 
-  Future<void> _shareElsewhere() async {
-    setState(() => _sending = true);
+  Future<void> _openEmail() async {
+    final template = _emailTemplate();
+    await showModalBottomSheet<void>(
+      context: context,
+      isScrollControlled: true,
+      showDragHandle: true,
+      builder: (_) => EmailSheet(
+        to: _lead.email,
+        subject: _lead.emailSubject ?? template.subject,
+        body: _lead.emailBody ?? template.body,
+        templateSubject: template.subject,
+        templateBody: template.body,
+        onChanged: (to, subject, body) {
+          _lead = _lead.copyWith(
+            email: to,
+            emailSubject: subject == template.subject ? null : subject,
+            emailBody: body == template.body ? null : body,
+          );
+          _save();
+        },
+        onSend: (to, subject, body) async {
+          final path = await _renderGraphic();
+          if (path == null) return false;
+          final ok = _report(
+            await _share.email(imagePath: path, to: to, subject: subject, body: body),
+            'an email app',
+          );
+          if (ok) _markSent(email: true);
+          return ok;
+        },
+      ),
+    );
+    if (mounted) setState(() {});
+  }
+
+  Future<void> _shareGraphic() async {
+    setState(() => _busy = true);
     final path = await _renderGraphic();
-    if (path == null || !mounted) {
-      if (mounted) setState(() => _sending = false);
-      return;
+    if (path != null) {
+      _report(await _share.shareFile(path: path, text: _lead.whatsappText ?? _waTemplate().body), 'the share menu');
     }
-    final message = whatsappMessage(_b, _items, widget.settings.value);
-    await widget.services.share.share(imagePath: path, text: message.body);
-    if (mounted) setState(() => _sending = false);
+    if (mounted) setState(() => _busy = false);
   }
 
-  Future<void> _openUrl(String url) async {
-    final uri = Uri.tryParse(url.startsWith('http') ? url : 'https://$url');
-    if (uri != null) await launchUrl(uri, mode: LaunchMode.externalApplication);
-  }
+  // ---- UI ----
 
   @override
   Widget build(BuildContext context) {
-    final digits = _phone.text.replaceAll(RegExp(r'\D'), '');
     return Scaffold(
       appBar: AppBar(
         title: Text(_b.name, maxLines: 1, overflow: TextOverflow.ellipsis),
@@ -244,7 +347,7 @@ class _LeadScreenState extends State<LeadScreen> {
           IconButton(
             tooltip: 'Check again',
             icon: const Icon(Icons.refresh),
-            onPressed: _checking ? null : _check,
+            onPressed: _checking || !_loaded ? null : _check,
           ),
         ],
       ),
@@ -255,7 +358,33 @@ class _LeadScreenState extends State<LeadScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              _InfoCard(business: _b, onOpen: _openUrl),
+              _InfoCard(lead: _lead, onOpen: _openUrl),
+              const SizedBox(height: 20),
+              _SectionTitle('Social media', trailing: TextButton.icon(
+                onPressed: _addLink,
+                icon: const Icon(Icons.add, size: 18),
+                label: const Text('Add link'),
+              )),
+              _SocialCard(
+                links: _lead.socialLinks,
+                checking: _checking,
+                onOpen: _openUrl,
+                onRemove: _removeLink,
+                onFind: _findOn,
+              ),
+              const SizedBox(height: 20),
+              const _SectionTitle('Status'),
+              _PipelineCard(
+                lead: _lead,
+                notes: _notes,
+                onStatus: (s) => _update(_lead.copyWith(status: s)),
+                onPickFollowUp: _pickFollowUp,
+                onClearFollowUp: () => _update(_lead.copyWith(clearFollowUp: true)),
+                onNotes: (t) {
+                  _lead = _lead.copyWith(notes: t);
+                  _save();
+                },
+              ),
               const SizedBox(height: 20),
               _SectionTitle(
                 'Audit',
@@ -265,14 +394,20 @@ class _LeadScreenState extends State<LeadScreen> {
               ),
               Card(
                 child: Column(
-                  children: [
-                    for (final item in _items)
-                      _AuditTile(item: item, onTap: () => _editRow(item)),
-                  ],
+                  children: [for (final item in _lead.items) _AuditTile(item: item, onTap: () => _editRow(item))],
                 ),
               ),
+              const SizedBox(height: 14),
+              _ServicesRow(
+                items: _lead.items,
+                category: categoryByLabel(_lead.category),
+              ),
               const SizedBox(height: 20),
-              const _SectionTitle('Graphic'),
+              _SectionTitle('Graphic', trailing: TextButton.icon(
+                onPressed: _busy ? null : _shareGraphic,
+                icon: const Icon(Icons.share_outlined, size: 18),
+                label: const Text('Share'),
+              )),
               ClipRRect(
                 borderRadius: BorderRadius.circular(14),
                 child: AspectRatio(
@@ -282,7 +417,7 @@ class _LeadScreenState extends State<LeadScreen> {
                       key: _graphicKey,
                       child: AuditGraphic(
                         clientName: _b.name,
-                        items: _items,
+                        items: _lead.items,
                         settings: widget.settings.value,
                       ),
                     ),
@@ -291,59 +426,27 @@ class _LeadScreenState extends State<LeadScreen> {
               ),
               const SizedBox(height: 20),
               const _SectionTitle('Send'),
-              TextField(
-                controller: _phone,
-                keyboardType: TextInputType.phone,
-                onChanged: (_) => setState(() {}),
-                decoration: InputDecoration(
-                  labelText: 'WhatsApp number (with country code)',
-                  helperText: digits.isNotEmpty && !looksLikeMobile(digits)
-                      ? 'Looks like a landline. It may not have WhatsApp.'
-                      : null,
-                ),
-              ),
-              const SizedBox(height: 12),
-              TextField(
-                controller: _email,
-                keyboardType: TextInputType.emailAddress,
-                onChanged: (_) => _save(),
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                  helperText: _site != null && _site!.emails.isNotEmpty
-                      ? 'Found on their website'
-                      : 'Google Maps does not list emails. Add one if you have it.',
-                ),
-              ),
-              const SizedBox(height: 16),
-              if (_sending) const LinearProgressIndicator(),
-              const SizedBox(height: 8),
+              _SentLine(lead: _lead),
+              const SizedBox(height: 10),
               FilledButton.icon(
-                onPressed: _sending ? null : _sendWhatsApp,
+                onPressed: _loaded ? _openWhatsApp : null,
                 icon: const Icon(Icons.chat),
-                label: Text(_lead?.whatsappSentAt != null ? 'Send on WhatsApp again' : 'Send on WhatsApp'),
+                label: const Text('Send on WhatsApp'),
               ),
               const SizedBox(height: 10),
               OutlinedButton.icon(
-                onPressed: _sending ? null : _sendEmail,
+                onPressed: _loaded ? _openEmail : null,
                 icon: const Icon(Icons.mail_outline),
-                label: Text(_lead?.emailSentAt != null ? 'Send by email again' : 'Send by email'),
+                label: const Text('Send by email'),
               ),
-              TextButton.icon(
-                onPressed: _sending ? null : _shareElsewhere,
-                icon: const Icon(Icons.share_outlined),
-                label: const Text('Share to Messenger or elsewhere'),
-              ),
-              const SizedBox(height: 8),
-              ExpansionTile(
-                tilePadding: EdgeInsets.zero,
-                title: const Text('Preview message', style: TextStyle(fontWeight: FontWeight.w600)),
-                children: [
-                  SelectableText(
-                    whatsappMessage(_b, _items, widget.settings.value).body,
-                    style: const TextStyle(color: Brand.ink, height: 1.4),
+              if (_lead.email.isEmpty)
+                const Padding(
+                  padding: EdgeInsets.only(top: 6),
+                  child: Text(
+                    'No email found on their website. You can type one when sending.',
+                    style: TextStyle(color: Brand.muted, fontSize: 12),
                   ),
-                ],
-              ),
+                ),
             ],
           ),
         ),
@@ -364,10 +467,7 @@ class _SectionTitle extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: Text(
-              text,
-              style: const TextStyle(fontFamily: Brand.display, fontWeight: FontWeight.w800, fontSize: 20),
-            ),
+            child: Text(text, style: const TextStyle(fontFamily: Brand.display, fontWeight: FontWeight.w800, fontSize: 20)),
           ),
           if (trailing != null) trailing!,
         ],
@@ -377,19 +477,20 @@ class _SectionTitle extends StatelessWidget {
 }
 
 class _InfoCard extends StatelessWidget {
-  const _InfoCard({required this.business, required this.onOpen});
-  final Business business;
+  const _InfoCard({required this.lead, required this.onOpen});
+  final Lead lead;
   final Future<void> Function(String url) onOpen;
 
   @override
   Widget build(BuildContext context) {
-    final b = business;
+    final b = lead.business;
+    final phone = b.internationalPhone.isNotEmpty ? b.internationalPhone : b.phone;
     final lines = [
-      if (b.category.isNotEmpty) b.category,
+      [if (b.category.isNotEmpty) b.category, if (lead.category.isNotEmpty && lead.category != b.category) lead.category].join(' · '),
       if (b.rating != null) '${b.rating!.toStringAsFixed(1)}★ from ${b.reviewCount} reviews',
       if (b.address.isNotEmpty) b.address,
-      if (b.phone.isNotEmpty) b.phone,
-    ];
+      if (phone.isNotEmpty) phone,
+    ].where((l) => l.isNotEmpty);
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(14),
@@ -406,15 +507,21 @@ class _InfoCard extends StatelessWidget {
               spacing: 8,
               runSpacing: 4,
               children: [
+                if (phone.isNotEmpty)
+                  ActionChip(
+                    avatar: const Icon(Icons.call_outlined, size: 18),
+                    label: const Text('Call'),
+                    onPressed: () => onOpen('tel:${phone.replaceAll(RegExp(r'[^0-9+]'), '')}'),
+                  ),
                 if (b.mapsUrl.isNotEmpty)
                   ActionChip(
                     avatar: const Icon(Icons.map_outlined, size: 18),
                     label: const Text('Google Maps'),
                     onPressed: () => onOpen(b.mapsUrl),
                   ),
-                if (b.hasWebsite)
+                if (b.hasWebsite && socialPlatformOf(b.website) == null)
                   ActionChip(
-                    avatar: const Icon(Icons.open_in_new, size: 18),
+                    avatar: const Icon(Icons.language, size: 18),
                     label: const Text('Website'),
                     onPressed: () => onOpen(b.website),
                   ),
@@ -424,6 +531,262 @@ class _InfoCard extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+IconData socialIcon(String platform) => switch (platform) {
+      'Facebook' => Icons.facebook,
+      'Instagram' => Icons.camera_alt_outlined,
+      'TikTok' => Icons.music_note_outlined,
+      'YouTube' => Icons.smart_display_outlined,
+      'LinkedIn' => Icons.work_outline,
+      'X' => Icons.alternate_email,
+      'WhatsApp' => Icons.chat_outlined,
+      _ => Icons.link,
+    };
+
+class _SocialCard extends StatelessWidget {
+  const _SocialCard({
+    required this.links,
+    required this.checking,
+    required this.onOpen,
+    required this.onRemove,
+    required this.onFind,
+  });
+
+  final Map<String, String> links;
+  final bool checking;
+  final Future<void> Function(String url) onOpen;
+  final void Function(String platform) onRemove;
+  final void Function(String platform, String domain) onFind;
+
+  static const _find = {
+    'Facebook': 'facebook.com',
+    'Instagram': 'instagram.com',
+    'TikTok': 'tiktok.com',
+    'YouTube': 'youtube.com',
+    'LinkedIn': 'linkedin.com',
+  };
+
+  @override
+  Widget build(BuildContext context) {
+    final missing = _find.keys.where((p) => !links.containsKey(p)).toList();
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(4, 6, 4, 12),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (links.isEmpty)
+              Padding(
+                padding: const EdgeInsets.fromLTRB(12, 8, 12, 4),
+                child: Text(
+                  checking ? 'Looking for links on their website…' : 'No social links found yet.',
+                  style: const TextStyle(color: Brand.muted),
+                ),
+              ),
+            for (final e in links.entries)
+              ListTile(
+                dense: true,
+                leading: Icon(socialIcon(e.key), color: Brand.navy),
+                title: Text(e.key, style: const TextStyle(fontWeight: FontWeight.w600)),
+                subtitle: Text(e.value, maxLines: 1, overflow: TextOverflow.ellipsis),
+                onTap: () => onOpen(e.value),
+                trailing: IconButton(
+                  tooltip: 'Remove ${e.key} link',
+                  icon: const Icon(Icons.close, size: 18),
+                  onPressed: () => onRemove(e.key),
+                ),
+              ),
+            if (missing.isNotEmpty) ...[
+              const Padding(
+                padding: EdgeInsets.fromLTRB(12, 8, 12, 6),
+                child: Text('Find them on Google:', style: TextStyle(color: Brand.muted, fontSize: 13)),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                child: Wrap(
+                  spacing: 8,
+                  runSpacing: 4,
+                  children: [
+                    for (final p in missing)
+                      ActionChip(
+                        avatar: Icon(socialIcon(p), size: 16),
+                        label: Text(p),
+                        onPressed: () => onFind(p, _find[p]!),
+                      ),
+                  ],
+                ),
+              ),
+            ],
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _AddLinkDialog extends StatefulWidget {
+  const _AddLinkDialog();
+
+  @override
+  State<_AddLinkDialog> createState() => _AddLinkDialogState();
+}
+
+class _AddLinkDialogState extends State<_AddLinkDialog> {
+  final _url = TextEditingController();
+  String _platform = '';
+
+  @override
+  void dispose() {
+    _url.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: const Text('Add a link'),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          TextField(
+            controller: _url,
+            autofocus: true,
+            keyboardType: TextInputType.url,
+            decoration: const InputDecoration(labelText: 'Profile link', hintText: 'facebook.com/business'),
+            onChanged: (v) => setState(() => _platform = socialPlatformOf(v) ?? ''),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            _platform.isEmpty ? 'Paste a Facebook, Instagram, TikTok, YouTube or LinkedIn link.' : 'Recognised: $_platform',
+            style: const TextStyle(color: Brand.muted, fontSize: 12),
+          ),
+        ],
+      ),
+      actions: [
+        TextButton(onPressed: () => Navigator.of(context).pop(), child: const Text('Cancel')),
+        FilledButton(
+          style: FilledButton.styleFrom(minimumSize: const Size(88, 44)),
+          onPressed: () => Navigator.of(context).pop((_platform, _url.text)),
+          child: const Text('Add'),
+        ),
+      ],
+    );
+  }
+}
+
+class _PipelineCard extends StatelessWidget {
+  const _PipelineCard({
+    required this.lead,
+    required this.notes,
+    required this.onStatus,
+    required this.onPickFollowUp,
+    required this.onClearFollowUp,
+    required this.onNotes,
+  });
+
+  final Lead lead;
+  final TextEditingController notes;
+  final void Function(LeadStatus) onStatus;
+  final VoidCallback onPickFollowUp;
+  final VoidCallback onClearFollowUp;
+  final void Function(String) onNotes;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(14),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Wrap(
+              spacing: 8,
+              runSpacing: 6,
+              children: [
+                for (final s in LeadStatus.values)
+                  ChoiceChip(
+                    avatar: CircleAvatar(backgroundColor: statusColor(s), radius: 5),
+                    label: Text(s.label),
+                    selected: lead.status == s,
+                    onSelected: (_) => onStatus(s),
+                  ),
+              ],
+            ),
+            const SizedBox(height: 8),
+            ListTile(
+              contentPadding: EdgeInsets.zero,
+              leading: const Icon(Icons.event_outlined, color: Brand.navy),
+              title: Text(lead.followUp == null ? 'Set a follow-up date' : 'Follow up on ${formatDay(lead.followUp!)}'),
+              subtitle: lead.followUpDue(DateTime.now())
+                  ? const Text('Due now', style: TextStyle(color: Color(0xFF7A4300), fontWeight: FontWeight.w700))
+                  : null,
+              onTap: onPickFollowUp,
+              trailing: lead.followUp == null
+                  ? const Icon(Icons.chevron_right)
+                  : IconButton(tooltip: 'Clear follow-up', icon: const Icon(Icons.close), onPressed: onClearFollowUp),
+            ),
+            TextField(
+              controller: notes,
+              minLines: 2,
+              maxLines: 6,
+              onChanged: onNotes,
+              decoration: const InputDecoration(labelText: 'Notes', hintText: 'Owner name, what they said, prices…', alignLabelWithHint: true),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _ServicesRow extends StatelessWidget {
+  const _ServicesRow({required this.items, required this.category});
+  final List<AuditItem> items;
+  final BusinessCategory? category;
+
+  @override
+  Widget build(BuildContext context) {
+    final services = recommendedServices(items, category: category);
+    return Container(
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(color: Brand.navy, borderRadius: BorderRadius.circular(18)),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text('Pitch these services', style: TextStyle(color: Brand.mist, fontWeight: FontWeight.w600)),
+          const SizedBox(height: 8),
+          Wrap(
+            spacing: 8,
+            runSpacing: 6,
+            children: [
+              for (final s in services)
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  decoration: BoxDecoration(color: Brand.gold, borderRadius: BorderRadius.circular(999)),
+                  child: Text(s.label, style: const TextStyle(color: Brand.navy, fontWeight: FontWeight.w700, fontSize: 13)),
+                ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _SentLine extends StatelessWidget {
+  const _SentLine({required this.lead});
+  final Lead lead;
+
+  @override
+  Widget build(BuildContext context) {
+    final parts = [
+      'WhatsApp: ${lead.whatsappSentAt == null ? 'not sent' : 'sent ${formatDay(lead.whatsappSentAt!)}'}',
+      'Email: ${lead.emailSentAt == null ? 'not sent' : 'sent ${formatDay(lead.emailSentAt!)}'}',
+    ];
+    return Text(parts.join('   ·   '), style: const TextStyle(color: Brand.muted));
   }
 }
 
