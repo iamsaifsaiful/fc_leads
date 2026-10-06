@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:fc_leads/data/geo.dart';
 import 'package:fc_leads/logic/audit_builder.dart';
 import 'package:fc_leads/main.dart';
 import 'package:fc_leads/models/lead.dart';
@@ -17,9 +18,23 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'fixtures.dart';
 import 'places_api_test.dart' show sampleResponse;
 
+/// Country and city lists without asset loading (which needs real time
+/// in widget tests). geo_test.dart checks the real bundled lists.
+class _FakeGeo extends GeoRepository {
+  @override
+  Future<List<Country>> countries() async => const [
+        Country(code: 'AE', name: 'United Arab Emirates', dialCode: '971'),
+        Country(code: 'BD', name: 'Bangladesh', dialCode: '880'),
+      ];
+
+  @override
+  Future<List<String>> cities(String countryCode) async =>
+      countryCode == 'BD' ? const ['Dhaka', 'Chittagong', 'Khulna'] : const ['Dubai'];
+}
+
 Widget _app({PlacesApi? places}) => FcLeadsApp(
       settings: SettingsController(SettingsStore()),
-      services: AppServices(places: places),
+      services: AppServices(places: places, geo: _FakeGeo()),
     );
 
 /// A tall screen so every section is built without scrolling.
