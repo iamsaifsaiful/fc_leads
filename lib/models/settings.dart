@@ -14,6 +14,12 @@ class AppSettings {
     this.whatsappTemplate = defaultWhatsappTemplate,
     this.emailSubjectTemplate = defaultEmailSubjectTemplate,
     this.emailTemplate = defaultEmailTemplate,
+    this.paymentTemplate = defaultPaymentTemplate,
+    this.paymentInfo = '',
+    this.currency = 'BDT',
+    this.remindersOn = true,
+    this.reminderHour = 10,
+    this.reminderMinute = 0,
   });
 
   /// Google Places API key. Stays on the phone.
@@ -35,6 +41,20 @@ class AppSettings {
   final String emailSubjectTemplate;
   final String emailTemplate;
 
+  /// Payment reminder sent to clients on their due date.
+  final String paymentTemplate;
+
+  /// How clients pay (bKash, bank account…), added to payment reminders.
+  final String paymentInfo;
+
+  /// Default currency for new clients.
+  final String currency;
+
+  /// Phone notifications for follow-ups and payment due dates.
+  final bool remindersOn;
+  final int reminderHour;
+  final int reminderMinute;
+
   bool get hasApiKey => apiKey.trim().isNotEmpty;
 
   AppSettings copyWith({
@@ -49,6 +69,12 @@ class AppSettings {
     String? whatsappTemplate,
     String? emailSubjectTemplate,
     String? emailTemplate,
+    String? paymentTemplate,
+    String? paymentInfo,
+    String? currency,
+    bool? remindersOn,
+    int? reminderHour,
+    int? reminderMinute,
   }) =>
       AppSettings(
         apiKey: apiKey ?? this.apiKey,
@@ -62,5 +88,11 @@ class AppSettings {
         whatsappTemplate: whatsappTemplate ?? this.whatsappTemplate,
         emailSubjectTemplate: emailSubjectTemplate ?? this.emailSubjectTemplate,
         emailTemplate: emailTemplate ?? this.emailTemplate,
+        paymentTemplate: paymentTemplate ?? this.paymentTemplate,
+        paymentInfo: paymentInfo ?? this.paymentInfo,
+        currency: currency ?? this.currency,
+        remindersOn: remindersOn ?? this.remindersOn,
+        reminderHour: reminderHour ?? this.reminderHour,
+        reminderMinute: reminderMinute ?? this.reminderMinute,
       );
 }

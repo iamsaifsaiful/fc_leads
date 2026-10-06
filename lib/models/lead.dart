@@ -72,6 +72,7 @@ class Lead {
   }
 
   Lead copyWith({
+    Business? business,
     List<AuditItem>? items,
     WebsiteReport? website,
     String? email,
@@ -91,7 +92,7 @@ class Lead {
     bool clearMessages = false,
   }) =>
       Lead(
-        business: business,
+        business: business ?? this.business,
         items: items ?? this.items,
         website: website ?? this.website,
         email: email ?? this.email,

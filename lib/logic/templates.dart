@@ -25,6 +25,27 @@ I've attached a one-page summary of what we found. If it's useful, I'd be happy 
 Best regards,
 {signature}''';
 
+const defaultPaymentTemplate = '''Hi {client},
+
+A friendly reminder from {agency}: the monthly fee of {amount} for {services} ({month}) is due on {due_date}.
+
+{payment_info}
+
+Thank you for working with us!
+{my_name}''';
+
+/// Placeholders for the payment reminder.
+const paymentPlaceholders = <String, String>{
+  'client': 'Client name (or contact person)',
+  'amount': 'Monthly fee with currency, e.g. "BDT 15,000"',
+  'services': 'The services you provide them',
+  'month': 'The month being paid for, e.g. "October 2026"',
+  'due_date': 'The due date, e.g. "10 Oct"',
+  'payment_info': 'How to pay (from Settings), e.g. bKash or bank details',
+  'agency': 'Agency name',
+  'my_name': 'Your name from Settings',
+};
+
 /// Every placeholder, with what it becomes. Shown on the Templates screen.
 const placeholders = <String, String>{
   'business': 'The business name',

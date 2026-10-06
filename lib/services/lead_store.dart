@@ -49,6 +49,13 @@ class LeadStore extends ChangeNotifier {
     await _write(leads);
   }
 
+  /// Reads again from storage (pull to refresh).
+  Future<void> reload() async {
+    _cache = null;
+    await all();
+    notifyListeners();
+  }
+
   Future<void> _write(List<Lead> leads) async {
     _cache = leads;
     notifyListeners();

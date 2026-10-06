@@ -8,6 +8,7 @@ import '../logic/messages.dart';
 import '../logic/phone.dart';
 import '../models/audit.dart';
 import '../models/business.dart';
+import '../models/client.dart';
 import '../models/lead.dart';
 import '../services/settings_controller.dart';
 import '../services/share_service.dart';
@@ -15,6 +16,7 @@ import '../theme.dart';
 import '../widgets/audit_graphic.dart';
 import '../widgets/compose_sheets.dart';
 import '../widgets/status_pill.dart';
+import 'client_screen.dart';
 import 'dashboard_screen.dart' show formatDay;
 import 'home_shell.dart';
 
@@ -50,7 +52,7 @@ class _LeadScreenState extends State<LeadScreen> {
   bool _checking = false;
   bool _busy = false;
 
-  Business get _b => widget.business;
+  Business get _b => _lead.business;
   bool get _hasRealWebsite => _b.hasWebsite && socialPlatformOf(_b.website) == null;
   ShareService get _share => widget.services.share;
 
@@ -59,8 +61,8 @@ class _LeadScreenState extends State<LeadScreen> {
     super.initState();
     final seed = widget.seed;
     _lead = Lead(
-      business: _b,
-      items: buildAudit(_b, null),
+      business: widget.business,
+      items: buildAudit(widget.business, null),
       savedAt: DateTime.now(),
       category: seed?.category ?? '',
       countryCode: seed?.countryCode ?? '',
@@ -130,6 +132,46 @@ class _LeadScreenState extends State<LeadScreen> {
   }
 
   Future<void> _save() => widget.services.leads.save(_lead);
+
+  /// Pull to refresh / refresh button: fresh details from Google Maps (when
+  /// a key is set), then check the website again and rebuild the audit.
+  Future<void> _refresh() async {
+    if (_checking) return;
+    final key = widget.settings.value.apiKey;
+    if (key.trim().isNotEmpty) {
+      try {
+        final fresh = await widget.services.places.details(_b.id, apiKey: key);
+        if (!mounted) return;
+        if (fresh.name.isNotEmpty) setState(() => _lead = _lead.copyWith(business: fresh));
+      } catch (e) {
+        _toast('Could not refresh from Google Maps: $e');
+      }
+    }
+    await _check();
+    if (mounted) _toast('Updated');
+  }
+
+  void _makeClient() {
+    final services = recommendedServices(_lead.items, category: categoryByLabel(_lead.category));
+    final now = DateTime.now();
+    openClient(
+      context,
+      draft: Client(
+        id: 'c${now.microsecondsSinceEpoch}',
+        name: _b.name,
+        phone: _phone,
+        email: _lead.email,
+        services: services.map((s) => s.label).toList(),
+        currency: widget.settings.value.currency,
+        startDate: DateTime(now.year, now.month, now.day),
+        billingDay: now.day > 28 ? 28 : now.day,
+        notes: _lead.notes,
+        leadId: _b.id,
+      ),
+      settings: widget.settings,
+      services: widget.services,
+    );
+  }
 
   void _update(Lead next) {
     setState(() => _lead = next);
@@ -347,13 +389,16 @@ class _LeadScreenState extends State<LeadScreen> {
           IconButton(
             tooltip: 'Check again',
             icon: const Icon(Icons.refresh),
-            onPressed: _checking || !_loaded ? null : _check,
+            onPressed: _checking || !_loaded ? null : _refresh,
           ),
         ],
       ),
       body: ListenableBuilder(
         listenable: widget.settings,
-        builder: (context, _) => SingleChildScrollView(
+        builder: (context, _) => RefreshIndicator(
+          onRefresh: _refresh,
+          child: SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
           padding: const EdgeInsets.fromLTRB(16, 4, 16, 32),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -385,6 +430,14 @@ class _LeadScreenState extends State<LeadScreen> {
                   _save();
                 },
               ),
+              if (_lead.status == LeadStatus.won || _lead.status == LeadStatus.interested) ...[
+                const SizedBox(height: 10),
+                OutlinedButton.icon(
+                  onPressed: _makeClient,
+                  icon: const Icon(Icons.handshake_outlined),
+                  label: const Text('Make client'),
+                ),
+              ],
               const SizedBox(height: 20),
               _SectionTitle(
                 'Audit',
@@ -449,6 +502,7 @@ class _LeadScreenState extends State<LeadScreen> {
                 ),
             ],
           ),
+        ),
         ),
       ),
     );

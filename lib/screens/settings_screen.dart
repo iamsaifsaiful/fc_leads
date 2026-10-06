@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../data/geo.dart';
-import '../logic/lead_filter.dart';
 import '../services/settings_controller.dart';
 import '../theme.dart';
 import '../widgets/pickers.dart';
@@ -23,6 +22,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
   final _website = TextEditingController();
   final _whatsapp = TextEditingController();
   final _email = TextEditingController();
+  final _paymentInfo = TextEditingController();
+  final _currency = TextEditingController();
+  bool _remindersOn = true;
+  TimeOfDay _reminderTime = const TimeOfDay(hour: 10, minute: 0);
   bool _filled = false;
   bool _showKey = false;
   int _accent = 0;
@@ -46,6 +49,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
     _whatsapp.text = s.whatsapp;
     _email.text = s.email;
     _accent = s.accent;
+    _paymentInfo.text = s.paymentInfo;
+    _currency.text = s.currency;
+    _remindersOn = s.remindersOn;
+    _reminderTime = TimeOfDay(hour: s.reminderHour, minute: s.reminderMinute);
     final c = await widget.services.geo.country(s.defaultCountry);
     if (mounted) setState(() => _country = c);
   }
@@ -53,7 +60,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   void dispose() {
     widget.settings.removeListener(_fill);
-    for (final c in [_apiKey, _sender, _agency, _website, _whatsapp, _email]) {
+    for (final c in [_apiKey, _sender, _agency, _website, _whatsapp, _email, _paymentInfo, _currency]) {
       c.dispose();
     }
     super.dispose();
@@ -70,7 +77,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
       email: _email.text.trim(),
       accent: _accent,
       defaultCountry: _country?.code,
+      paymentInfo: _paymentInfo.text.trim(),
+      currency: _currency.text.trim().toUpperCase(),
+      remindersOn: _remindersOn,
+      reminderHour: _reminderTime.hour,
+      reminderMinute: _reminderTime.minute,
     ));
+    if (_remindersOn) await widget.services.notifier.requestPermission();
     if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Settings saved')));
   }
@@ -78,18 +91,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Future<void> _pickCountry() async {
     final c = await pickCountry(context, widget.services.geo, selectedCode: _country?.code);
     if (c != null) setState(() => _country = c);
-  }
-
-  Future<void> _exportAll() async {
-    final leads = await widget.services.leads.all();
-    if (leads.isEmpty) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('No leads to export yet')));
-      }
-      return;
-    }
-    final path = await widget.services.renderer.writeExport('fc_leads_all.csv', leadsToCsv(leads));
-    await widget.services.share.shareFile(path: path, mimeType: 'text/csv', subject: 'FC Leads export');
   }
 
   Widget _field(TextEditingController c, String label, {TextInputType? type, String? helper}) {
@@ -149,6 +150,49 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
           ),
           const SizedBox(height: 20),
+          const _Heading('Reminders'),
+          Card(
+            child: Column(
+              children: [
+                SwitchListTile(
+                  title: const Text('Phone notifications'),
+                  subtitle: const Text('On follow-up dates and client payment due dates'),
+                  value: _remindersOn,
+                  onChanged: (v) => setState(() => _remindersOn = v),
+                ),
+                const Divider(height: 1),
+                ListTile(
+                  enabled: _remindersOn,
+                  leading: const Icon(Icons.schedule, color: Brand.navy),
+                  title: const Text('Remind me at'),
+                  subtitle: Text(_reminderTime.format(context)),
+                  trailing: const Icon(Icons.chevron_right),
+                  onTap: () async {
+                    final t = await showTimePicker(context: context, initialTime: _reminderTime);
+                    if (t != null) setState(() => _reminderTime = t);
+                  },
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 20),
+          const _Heading('Client billing'),
+          _field(_currency, 'Default currency', helper: 'For new clients, e.g. BDT or USD.'),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 12),
+            child: TextField(
+              controller: _paymentInfo,
+              minLines: 2,
+              maxLines: 5,
+              decoration: const InputDecoration(
+                labelText: 'How clients pay',
+                hintText: 'e.g. bKash (personal): 01XXXXXXXXX\nBank: …',
+                helperText: 'Added to payment reminder messages as {payment_info}.',
+                alignLabelWithHint: true,
+              ),
+            ),
+          ),
+          const SizedBox(height: 8),
           const _Heading('Google Places API key'),
           Padding(
             padding: const EdgeInsets.only(bottom: 12),
@@ -175,23 +219,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
           const SizedBox(height: 16),
           FilledButton(onPressed: _save, child: const Text('Save')),
-          const SizedBox(height: 28),
-          const _Heading('Your data'),
-          Card(
-            child: ListTile(
-              leading: const Icon(Icons.table_view_outlined, color: Brand.navy),
-              title: const Text('Export all leads (CSV)'),
-              subtitle: const Text('Open in Excel or Google Sheets'),
-              onTap: _exportAll,
-            ),
-          ),
-          const SizedBox(height: 20),
-          const _Heading('About'),
-          const Text(
-            'FC Leads by FansConnector. City data: GeoNames (CC BY 4.0). '
-            'Business data: Google Maps Platform.',
-            style: TextStyle(color: Brand.muted, fontSize: 13, height: 1.4),
-          ),
         ],
       ),
     );

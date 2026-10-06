@@ -5,6 +5,7 @@ import 'package:fc_leads/logic/audit_builder.dart';
 import 'package:fc_leads/main.dart';
 import 'package:fc_leads/models/lead.dart';
 import 'package:fc_leads/screens/home_shell.dart';
+import 'package:fc_leads/services/notifications.dart';
 import 'package:fc_leads/services/places_api.dart';
 import 'package:fc_leads/services/settings_controller.dart';
 import 'package:fc_leads/services/settings_store.dart';
@@ -34,7 +35,7 @@ class _FakeGeo extends GeoRepository {
 
 Widget _app({PlacesApi? places}) => FcLeadsApp(
       settings: SettingsController(SettingsStore()),
-      services: AppServices(places: places, geo: _FakeGeo()),
+      services: AppServices(places: places, geo: _FakeGeo(), notifier: FakeNotifier()),
     );
 
 /// A tall screen so every section is built without scrolling.
@@ -66,7 +67,9 @@ void main() {
     _bigScreen(tester);
     await tester.pumpWidget(_app());
     await tester.pumpAndSettle();
-    await _tab(tester, 'Settings');
+    await _tab(tester, 'More');
+    await tester.tap(find.text('Settings'));
+    await tester.pumpAndSettle();
 
     await tester.enterText(find.widgetWithText(TextField, 'API key'), 'abc123');
     await tester.enterText(find.widgetWithText(TextField, 'Your name'), 'Saiful');
@@ -168,11 +171,55 @@ void main() {
     _bigScreen(tester);
     await tester.pumpWidget(_app());
     await tester.pumpAndSettle();
-    await _tab(tester, 'Templates');
+    await _tab(tester, 'More');
+    await tester.tap(find.text('Message templates'));
+    await tester.pumpAndSettle();
 
     expect(find.text('{business}'), findsOneWidget);
     await tester.tap(find.text('Preview'));
     await tester.pumpAndSettle();
-    expect(find.text('Preview for a sample café'), findsOneWidget);
+    expect(find.text('Preview with sample data'), findsOneWidget);
+    expect(find.text('Payment reminder'), findsOneWidget);
+  });
+
+  testWidgets('add a client with a monthly fee', (tester) async {
+    _bigScreen(tester);
+    await tester.pumpWidget(_app());
+    await tester.pumpAndSettle();
+    await _tab(tester, 'Clients');
+    expect(find.textContaining('No clients yet'), findsOneWidget);
+
+    await tester.tap(find.text('Add client'));
+    await tester.pumpAndSettle();
+    await tester.enterText(find.widgetWithText(TextFormField, 'Business name'), 'Green Leaf Dental');
+    await tester.enterText(find.widgetWithText(TextFormField, 'Monthly fee'), '15000');
+    await tester.tap(find.text('SEO & Growth Support'));
+    await tester.pump();
+    await tester.tap(find.widgetWithText(FilledButton, 'Add client'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Green Leaf Dental'), findsOneWidget);
+    expect(find.text('BDT 15,000'), findsWidgets);
+    expect(find.text('SEO & Growth Support'), findsOneWidget);
+    final prefs = await SharedPreferences.getInstance();
+    expect(prefs.getString('clients.v1'), contains('Green Leaf Dental'));
+  });
+
+  testWidgets('pull to refresh on Leads re-reads saved leads', (tester) async {
+    _bigScreen(tester);
+    await tester.pumpWidget(_app());
+    await tester.pumpAndSettle();
+    await _tab(tester, 'Leads');
+    expect(find.text('0 of 0 leads'), findsOneWidget);
+
+    // Something else saved a lead (e.g. another screen); refresh shows it.
+    SharedPreferences.setMockInitialValues({
+      'leads.v1': jsonEncode([
+        Lead(business: noWebsite, items: buildAudit(noWebsite, null), savedAt: DateTime.now()).toJson(),
+      ]),
+    });
+    await tester.tap(find.byTooltip('Refresh').last);
+    await tester.pumpAndSettle();
+    expect(find.text('1 of 1 leads'), findsOneWidget);
   });
 }

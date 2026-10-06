@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../logic/billing.dart';
 import '../logic/lead_filter.dart';
+import '../models/client.dart';
 import '../models/lead.dart';
 import '../services/settings_controller.dart';
 import '../theme.dart';
@@ -15,6 +17,7 @@ class DashboardScreen extends StatefulWidget {
     required this.services,
     required this.onSearch,
     required this.onLeads,
+    required this.onClients,
     required this.onSettings,
   });
 
@@ -22,6 +25,7 @@ class DashboardScreen extends StatefulWidget {
   final AppServices services;
   final VoidCallback onSearch;
   final void Function(LeadsPreset preset) onLeads;
+  final VoidCallback onClients;
   final VoidCallback onSettings;
 
   @override
@@ -30,29 +34,46 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
   List<Lead> _leads = const [];
+  List<Client> _clients = const [];
 
   @override
   void initState() {
     super.initState();
     widget.services.leads.addListener(_reload);
+    widget.services.clients.addListener(_reload);
     _reload();
   }
 
   @override
   void dispose() {
     widget.services.leads.removeListener(_reload);
+    widget.services.clients.removeListener(_reload);
     super.dispose();
   }
 
   Future<void> _reload() async {
     final leads = await widget.services.leads.all();
-    if (mounted) setState(() => _leads = leads);
+    final clients = await widget.services.clients.all();
+    if (mounted) {
+      setState(() {
+        _leads = leads;
+        _clients = clients;
+      });
+    }
+  }
+
+  /// Pull to refresh: re-read everything from storage.
+  Future<void> _refresh() async {
+    await widget.services.leads.reload();
+    await widget.services.clients.reload();
+    await _reload();
   }
 
   @override
   Widget build(BuildContext context) {
     final stats = LeadStats(_leads);
     final now = DateTime.now();
+    final money = ClientStats(_clients, now: now);
     final due = _leads.where((l) => l.followUpDue(now)).toList()
       ..sort((a, b) => a.followUp!.compareTo(b.followUp!));
 
@@ -65,8 +86,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
             return Text(name.isEmpty ? 'FC Leads' : 'Hi, ${name.split(' ').first}');
           },
         ),
+        actions: [
+          IconButton(tooltip: 'Refresh', icon: const Icon(Icons.refresh), onPressed: _refresh),
+        ],
       ),
-      body: ListView(
+      body: RefreshIndicator(
+        onRefresh: _refresh,
+        child: ListView(
+        physics: const AlwaysScrollableScrollPhysics(),
         padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
         children: [
           ListenableBuilder(
@@ -110,6 +137,41 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 onTap: () => widget.onLeads(const LeadFilter(followUpDue: true, sort: LeadSort.followUp)),
               ),
             ],
+          ),
+          const SizedBox(height: 20),
+          const _Title('Clients'),
+          Card(
+            clipBehavior: Clip.antiAlias,
+            child: InkWell(
+              onTap: widget.onClients,
+              child: Padding(
+                padding: const EdgeInsets.all(16),
+                child: _clients.isEmpty
+                    ? const Text(
+                        'No clients yet. Add your current clients to track services, monthly fees and payments.',
+                        style: TextStyle(color: Brand.muted),
+                      )
+                    : Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            '${formatTotals(money.monthly)} / month',
+                            style: const TextStyle(fontFamily: Brand.display, fontWeight: FontWeight.w800, fontSize: 22),
+                          ),
+                          Text('${money.active} active clients', style: const TextStyle(color: Brand.muted)),
+                          const SizedBox(height: 8),
+                          Text('Collected this month: ${formatTotals(money.collectedThisMonth)}'),
+                          Text(
+                            'Payments due in 7 days: ${money.dueThisWeek} · overdue: ${money.overdue}',
+                            style: TextStyle(
+                              color: money.overdue > 0 ? const Color(0xFF8A2412) : Brand.ink,
+                              fontWeight: money.overdue > 0 ? FontWeight.w700 : FontWeight.w400,
+                            ),
+                          ),
+                        ],
+                      ),
+              ),
+            ),
           ),
           const SizedBox(height: 20),
           const _Title('Pipeline'),
@@ -181,6 +243,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ),
           ),
         ],
+      ),
       ),
     );
   }

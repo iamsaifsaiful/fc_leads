@@ -21,6 +21,12 @@ class SettingsStore {
       whatsappTemplate: s('whatsappTemplate', d.whatsappTemplate),
       emailSubjectTemplate: s('emailSubjectTemplate', d.emailSubjectTemplate),
       emailTemplate: s('emailTemplate', d.emailTemplate),
+      paymentTemplate: s('paymentTemplate', d.paymentTemplate),
+      paymentInfo: s('paymentInfo', d.paymentInfo),
+      currency: s('currency', d.currency),
+      remindersOn: p.getBool('${_p}remindersOn') ?? d.remindersOn,
+      reminderHour: p.getInt('${_p}reminderHour') ?? d.reminderHour,
+      reminderMinute: p.getInt('${_p}reminderMinute') ?? d.reminderMinute,
     );
   }
 
@@ -37,5 +43,11 @@ class SettingsStore {
     await p.setString('${_p}whatsappTemplate', s.whatsappTemplate);
     await p.setString('${_p}emailSubjectTemplate', s.emailSubjectTemplate);
     await p.setString('${_p}emailTemplate', s.emailTemplate);
+    await p.setString('${_p}paymentTemplate', s.paymentTemplate);
+    await p.setString('${_p}paymentInfo', s.paymentInfo);
+    await p.setString('${_p}currency', s.currency.trim().isEmpty ? 'BDT' : s.currency.trim());
+    await p.setBool('${_p}remindersOn', s.remindersOn);
+    await p.setInt('${_p}reminderHour', s.reminderHour);
+    await p.setInt('${_p}reminderMinute', s.reminderMinute);
   }
 }

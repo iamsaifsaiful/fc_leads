@@ -68,6 +68,43 @@ class PlacesApi {
     return parseResponse(response.statusCode, response.body);
   }
 
+  /// Fresh details for one place (rating, reviews, phone, website…).
+  Future<Business> details(String placeId, {required String apiKey}) async {
+    if (apiKey.trim().isEmpty) {
+      throw PlacesException('Add your Google Places API key in Settings first.');
+    }
+    final http.Response response;
+    try {
+      response = await _client.get(
+        Uri.parse('https://places.googleapis.com/v1/places/${Uri.encodeComponent(placeId)}'),
+        headers: {
+          'X-Goog-Api-Key': apiKey.trim(),
+          'X-Goog-FieldMask': fieldMask
+              .split(',')
+              .where((f) => f.startsWith('places.'))
+              .map((f) => f.substring('places.'.length))
+              .join(','),
+        },
+      ).timeout(const Duration(seconds: 20));
+    } catch (_) {
+      throw PlacesException('Could not reach Google. Check the internet connection.');
+    }
+    return parseDetails(response.statusCode, response.body);
+  }
+
+  static Business parseDetails(int statusCode, String body) {
+    if (statusCode != 200) {
+      // Reuse the error messages of the search parser.
+      parseResponse(statusCode, body);
+      throw PlacesException('Google sent an unexpected reply (HTTP $statusCode).');
+    }
+    try {
+      return Business.fromPlacesJson(Map<String, dynamic>.from(jsonDecode(body) as Map));
+    } catch (_) {
+      throw PlacesException('Google sent an unexpected reply.');
+    }
+  }
+
   /// Split out so tests can feed it saved responses.
   static PlacesPage parseResponse(int statusCode, String body) {
     Map<String, dynamic> json;

@@ -164,6 +164,13 @@ class _SearchScreenState extends State<SearchScreen> {
     }
   }
 
+  /// Pull to refresh: run the last search again for fresh results.
+  Future<void> _refresh() async {
+    await widget.services.leads.reload();
+    final last = _resultsFor;
+    if (last != null) await _search(spec: last);
+  }
+
   void _useRecent(SearchSpec s) {
     setState(() {
       _freeMode = s.isFree;
@@ -229,8 +236,17 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     final visible = _visible;
     return Scaffold(
-      appBar: AppBar(title: const Text('Find clients')),
-      body: ListView(
+      appBar: AppBar(
+        title: const Text('Find clients'),
+        actions: [
+          if (_resultsFor != null)
+            IconButton(tooltip: 'Refresh results', icon: const Icon(Icons.refresh), onPressed: _refresh),
+        ],
+      ),
+      body: RefreshIndicator(
+        onRefresh: _refresh,
+        child: ListView(
+        physics: const AlwaysScrollableScrollPhysics(),
         padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
         children: [
           ListenableBuilder(
@@ -436,6 +452,7 @@ class _SearchScreenState extends State<SearchScreen> {
               ),
             ),
         ],
+      ),
       ),
     );
   }

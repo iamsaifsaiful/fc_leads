@@ -135,6 +135,11 @@ class _LeadsScreenState extends State<LeadsScreen> {
             itemBuilder: (_) => [for (final s in LeadSort.values) PopupMenuItem(value: s, child: Text(s.label))],
           ),
           IconButton(
+            tooltip: 'Refresh',
+            icon: const Icon(Icons.refresh),
+            onPressed: () => widget.services.leads.reload(),
+          ),
+          IconButton(
             tooltip: 'Export as CSV',
             icon: const Icon(Icons.ios_share),
             onPressed: shown.isEmpty ? null : () => _export(shown),
@@ -213,11 +218,21 @@ class _LeadsScreenState extends State<LeadsScreen> {
                   ),
                 ),
                 Expanded(
-                  child: all.isEmpty
-                      ? const _Empty(text: 'Businesses you open from Search are saved here.')
-                      : shown.isEmpty
-                          ? const _Empty(text: 'No leads match these filters.')
+                  child: RefreshIndicator(
+                    onRefresh: () => widget.services.leads.reload(),
+                    child: shown.isEmpty
+                      ? ListView(
+                          physics: const AlwaysScrollableScrollPhysics(),
+                          children: [
+                            _Empty(
+                              text: all.isEmpty
+                                  ? 'Businesses you open from Search are saved here.'
+                                  : 'No leads match these filters.',
+                            ),
+                          ],
+                        )
                           : ListView.separated(
+                              physics: const AlwaysScrollableScrollPhysics(),
                               padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
                               itemCount: shown.length,
                               separatorBuilder: (_, __) => const SizedBox(height: 10),
@@ -240,6 +255,7 @@ class _LeadsScreenState extends State<LeadsScreen> {
                                 );
                               },
                             ),
+                  ),
                 ),
               ],
             ),

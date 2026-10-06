@@ -1,6 +1,8 @@
 import '../data/categories.dart';
 import '../data/services.dart';
 import '../models/audit.dart';
+import '../models/client.dart';
+import 'billing.dart';
 import '../models/business.dart';
 import '../models/settings.dart';
 import 'templates.dart';
@@ -149,4 +151,24 @@ OutreachMessage emailMessage(
     subject: renderTemplate(s.emailSubjectTemplate, v),
     body: renderTemplate(s.emailTemplate, v),
   );
+}
+
+/// Payment reminder for a client, from the payment template.
+String paymentMessage(Client c, Billing b, AppSettings s) {
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  final agency = s.agencyName.trim().isEmpty ? 'FansConnector' : s.agencyName.trim();
+  final owed = b.unpaidMonths.length > 1 ? c.monthlyFee * b.unpaidMonths.length : c.monthlyFee;
+  final values = {
+    'client': c.contactPerson.trim().isNotEmpty ? c.contactPerson.trim() : c.name,
+    'amount': formatMoney(owed, c.currency),
+    'services': c.services.isEmpty ? 'our services' : _joinAnd(c.services),
+    'month': b.unpaidMonths.length > 1
+        ? b.unpaidMonths.map(monthLabel).join(', ')
+        : monthLabel(b.month),
+    'due_date': '${b.dueDate.day} ${months[b.dueDate.month - 1]}',
+    'payment_info': s.paymentInfo.trim(),
+    'agency': agency,
+    'my_name': s.senderName.trim().isEmpty ? agency : s.senderName.trim(),
+  };
+  return renderTemplate(s.paymentTemplate, values);
 }

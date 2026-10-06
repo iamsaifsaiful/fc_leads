@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 import '../logic/audit_builder.dart';
+import '../logic/billing.dart';
 import '../logic/messages.dart';
 import '../logic/templates.dart';
 import '../models/business.dart';
+import '../models/client.dart';
 import '../services/settings_controller.dart';
 import '../theme.dart';
 
@@ -20,6 +22,7 @@ class _TemplatesScreenState extends State<TemplatesScreen> {
   final _wa = TextEditingController();
   final _subject = TextEditingController();
   final _email = TextEditingController();
+  final _payment = TextEditingController();
   TextEditingController? _focused;
   bool _filled = false;
   bool _dirty = false;
@@ -44,6 +47,7 @@ class _TemplatesScreenState extends State<TemplatesScreen> {
     _wa.text = s.whatsappTemplate;
     _subject.text = s.emailSubjectTemplate;
     _email.text = s.emailTemplate;
+    _payment.text = s.paymentTemplate;
     _filled = true;
     if (mounted) setState(() {});
   }
@@ -54,6 +58,7 @@ class _TemplatesScreenState extends State<TemplatesScreen> {
     _wa.dispose();
     _subject.dispose();
     _email.dispose();
+    _payment.dispose();
     super.dispose();
   }
 
@@ -63,6 +68,7 @@ class _TemplatesScreenState extends State<TemplatesScreen> {
       whatsappTemplate: _wa.text,
       emailSubjectTemplate: _subject.text,
       emailTemplate: _email.text,
+      paymentTemplate: _payment.text,
     ));
     if (!mounted) return;
     setState(() => _dirty = false);
@@ -74,6 +80,7 @@ class _TemplatesScreenState extends State<TemplatesScreen> {
       _wa.text = defaultWhatsappTemplate;
       _subject.text = defaultEmailSubjectTemplate;
       _email.text = defaultEmailTemplate;
+      _payment.text = defaultPaymentTemplate;
       _dirty = true;
     });
   }
@@ -112,7 +119,18 @@ class _TemplatesScreenState extends State<TemplatesScreen> {
       whatsappTemplate: _wa.text,
       emailSubjectTemplate: _subject.text,
       emailTemplate: _email.text,
+      paymentTemplate: _payment.text,
     );
+    final client = Client(
+      id: 'sample',
+      name: 'Green Leaf Dental',
+      contactPerson: 'Dr. Karim',
+      services: const ['Website Design', 'SEO & Growth Support'],
+      monthlyFee: 15000,
+      startDate: DateTime(DateTime.now().year, 1, 1),
+      billingDay: 10,
+    );
+    final pay = paymentMessage(client, billingFor(client, DateTime.now()), s);
     final items = buildAudit(_sample, null);
     final wa = whatsappMessage(_sample, items, s, city: 'Dhaka', category: 'Cafes & coffee shops');
     final em = emailMessage(_sample, items, s, city: 'Dhaka', category: 'Cafes & coffee shops');
@@ -127,7 +145,7 @@ class _TemplatesScreenState extends State<TemplatesScreen> {
           controller: controller,
           padding: const EdgeInsets.fromLTRB(20, 0, 20, 24),
           children: [
-            const Text('Preview for a sample café', style: TextStyle(fontFamily: Brand.display, fontWeight: FontWeight.w800, fontSize: 20)),
+            const Text('Preview with sample data', style: TextStyle(fontFamily: Brand.display, fontWeight: FontWeight.w800, fontSize: 20)),
             const SizedBox(height: 12),
             const Text('WhatsApp', style: TextStyle(fontWeight: FontWeight.w700)),
             const SizedBox(height: 6),
@@ -136,6 +154,10 @@ class _TemplatesScreenState extends State<TemplatesScreen> {
             const Text('Email', style: TextStyle(fontWeight: FontWeight.w700)),
             const SizedBox(height: 6),
             _Bubble(text: 'Subject: ${em.subject}\n\n${em.body}'),
+            const SizedBox(height: 16),
+            const Text('Payment reminder', style: TextStyle(fontWeight: FontWeight.w700)),
+            const SizedBox(height: 6),
+            _Bubble(text: pay),
           ],
         ),
       ),
@@ -183,6 +205,22 @@ class _TemplatesScreenState extends State<TemplatesScreen> {
           _field(_subject, 'Email subject'),
           const SizedBox(height: 14),
           _field(_email, 'Email message', minLines: 8, maxLines: 20),
+          const SizedBox(height: 22),
+          const Text('Payment reminder for clients', style: TextStyle(fontFamily: Brand.display, fontWeight: FontWeight.w800, fontSize: 18)),
+          const SizedBox(height: 6),
+          Wrap(
+            spacing: 6,
+            runSpacing: 6,
+            children: [
+              for (final e in paymentPlaceholders.entries)
+                Tooltip(
+                  message: e.value,
+                  child: ActionChip(label: Text('{${e.key}}'), onPressed: () => _insert(e.key)),
+                ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          _field(_payment, 'Payment reminder message', minLines: 6, maxLines: 16),
           const SizedBox(height: 16),
           Row(
             children: [
