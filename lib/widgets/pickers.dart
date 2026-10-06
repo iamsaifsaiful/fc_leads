@@ -33,7 +33,7 @@ class SearchPickerPage<T> extends StatefulWidget {
   final Future<List<PickerItem<T>>> Function() load;
   final T? selected;
 
-  /// When given, typing shows a "Use '<text>'" row that returns customValue(text).
+  /// When given, typing shows a "Use 'text'" row that returns `customValue(text)`.
   final String Function(String text)? customLabel;
   final T Function(String text)? customValue;
 

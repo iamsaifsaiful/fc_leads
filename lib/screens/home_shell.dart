@@ -67,7 +67,7 @@ class HomeShell extends StatefulWidget {
 }
 
 class _HomeShellState extends State<HomeShell> {
-  static const home = 0, search = 1, leads = 2, templates = 3, settingsTab = 4;
+  static const home = 0, search = 1, leads = 2, settingsTab = 4;
   int _tab = home;
 
   /// Filter the Leads tab should open with, set from the dashboard.
