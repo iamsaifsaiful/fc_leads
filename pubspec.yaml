@@ -1,0 +1,43 @@
+name: fc_leads
+description: Find local businesses on Google Maps, audit their online presence and send them a personalised graphic by WhatsApp or email.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.6.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.2.2
+  path_provider: ^2.1.4
+  shared_preferences: ^2.3.0
+  url_launcher: ^6.3.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  fonts:
+    - family: Bricolage
+      fonts:
+        - asset: assets/fonts/BricolageGrotesque_600SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/BricolageGrotesque_700Bold.ttf
+          weight: 700
+        - asset: assets/fonts/BricolageGrotesque_800ExtraBold.ttf
+          weight: 800
+    - family: Instrument
+      fonts:
+        - asset: assets/fonts/InstrumentSans_400Regular.ttf
+          weight: 400
+        - asset: assets/fonts/InstrumentSans_500Medium.ttf
+          weight: 500
+        - asset: assets/fonts/InstrumentSans_600SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/InstrumentSans_700Bold.ttf
+          weight: 700
