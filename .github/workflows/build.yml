@@ -27,9 +27,21 @@ jobs:
         run: bash tool/setup_platforms.sh
 
       - run: flutter pub get
-      - run: flutter analyze --no-fatal-infos
-      - run: flutter test
-      - run: flutter build apk --release
+
+      - name: Analyze
+        run: |
+          set -o pipefail
+          flutter analyze --no-fatal-infos 2>&1 | tee analyze.log || { bash tool/annotate_failures.sh analyze.log "Analyze failed"; exit 1; }
+
+      - name: Test
+        run: |
+          set -o pipefail
+          flutter test --reporter expanded 2>&1 | tee test.log || { bash tool/annotate_failures.sh test.log "Tests failed"; exit 1; }
+
+      - name: Build APK
+        run: |
+          set -o pipefail
+          flutter build apk --release 2>&1 | tee build.log || { bash tool/annotate_failures.sh build.log "Build failed"; exit 1; }
 
       - uses: actions/upload-artifact@v4
         with:
