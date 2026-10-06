@@ -36,7 +36,12 @@ void main() {
     await tester.pumpAndSettle();
 
     await tester.enterText(find.widgetWithText(TextField, 'API key'), 'abc123');
-    await tester.ensureVisible(find.widgetWithText(TextField, 'Your name'));
+    // The list builds lazily, so scroll until the field exists.
+    await tester.scrollUntilVisible(
+      find.widgetWithText(TextField, 'Your name'),
+      200,
+      scrollable: find.descendant(of: find.byType(ListView), matching: find.byType(Scrollable)).first,
+    );
     await tester.pumpAndSettle();
     await tester.enterText(find.widgetWithText(TextField, 'Your name'), 'Saiful');
     await tester.ensureVisible(find.widgetWithText(FilledButton, 'Save'));
@@ -106,7 +111,7 @@ void main() {
     await tester.pumpAndSettle();
     await tester.tap(find.text('Social media').first);
     await tester.pumpAndSettle();
-    await tester.tap(find.widgetWithText(ListTile, 'Inactive'));
+    await tester.tap(find.widgetWithText(ListTile, 'Inactive').first);
     await tester.pumpAndSettle();
 
     // Shown in the audit list and on the graphic.
