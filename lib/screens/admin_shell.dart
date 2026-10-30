@@ -303,14 +303,13 @@ class _ReportScreenState extends State<ReportScreen> {
   @override
   Widget build(BuildContext context) {
     final r = _report;
-    final user = widget.services.session.user;
     return Scaffold(
       appBar: AppBar(
-        title: Column(
+        title: const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('ADMIN', style: TextStyle(fontSize: 11.5, letterSpacing: 1.2, fontWeight: FontWeight.w800, color: Brand.goldDark)),
-            const Text('Team report'),
+            Text('ADMIN', style: TextStyle(fontSize: 11.5, letterSpacing: 1.2, fontWeight: FontWeight.w800, color: Brand.goldDark)),
+            Text('Team report'),
           ],
         ),
         toolbarHeight: 64,
