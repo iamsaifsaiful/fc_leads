@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:fc_leads/services/places_api.dart';
+import 'package:fc_leads/services/server.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
@@ -37,7 +38,7 @@ const sampleResponse = {
 
 void main() {
   test('parses businesses and drops permanently closed ones', () {
-    final page = PlacesApi.parseResponse(200, jsonEncode(sampleResponse));
+    final page = PlacesApi.parsePage(sampleResponse);
     expect(page.businesses.map((b) => b.name), ['Rahim Tea House', 'Green Leaf Dental']);
     final first = page.businesses.first;
     expect(first.category, 'Cafe');
@@ -47,30 +48,42 @@ void main() {
     expect(page.nextPageToken, 'next-1');
   });
 
-  test('explains a refused key', () {
-    final body = jsonEncode({
-      'error': {'code': 403, 'message': 'API not enabled', 'status': 'PERMISSION_DENIED'},
-    });
-    expect(
-      () => PlacesApi.parseResponse(403, body),
-      throwsA(isA<PlacesException>().having((e) => e.message, 'message', contains('Places API (New)'))),
-    );
-  });
-
-  test('sends the key, field mask and query', () async {
+  test('searches through the agency server with the session token', () async {
     late http.Request sent;
-    final api = PlacesApi(client: MockClient((request) async {
+    final client = ApiClient(client: MockClient((request) async {
       sent = request;
       return http.Response(jsonEncode(sampleResponse), 200);
-    }));
-    final page = await api.search('cafes in Dhanmondi', apiKey: 'KEY');
-    expect(sent.headers['X-Goog-Api-Key'], 'KEY');
-    expect(sent.headers['X-Goog-FieldMask'], contains('places.websiteUri'));
+    }))
+      ..token = 'T0K';
+    final page = await PlacesApi(client).search('cafes in Dhanmondi', regionCode: 'bd');
+    expect(sent.url.toString(), 'https://fansconnector.agency/wp-json/fcleads/v1/places/search');
+    expect(sent.headers['X-FCL-Token'], 'T0K');
+    expect(sent.headers.containsKey('X-Goog-Api-Key'), isFalse);
     expect(jsonDecode(sent.body)['textQuery'], 'cafes in Dhanmondi');
+    expect(jsonDecode(sent.body)['regionCode'], 'bd');
     expect(page.businesses, hasLength(2));
   });
 
-  test('asks for a key before calling Google', () {
-    expect(() => PlacesApi().search('x', apiKey: ''), throwsA(isA<PlacesException>()));
+  test('shows the server message when search is not set up', () {
+    final client = ApiClient(client: MockClient((_) async => http.Response(
+          jsonEncode({'code': 'fcl_no_key', 'message': 'Search is not set up yet.'}),
+          503,
+        )));
+    expect(
+      () => PlacesApi(client).search('x'),
+      throwsA(isA<PlacesException>().having((e) => e.message, 'message', 'Search is not set up yet.')),
+    );
+  });
+
+  test('falls back to ?rest_route when pretty links are off', () async {
+    final urls = <Uri>[];
+    final client = ApiClient(client: MockClient((r) async {
+      urls.add(r.url);
+      if (r.url.path.startsWith('/wp-json')) return http.Response('', 404);
+      return http.Response(jsonEncode(sampleResponse), 200);
+    }));
+    final page = await PlacesApi(client).search('x');
+    expect(page.businesses, hasLength(2));
+    expect(urls.last.queryParameters['rest_route'], '/fcleads/v1/places/search');
   });
 }

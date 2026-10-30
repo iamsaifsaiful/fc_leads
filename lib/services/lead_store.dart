@@ -5,11 +5,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/lead.dart';
 
-/// Saved leads, newest first, kept on the phone. Screens listen to it and
-/// refresh when a lead is saved or removed.
+/// Saved leads, newest first, kept on the phone and copied to the server.
+/// Screens listen to it and refresh when a lead is saved or removed.
 class LeadStore extends ChangeNotifier {
   static const _key = 'leads.v1';
   List<Lead>? _cache;
+
+  /// Set by the sync service: called after a local change.
+  void Function(Lead lead)? onSaved;
+  void Function(String placeId)? onRemoved;
 
   Future<List<Lead>> all() async {
     if (_cache != null) return List.of(_cache!);
@@ -38,16 +42,23 @@ class LeadStore extends ChangeNotifier {
     return null;
   }
 
-  Future<void> save(Lead lead) async {
+  /// [sync] false is for leads that came from the server.
+  Future<void> save(Lead lead, {bool sync = true}) async {
     final leads = (await all()).where((l) => l.business.id != lead.business.id).toList()
-      ..insert(0, lead);
+      ..add(lead)
+      ..sort((a, b) => b.savedAt.compareTo(a.savedAt));
     await _write(leads);
+    if (sync) onSaved?.call(lead);
   }
 
   Future<void> remove(String businessId) async {
     final leads = (await all()).where((l) => l.business.id != businessId).toList();
     await _write(leads);
+    onRemoved?.call(businessId);
   }
+
+  /// Another person signed in on this phone.
+  Future<void> clearAll() => _write([]);
 
   /// Reads again from storage (pull to refresh).
   Future<void> reload() async {

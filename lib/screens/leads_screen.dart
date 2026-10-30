@@ -307,7 +307,7 @@ class _LeadTile extends StatelessWidget {
                       lead.business.name,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(fontFamily: Brand.display, fontWeight: FontWeight.w700, fontSize: 17),
+                      style: const TextStyle(fontFamily: Brand.ui, fontWeight: FontWeight.w700, fontSize: 17),
                     ),
                   ),
                   const SizedBox(width: 8),
@@ -398,7 +398,7 @@ class _FilterSheetState extends State<_FilterSheet> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Text('Filters', style: TextStyle(fontFamily: Brand.display, fontWeight: FontWeight.w800, fontSize: 20)),
+            const Text('Filters', style: TextStyle(fontFamily: Brand.ui, fontWeight: FontWeight.w800, fontSize: 20)),
             _label('Contact'),
             Wrap(
               spacing: 8,

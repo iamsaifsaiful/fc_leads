@@ -78,7 +78,7 @@ class _WhatsAppSheetState extends State<WhatsAppSheet> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Text('Send on WhatsApp', style: TextStyle(fontFamily: Brand.display, fontWeight: FontWeight.w800, fontSize: 20)),
+            const Text('Send on WhatsApp', style: TextStyle(fontFamily: Brand.ui, fontWeight: FontWeight.w800, fontSize: 20)),
             const SizedBox(height: 6),
             const Text(
               'WhatsApp does not let any app press Send for you. Each step opens their chat: '
@@ -227,7 +227,7 @@ class _EmailSheetState extends State<EmailSheet> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Text('Send by email', style: TextStyle(fontFamily: Brand.display, fontWeight: FontWeight.w800, fontSize: 20)),
+            const Text('Send by email', style: TextStyle(fontFamily: Brand.ui, fontWeight: FontWeight.w800, fontSize: 20)),
             const SizedBox(height: 6),
             const Text(
               'Opens your email app with everything filled in and the graphic attached. Tap Send there.',

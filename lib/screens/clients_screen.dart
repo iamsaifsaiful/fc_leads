@@ -221,7 +221,7 @@ class _Summary extends StatelessWidget {
           const SizedBox(height: 2),
           Text(
             formatTotals(stats.monthly),
-            style: const TextStyle(fontFamily: Brand.display, fontWeight: FontWeight.w800, fontSize: 28, color: Brand.cream),
+            style: const TextStyle(fontFamily: Brand.ui, fontWeight: FontWeight.w800, fontSize: 28, color: Brand.cream),
           ),
           Text('${stats.active} active clients', style: const TextStyle(color: Brand.mist)),
           const SizedBox(height: 8),
@@ -305,7 +305,7 @@ class _ClientTile extends StatelessWidget {
                       c.name,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(fontFamily: Brand.display, fontWeight: FontWeight.w700, fontSize: 17),
+                      style: const TextStyle(fontFamily: Brand.ui, fontWeight: FontWeight.w700, fontSize: 17),
                     ),
                   ),
                   const SizedBox(width: 8),

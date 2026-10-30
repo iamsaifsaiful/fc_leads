@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 import '../data/geo.dart';
 import '../models/business.dart';
@@ -7,17 +8,23 @@ import '../services/client_store.dart';
 import '../services/graphic_renderer.dart';
 import '../services/lead_store.dart';
 import '../services/notifications.dart';
+import '../services/admin_api.dart';
 import '../services/places_api.dart';
 import '../services/reminder_sync.dart';
 import '../services/search_history.dart';
+import '../services/server.dart';
+import '../services/session.dart';
 import '../services/settings_controller.dart';
 import '../services/share_service.dart';
+import '../services/sync.dart';
 import '../services/website_checker.dart';
 import 'client_screen.dart';
+import 'admin_shell.dart';
 import 'clients_screen.dart';
 import 'dashboard_screen.dart';
 import 'lead_screen.dart';
 import 'leads_screen.dart';
+import 'login_screen.dart';
 import 'more_screen.dart';
 import 'search_screen.dart';
 import 'settings_screen.dart';
@@ -25,7 +32,7 @@ import 'settings_screen.dart';
 /// Everything that talks to the network, the phone or storage.
 class AppServices {
   AppServices({
-    PlacesApi? places,
+    http.Client? httpClient,
     WebsiteChecker? checker,
     LeadStore? leads,
     ClientStore? clients,
@@ -34,7 +41,7 @@ class AppServices {
     GeoRepository? geo,
     SearchHistory? history,
     Notifier? notifier,
-  })  : places = places ?? PlacesApi(),
+  })  : api = ApiClient(client: httpClient),
         checker = checker ?? WebsiteChecker(),
         leads = leads ?? LeadStore(),
         clients = clients ?? ClientStore(),
@@ -42,9 +49,19 @@ class AppServices {
         renderer = renderer ?? GraphicRenderer(),
         geo = geo ?? GeoRepository(),
         history = history ?? SearchHistory(),
-        notifier = notifier ?? NotificationService();
+        notifier = notifier ?? NotificationService() {
+    places = PlacesApi(api);
+    admin = AdminApi(api);
+    session = SessionController(api);
+    sync = SyncService(api, this.leads);
+  }
 
-  final PlacesApi places;
+  /// The agency's server (fansconnector.agency).
+  final ApiClient api;
+  late final PlacesApi places;
+  late final AdminApi admin;
+  late final SessionController session;
+  late final SyncService sync;
   final WebsiteChecker checker;
   final LeadStore leads;
   final ClientStore clients;
@@ -100,7 +117,7 @@ class _HomeShellState extends State<HomeShell> {
       settings: widget.settings,
     );
     widget.services.notifier.tapped.addListener(_onTap);
-    widget.settings.load().then((_) => _reminders.start()).then((_) => _onTap());
+    _reminders.start().then((_) => _onTap());
   }
 
   @override
@@ -180,5 +197,84 @@ class _HomeShellState extends State<HomeShell> {
         ],
       ),
     );
+  }
+}
+
+/// Decides what to show: sign-in, the team app or the admin app.
+class AppRoot extends StatefulWidget {
+  const AppRoot({super.key, required this.settings, required this.services});
+
+  final SettingsController settings;
+  final AppServices services;
+
+  @override
+  State<AppRoot> createState() => _AppRootState();
+}
+
+class _AppRootState extends State<AppRoot> with WidgetsBindingObserver {
+  int? _startedFor;
+
+  SessionController get _session => widget.services.session;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    _session.addListener(_changed);
+    widget.settings.load().then((_) => _session.load());
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    _session.removeListener(_changed);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    // Send waiting work whenever the app comes back to the front.
+    if (state == AppLifecycleState.resumed && _session.signedIn) widget.services.sync.flush();
+  }
+
+  /// After sign-in: start syncing and use the agency details set on the website.
+  void _changed() {
+    final user = _session.user;
+    if (_session.signedIn && user != null && _startedFor != user.id) {
+      _startedFor = user.id;
+      widget.services.sync.startFor(user.id);
+    }
+    if (!_session.signedIn) _startedFor = null;
+    final c = _session.config;
+    final s = widget.settings.value;
+    if (_session.signedIn && widget.settings.loaded) {
+      final next = s.copyWith(
+        agencyName: c.agencyName.isEmpty ? null : c.agencyName,
+        agencyWebsite: c.agencyWebsite.isEmpty ? null : c.agencyWebsite,
+        whatsapp: c.agencyWhatsapp.isEmpty ? null : c.agencyWhatsapp,
+        email: c.agencyEmail.isEmpty ? null : c.agencyEmail,
+        senderName: s.senderName.isEmpty && user != null ? user.name : null,
+      );
+      if (next.agencyName != s.agencyName ||
+          next.agencyWebsite != s.agencyWebsite ||
+          next.whatsapp != s.whatsapp ||
+          next.email != s.email ||
+          next.senderName != s.senderName) {
+        widget.settings.update(next);
+      }
+    }
+    if (mounted) setState(() {});
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (!_session.loaded || !widget.settings.loaded) {
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    }
+    if (!_session.signedIn) return LoginScreen(session: _session);
+    if (_session.showAdmin) {
+      return AdminShell(key: const ValueKey('admin'), settings: widget.settings, services: widget.services);
+    }
+    return HomeShell(key: const ValueKey('team'), settings: widget.settings, services: widget.services);
   }
 }

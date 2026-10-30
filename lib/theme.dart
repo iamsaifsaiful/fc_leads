@@ -29,8 +29,17 @@ class Brand {
 
   static Color accent(int i) => accents[i.clamp(0, accents.length - 1)];
 
+  /// Graphic fonts (the outreach image keeps its own look).
   static const display = 'Bricolage';
   static const body = 'Instrument';
+
+  /// App interface font.
+  static const ui = 'Jakarta';
+
+  /// App surfaces.
+  static const bg = Color(0xFFF4F5F7);
+  static const line = Color(0xFFE2E5EA);
+  static const soft = Color(0xFFEEF1F6);
 
   /// Pill background for each audit status.
   static Color pillBg(AuditStatus s) => switch (s) {
@@ -61,31 +70,35 @@ ThemeData buildTheme() {
   const scheme = ColorScheme(
     brightness: Brightness.light,
     primary: Brand.navy,
-    onPrimary: Brand.cream,
+    onPrimary: Brand.white,
     secondary: Brand.gold,
     onSecondary: Brand.navy,
-    error: Color(0xFF8A2412),
+    error: Color(0xFF9F1C14),
     onError: Brand.white,
-    surface: Brand.cream,
-    onSurface: Brand.navy,
+    surface: Brand.white,
+    onSurface: Color(0xFF0B1220),
+    surfaceContainerHighest: Brand.soft,
   );
   final base = ThemeData(
     useMaterial3: true,
     colorScheme: scheme,
-    fontFamily: Brand.body,
-    scaffoldBackgroundColor: Brand.cream,
+    fontFamily: Brand.ui,
+    scaffoldBackgroundColor: Brand.bg,
   );
+  const radius14 = BorderRadius.all(Radius.circular(14));
   return base.copyWith(
     appBarTheme: const AppBarTheme(
-      backgroundColor: Brand.cream,
-      foregroundColor: Brand.navy,
+      backgroundColor: Brand.bg,
+      foregroundColor: Color(0xFF0B1220),
       elevation: 0,
       scrolledUnderElevation: 0,
+      centerTitle: false,
       titleTextStyle: TextStyle(
-        fontFamily: Brand.display,
+        fontFamily: Brand.ui,
         fontWeight: FontWeight.w800,
         fontSize: 22,
-        color: Brand.navy,
+        letterSpacing: -0.3,
+        color: Color(0xFF0B1220),
       ),
     ),
     cardTheme: const CardThemeData(
@@ -94,27 +107,49 @@ ThemeData buildTheme() {
       margin: EdgeInsets.zero,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(18))),
     ),
+    dividerTheme: const DividerThemeData(color: Color(0xFFEEF0F3), space: 1),
     inputDecorationTheme: const InputDecorationTheme(
       filled: true,
       fillColor: Brand.white,
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(14)),
-        borderSide: BorderSide(color: Brand.creamLine),
-      ),
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(14)),
-        borderSide: BorderSide(color: Brand.creamLine),
-      ),
+      contentPadding: EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+      border: OutlineInputBorder(borderRadius: radius14, borderSide: BorderSide(color: Brand.line, width: 1.5)),
+      enabledBorder: OutlineInputBorder(borderRadius: radius14, borderSide: BorderSide(color: Brand.line, width: 1.5)),
+      focusedBorder: OutlineInputBorder(borderRadius: radius14, borderSide: BorderSide(color: Brand.navy, width: 1.5)),
+      labelStyle: TextStyle(color: Color(0xFF4B5563)),
     ),
-    navigationBarTheme: const NavigationBarThemeData(
+    chipTheme: base.chipTheme.copyWith(
       backgroundColor: Brand.white,
-      indicatorColor: Brand.gold,
+      selectedColor: Brand.navy,
+      checkmarkColor: Brand.gold,
+      side: const BorderSide(color: Brand.line),
+      shape: const StadiumBorder(),
+      labelStyle: const TextStyle(fontFamily: Brand.ui, fontWeight: FontWeight.w600, color: Color(0xFF374151)),
+      secondaryLabelStyle: const TextStyle(fontFamily: Brand.ui, fontWeight: FontWeight.w700, color: Brand.white),
+    ),
+    navigationBarTheme: NavigationBarThemeData(
+      backgroundColor: Brand.white,
+      surfaceTintColor: Brand.white,
+      indicatorColor: Brand.navy,
+      height: 72,
+      iconTheme: WidgetStateProperty.resolveWith(
+        (s) => IconThemeData(color: s.contains(WidgetState.selected) ? Brand.gold : const Color(0xFF5B6472)),
+      ),
+      labelTextStyle: WidgetStateProperty.resolveWith(
+        (s) => TextStyle(
+          fontFamily: Brand.ui,
+          fontSize: 11.5,
+          fontWeight: s.contains(WidgetState.selected) ? FontWeight.w800 : FontWeight.w600,
+          color: s.contains(WidgetState.selected) ? Brand.navy : const Color(0xFF5B6472),
+        ),
+      ),
     ),
     filledButtonTheme: FilledButtonThemeData(
       style: FilledButton.styleFrom(
+        backgroundColor: Brand.navy,
+        foregroundColor: Brand.white,
         minimumSize: const Size.fromHeight(52),
-        textStyle: const TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
-        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14))),
+        textStyle: const TextStyle(fontFamily: Brand.ui, fontWeight: FontWeight.w700, fontSize: 15.5),
+        shape: const RoundedRectangleBorder(borderRadius: radius14),
       ),
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
@@ -122,9 +157,20 @@ ThemeData buildTheme() {
         minimumSize: const Size.fromHeight(52),
         foregroundColor: Brand.navy,
         side: const BorderSide(color: Brand.navy, width: 1.5),
-        textStyle: const TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
-        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14))),
+        textStyle: const TextStyle(fontFamily: Brand.ui, fontWeight: FontWeight.w700, fontSize: 15.5),
+        shape: const RoundedRectangleBorder(borderRadius: radius14),
       ),
+    ),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        foregroundColor: Brand.navy,
+        textStyle: const TextStyle(fontFamily: Brand.ui, fontWeight: FontWeight.w700),
+      ),
+    ),
+    snackBarTheme: const SnackBarThemeData(
+      behavior: SnackBarBehavior.floating,
+      backgroundColor: Brand.navy,
+      contentTextStyle: TextStyle(fontFamily: Brand.ui, color: Brand.white),
     ),
   );
 }

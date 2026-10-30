@@ -145,7 +145,7 @@ class _TemplatesScreenState extends State<TemplatesScreen> {
           controller: controller,
           padding: const EdgeInsets.fromLTRB(20, 0, 20, 24),
           children: [
-            const Text('Preview with sample data', style: TextStyle(fontFamily: Brand.display, fontWeight: FontWeight.w800, fontSize: 20)),
+            const Text('Preview with sample data', style: TextStyle(fontFamily: Brand.ui, fontWeight: FontWeight.w800, fontSize: 20)),
             const SizedBox(height: 12),
             const Text('WhatsApp', style: TextStyle(fontWeight: FontWeight.w700)),
             const SizedBox(height: 6),
@@ -206,7 +206,7 @@ class _TemplatesScreenState extends State<TemplatesScreen> {
           const SizedBox(height: 14),
           _field(_email, 'Email message', minLines: 8, maxLines: 20),
           const SizedBox(height: 22),
-          const Text('Payment reminder for clients', style: TextStyle(fontFamily: Brand.display, fontWeight: FontWeight.w800, fontSize: 18)),
+          const Text('Payment reminder for clients', style: TextStyle(fontFamily: Brand.ui, fontWeight: FontWeight.w800, fontSize: 18)),
           const SizedBox(height: 6),
           Wrap(
             spacing: 6,

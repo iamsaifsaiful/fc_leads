@@ -143,7 +143,6 @@ class _SearchScreenState extends State<SearchScreen> {
     try {
       final page = await widget.services.places.search(
         s.query,
-        apiKey: widget.settings.value.apiKey,
         pageToken: more ? _nextPage : null,
         regionCode: s.countryCode,
       );
@@ -250,13 +249,10 @@ class _SearchScreenState extends State<SearchScreen> {
         padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
         children: [
           ListenableBuilder(
-            listenable: widget.settings,
-            builder: (context, _) => widget.settings.loaded && !widget.settings.value.hasApiKey
-                ? Padding(
-                    padding: const EdgeInsets.only(bottom: 12),
-                    child: _KeyBanner(onOpenSettings: widget.onOpenSettings),
-                  )
-                : const SizedBox.shrink(),
+            listenable: widget.services.session,
+            builder: (context, _) => widget.services.session.config.searchReady
+                ? const SizedBox.shrink()
+                : const Padding(padding: EdgeInsets.only(bottom: 12), child: _KeyBanner()),
           ),
           SegmentedButton<bool>(
             segments: const [
@@ -378,7 +374,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 Expanded(
                   child: Text(
                     '${visible.length} of ${_results.length} businesses',
-                    style: const TextStyle(fontFamily: Brand.display, fontWeight: FontWeight.w700, fontSize: 16),
+                    style: const TextStyle(fontFamily: Brand.ui, fontWeight: FontWeight.w700, fontSize: 16),
                   ),
                 ),
                 PopupMenuButton<ResultSort>(
@@ -495,24 +491,16 @@ class _PickRow extends StatelessWidget {
 }
 
 class _KeyBanner extends StatelessWidget {
-  const _KeyBanner({required this.onOpenSettings});
-  final VoidCallback onOpenSettings;
+  const _KeyBanner();
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(14),
       decoration: BoxDecoration(color: const Color(0xFFFBE4C2), borderRadius: BorderRadius.circular(14)),
-      child: Row(
-        children: [
-          const Expanded(
-            child: Text(
-              'Add your Google Places API key in Settings to start searching.',
-              style: TextStyle(color: Color(0xFF7A4300), fontWeight: FontWeight.w600),
-            ),
-          ),
-          TextButton(onPressed: onOpenSettings, child: const Text('Settings')),
-        ],
+      child: const Text(
+        'Search is not set up on the website yet. Ask your admin to add the Google key in FC Leads › Settings.',
+        style: TextStyle(color: Color(0xFF7A4300), fontWeight: FontWeight.w600),
       ),
     );
   }
@@ -553,7 +541,7 @@ class _BusinessTile extends StatelessWidget {
                 b.name,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: const TextStyle(fontFamily: Brand.display, fontWeight: FontWeight.w700, fontSize: 17),
+                style: const TextStyle(fontFamily: Brand.ui, fontWeight: FontWeight.w700, fontSize: 17),
               ),
               if (meta.isNotEmpty) ...[
                 const SizedBox(height: 2),

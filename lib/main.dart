@@ -24,7 +24,7 @@ class FcLeadsApp extends StatelessWidget {
       title: 'FC Leads',
       debugShowCheckedModeBanner: false,
       theme: buildTheme(),
-      home: HomeShell(settings: settings, services: services ?? AppServices()),
+      home: AppRoot(settings: settings, services: services ?? AppServices()),
     );
   }
 }

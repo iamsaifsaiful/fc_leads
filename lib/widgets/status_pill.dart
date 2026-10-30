@@ -29,7 +29,7 @@ class StatusPill extends StatelessWidget {
         text,
         maxLines: 1,
         style: TextStyle(
-          fontFamily: Brand.body,
+          fontFamily: Brand.ui,
           fontWeight: FontWeight.w700,
           fontSize: fontSize,
           color: Brand.pillFg(status),

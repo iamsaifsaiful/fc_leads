@@ -12,6 +12,7 @@ import '../models/client.dart';
 import '../models/lead.dart';
 import '../services/settings_controller.dart';
 import '../services/share_service.dart';
+import '../services/sync.dart';
 import '../theme.dart';
 import '../widgets/audit_graphic.dart';
 import '../widgets/compose_sheets.dart';
@@ -101,8 +102,15 @@ class _LeadScreenState extends State<LeadScreen> {
       );
       _loaded = true;
     });
-    if (saved == null) await _check();
+    if (saved == null) {
+      await _check();
+      _work(Work.audit);
+    }
   }
+
+  /// Counts this piece of work for the team report.
+  void _work(String type, [String meta = '']) =>
+      widget.services.sync.record(type, placeId: _b.id, name: _b.name, meta: meta);
 
   /// Opens the website (if any), rebuilds the audit and saves the lead.
   Future<void> _check() async {
@@ -133,19 +141,16 @@ class _LeadScreenState extends State<LeadScreen> {
 
   Future<void> _save() => widget.services.leads.save(_lead);
 
-  /// Pull to refresh / refresh button: fresh details from Google Maps (when
-  /// a key is set), then check the website again and rebuild the audit.
+  /// Pull to refresh / refresh button: fresh details from Google Maps
+  /// (through the server), then check the website again and rebuild the audit.
   Future<void> _refresh() async {
     if (_checking) return;
-    final key = widget.settings.value.apiKey;
-    if (key.trim().isNotEmpty) {
-      try {
-        final fresh = await widget.services.places.details(_b.id, apiKey: key);
-        if (!mounted) return;
-        if (fresh.name.isNotEmpty) setState(() => _lead = _lead.copyWith(business: fresh));
-      } catch (e) {
-        _toast('Could not refresh from Google Maps: $e');
-      }
+    try {
+      final fresh = await widget.services.places.details(_b.id);
+      if (!mounted) return;
+      if (fresh.name.isNotEmpty) setState(() => _lead = _lead.copyWith(business: fresh));
+    } catch (e) {
+      _toast('Could not refresh from Google Maps: $e');
     }
     await _check();
     if (mounted) _toast('Updated');
@@ -198,7 +203,7 @@ class _LeadScreenState extends State<LeadScreen> {
               padding: const EdgeInsets.fromLTRB(20, 0, 20, 8),
               child: Text(
                 'Change "${item.area.label}"',
-                style: const TextStyle(fontFamily: Brand.display, fontWeight: FontWeight.w700, fontSize: 18),
+                style: const TextStyle(fontFamily: Brand.ui, fontWeight: FontWeight.w700, fontSize: 18),
               ),
             ),
             for (final c in verdictChoices(item.area))
@@ -259,7 +264,10 @@ class _LeadScreenState extends State<LeadScreen> {
       lastDate: DateTime(now.year + 2),
       helpText: 'Follow up on',
     );
-    if (picked != null) _update(_lead.copyWith(followUp: picked));
+    if (picked != null) {
+      _work(Work.followup, '${picked.year}-${picked.month.toString().padLeft(2, '0')}-${picked.day.toString().padLeft(2, '0')}');
+      _update(_lead.copyWith(followUp: picked));
+    }
   }
 
   // ---- Sending ----
@@ -285,8 +293,10 @@ class _LeadScreenState extends State<LeadScreen> {
     return false;
   }
 
-  void _markSent({bool whatsapp = false, bool email = false}) {
+  void _markSent({bool whatsapp = false, bool email = false, String how = ''}) {
     final now = DateTime.now();
+    _work(whatsapp ? Work.whatsapp : Work.email, how);
+    if (_lead.status == LeadStatus.newLead) _work(Work.status, LeadStatus.contacted.name);
     _update(_lead.copyWith(
       whatsappSentAt: whatsapp ? now : null,
       emailSentAt: email ? now : null,
@@ -319,14 +329,14 @@ class _LeadScreenState extends State<LeadScreen> {
         },
         onOpenChat: (phone, text) async {
           final ok = _report(await _share.whatsappChat(phone: phone, text: text), 'WhatsApp');
-          if (ok) _markSent(whatsapp: true);
+          if (ok) _markSent(whatsapp: true, how: 'chat');
           return ok;
         },
         onSendGraphic: (phone, caption) async {
           final path = await _renderGraphic();
           if (path == null) return false;
           final ok = _report(await _share.whatsappImage(imagePath: path, phone: phone, caption: caption), 'WhatsApp');
-          if (ok) _markSent(whatsapp: true);
+          if (ok) _markSent(whatsapp: true, how: 'graphic');
           return ok;
         },
       ),
@@ -422,7 +432,10 @@ class _LeadScreenState extends State<LeadScreen> {
               _PipelineCard(
                 lead: _lead,
                 notes: _notes,
-                onStatus: (s) => _update(_lead.copyWith(status: s)),
+                onStatus: (s) {
+                  if (s != _lead.status) _work(Work.status, s.name);
+                  _update(_lead.copyWith(status: s));
+                },
                 onPickFollowUp: _pickFollowUp,
                 onClearFollowUp: () => _update(_lead.copyWith(clearFollowUp: true)),
                 onNotes: (t) {
@@ -521,7 +534,7 @@ class _SectionTitle extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: Text(text, style: const TextStyle(fontFamily: Brand.display, fontWeight: FontWeight.w800, fontSize: 20)),
+            child: Text(text, style: const TextStyle(fontFamily: Brand.ui, fontWeight: FontWeight.w800, fontSize: 20)),
           ),
           if (trailing != null) trailing!,
         ],

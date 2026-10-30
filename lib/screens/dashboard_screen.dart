@@ -5,11 +5,15 @@ import '../logic/lead_filter.dart';
 import '../models/client.dart';
 import '../models/lead.dart';
 import '../services/settings_controller.dart';
+import '../services/sync.dart';
 import '../theme.dart';
 import 'home_shell.dart';
 import 'leads_screen.dart';
 
-/// Home: how outreach is going and what to do next.
+const _ink = Color(0xFF0B1220);
+const _muted = Color(0xFF5B6472);
+
+/// Home: today's target, what to follow up, and how outreach is going.
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({
     super.key,
@@ -35,12 +39,14 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   List<Lead> _leads = const [];
   List<Client> _clients = const [];
+  TodayWork _today = const TodayWork();
 
   @override
   void initState() {
     super.initState();
     widget.services.leads.addListener(_reload);
     widget.services.clients.addListener(_reload);
+    widget.services.sync.addListener(_reload);
     _reload();
   }
 
@@ -48,202 +54,264 @@ class _DashboardScreenState extends State<DashboardScreen> {
   void dispose() {
     widget.services.leads.removeListener(_reload);
     widget.services.clients.removeListener(_reload);
+    widget.services.sync.removeListener(_reload);
     super.dispose();
   }
 
   Future<void> _reload() async {
     final leads = await widget.services.leads.all();
     final clients = await widget.services.clients.all();
+    final today = await widget.services.sync.today();
     if (mounted) {
       setState(() {
         _leads = leads;
         _clients = clients;
+        _today = today;
       });
     }
   }
 
-  /// Pull to refresh: re-read everything from storage.
+  /// Pull to refresh: send waiting work, fetch leads and settings, re-read.
   Future<void> _refresh() async {
-    await widget.services.leads.reload();
-    await widget.services.clients.reload();
+    final s = widget.services;
+    await s.sync.flush();
+    try {
+      await s.sync.pullLeads();
+    } catch (_) {}
+    await s.session.refresh();
+    await s.leads.reload();
+    await s.clients.reload();
     await _reload();
+  }
+
+  String _greeting() {
+    final h = DateTime.now().hour;
+    if (h < 12) return 'Good morning';
+    if (h < 17) return 'Good afternoon';
+    return 'Good evening';
   }
 
   @override
   Widget build(BuildContext context) {
     final stats = LeadStats(_leads);
     final now = DateTime.now();
-    final money = ClientStats(_clients, now: now);
     final due = _leads.where((l) => l.followUpDue(now)).toList()
       ..sort((a, b) => a.followUp!.compareTo(b.followUp!));
+    final money = ClientStats(_clients, now: now);
+    final session = widget.services.session;
+    final user = session.user;
+    final target = session.config.dailyTarget <= 0 ? 20 : session.config.dailyTarget;
+    final progress = (_today.leads / target).clamp(0.0, 1.0);
 
     return Scaffold(
-      appBar: AppBar(
-        title: ListenableBuilder(
-          listenable: widget.settings,
-          builder: (context, _) {
-            final name = widget.settings.value.senderName.trim();
-            return Text(name.isEmpty ? 'FC Leads' : 'Hi, ${name.split(' ').first}');
-          },
-        ),
-        actions: [
-          IconButton(tooltip: 'Refresh', icon: const Icon(Icons.refresh), onPressed: _refresh),
-        ],
-      ),
-      body: RefreshIndicator(
-        onRefresh: _refresh,
-        child: ListView(
-        physics: const AlwaysScrollableScrollPhysics(),
-        padding: const EdgeInsets.fromLTRB(16, 4, 16, 24),
-        children: [
-          ListenableBuilder(
-            listenable: widget.settings,
-            builder: (context, _) => widget.settings.loaded && !widget.settings.value.hasApiKey
-                ? Padding(
-                    padding: const EdgeInsets.only(bottom: 14),
-                    child: _SetupCard(onSettings: widget.onSettings),
-                  )
-                : const SizedBox.shrink(),
-          ),
-          _HeroCard(onSearch: widget.onSearch),
-          const SizedBox(height: 16),
-          GridView.count(
-            crossAxisCount: 2,
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            mainAxisSpacing: 10,
-            crossAxisSpacing: 10,
-            childAspectRatio: 1.9,
+      body: SafeArea(
+        child: RefreshIndicator(
+          onRefresh: _refresh,
+          child: ListView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            padding: const EdgeInsets.fromLTRB(20, 16, 20, 24),
             children: [
-              _StatTile(
-                label: 'Leads saved',
-                value: stats.total,
-                onTap: () => widget.onLeads(const LeadFilter()),
+              Row(
+                children: [
+                  Container(
+                    width: 44,
+                    height: 44,
+                    alignment: Alignment.center,
+                    decoration: const BoxDecoration(color: Brand.navy, shape: BoxShape.circle),
+                    child: Text(user?.initials ?? '', style: const TextStyle(color: Brand.gold, fontWeight: FontWeight.w800, fontSize: 15)),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(_greeting(), style: const TextStyle(fontSize: 13, color: _muted, fontWeight: FontWeight.w500)),
+                        Text(user?.firstName ?? 'FC Leads', style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w800, letterSpacing: -0.2)),
+                      ],
+                    ),
+                  ),
+                  if (widget.services.sync.pending > 0)
+                    Tooltip(
+                      message: '${widget.services.sync.pending} changes waiting to sync',
+                      child: const Padding(
+                        padding: EdgeInsets.only(right: 4),
+                        child: Icon(Icons.cloud_upload_outlined, color: _muted),
+                      ),
+                    ),
+                  if (user != null && user.isAdmin)
+                    IconButton.filledTonal(
+                      tooltip: 'Back to admin',
+                      onPressed: () => session.setAdminView(true),
+                      icon: const Icon(Icons.bar_chart),
+                    ),
+                ],
               ),
-              _StatTile(
-                label: 'Contacted',
-                value: stats.contacted,
-                onTap: () => widget.onLeads(const LeadFilter(contact: ContactFilter.sent)),
+              const SizedBox(height: 18),
+              if (!session.config.searchReady) ...[
+                Container(
+                  padding: const EdgeInsets.all(14),
+                  decoration: BoxDecoration(color: const Color(0xFFFBE4C2), borderRadius: BorderRadius.circular(16)),
+                  child: const Text(
+                    'Search is not set up on the website yet. Ask your admin to add the Google key.',
+                    style: TextStyle(color: Color(0xFF7A4300), fontWeight: FontWeight.w600),
+                  ),
+                ),
+                const SizedBox(height: 14),
+              ],
+              Container(
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(color: Brand.navy, borderRadius: BorderRadius.circular(22)),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        const Expanded(child: Text("Today's target", style: TextStyle(color: Brand.mist, fontWeight: FontWeight.w600, fontSize: 13))),
+                        Text('${(progress * 100).round()}%', style: const TextStyle(color: Brand.gold, fontWeight: FontWeight.w700, fontSize: 12)),
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
+                      textBaseline: TextBaseline.alphabetic,
+                      children: [
+                        Text('${_today.leads}', style: const TextStyle(color: Brand.white, fontSize: 38, fontWeight: FontWeight.w800, height: 1)),
+                        const SizedBox(width: 6),
+                        Text('/ $target leads checked', style: const TextStyle(color: Brand.mist, fontSize: 15, fontWeight: FontWeight.w600)),
+                      ],
+                    ),
+                    const SizedBox(height: 14),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(99),
+                      child: LinearProgressIndicator(
+                        value: progress,
+                        minHeight: 8,
+                        backgroundColor: Colors.white.withAlpha(30),
+                        color: Brand.gold,
+                      ),
+                    ),
+                    const SizedBox(height: 14),
+                    Row(
+                      children: [
+                        _MiniStat(value: _today.leads, label: 'Checked'),
+                        const SizedBox(width: 8),
+                        _MiniStat(value: _today.sent, label: 'Messaged'),
+                        const SizedBox(width: 8),
+                        _MiniStat(value: _today.replies, label: 'Replies'),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-              _StatTile(
-                label: 'Not contacted yet',
-                value: stats.total - stats.contacted,
-                onTap: () => widget.onLeads(const LeadFilter(contact: ContactFilter.notContacted)),
+              const SizedBox(height: 12),
+              Row(
+                children: [
+                  Expanded(
+                    child: _ActionTile(
+                      color: Brand.gold,
+                      icon: Icons.search,
+                      label: 'New search',
+                      onTap: widget.onSearch,
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: _ActionTile(
+                      color: Brand.white,
+                      icon: Icons.event_outlined,
+                      label: 'Follow-ups',
+                      badge: stats.followUpsDue,
+                      onTap: () => widget.onLeads(const LeadFilter(followUpDue: true, sort: LeadSort.followUp)),
+                    ),
+                  ),
+                ],
               ),
-              _StatTile(
-                label: 'Follow-ups due',
-                value: stats.followUpsDue,
-                highlight: stats.followUpsDue > 0,
-                onTap: () => widget.onLeads(const LeadFilter(followUpDue: true, sort: LeadSort.followUp)),
+              const SizedBox(height: 20),
+              Row(
+                children: [
+                  const Expanded(child: Text('Follow up today', style: TextStyle(fontSize: 17, fontWeight: FontWeight.w800))),
+                  if (due.length > 3)
+                    TextButton(
+                      onPressed: () => widget.onLeads(const LeadFilter(followUpDue: true, sort: LeadSort.followUp)),
+                      child: const Text('See all'),
+                    ),
+                ],
+              ),
+              const SizedBox(height: 8),
+              if (due.isEmpty)
+                const _Empty('Nothing due. Set a follow-up date on a lead and it shows here on the day.')
+              else
+                for (final l in due.take(3)) ...[
+                  _FollowUpTile(
+                    lead: l,
+                    onTap: () => openLead(context, business: l.business, settings: widget.settings, services: widget.services),
+                  ),
+                  const SizedBox(height: 10),
+                ],
+              const SizedBox(height: 12),
+              const Text('Pipeline', style: TextStyle(fontSize: 17, fontWeight: FontWeight.w800)),
+              const SizedBox(height: 8),
+              Card(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 6),
+                  child: Column(
+                    children: [
+                      for (final s in LeadStatus.values)
+                        InkWell(
+                          onTap: () => widget.onLeads(LeadFilter(statuses: {s})),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                            child: Row(
+                              children: [
+                                Container(width: 10, height: 10, decoration: BoxDecoration(color: statusColor(s), shape: BoxShape.circle)),
+                                const SizedBox(width: 12),
+                                Expanded(child: Text(s.label, style: const TextStyle(fontWeight: FontWeight.w600))),
+                                Text('${stats.byStatus[s] ?? 0}', style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
+                              ],
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              const Text('Clients', style: TextStyle(fontSize: 17, fontWeight: FontWeight.w800)),
+              const SizedBox(height: 8),
+              Card(
+                clipBehavior: Clip.antiAlias,
+                child: InkWell(
+                  onTap: widget.onClients,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: _clients.isEmpty
+                        ? const Text(
+                            'No clients yet. Add your current clients to track services, monthly fees and payments.',
+                            style: TextStyle(color: _muted),
+                          )
+                        : Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('${formatTotals(money.monthly)} / month',
+                                  style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 20, letterSpacing: -0.3)),
+                              Text('${money.active} active clients', style: const TextStyle(color: _muted)),
+                              const SizedBox(height: 8),
+                              Text('Collected this month: ${formatTotals(money.collectedThisMonth)}'),
+                              Text(
+                                'Due in 7 days: ${money.dueThisWeek} · overdue: ${money.overdue}',
+                                style: TextStyle(
+                                  color: money.overdue > 0 ? const Color(0xFF9F1C14) : const Color(0xFF374151),
+                                  fontWeight: money.overdue > 0 ? FontWeight.w700 : FontWeight.w400,
+                                ),
+                              ),
+                            ],
+                          ),
+                  ),
+                ),
               ),
             ],
           ),
-          const SizedBox(height: 20),
-          const _Title('Clients'),
-          Card(
-            clipBehavior: Clip.antiAlias,
-            child: InkWell(
-              onTap: widget.onClients,
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: _clients.isEmpty
-                    ? const Text(
-                        'No clients yet. Add your current clients to track services, monthly fees and payments.',
-                        style: TextStyle(color: Brand.muted),
-                      )
-                    : Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            '${formatTotals(money.monthly)} / month',
-                            style: const TextStyle(fontFamily: Brand.display, fontWeight: FontWeight.w800, fontSize: 22),
-                          ),
-                          Text('${money.active} active clients', style: const TextStyle(color: Brand.muted)),
-                          const SizedBox(height: 8),
-                          Text('Collected this month: ${formatTotals(money.collectedThisMonth)}'),
-                          Text(
-                            'Payments due in 7 days: ${money.dueThisWeek} · overdue: ${money.overdue}',
-                            style: TextStyle(
-                              color: money.overdue > 0 ? const Color(0xFF8A2412) : Brand.ink,
-                              fontWeight: money.overdue > 0 ? FontWeight.w700 : FontWeight.w400,
-                            ),
-                          ),
-                        ],
-                      ),
-              ),
-            ),
-          ),
-          const SizedBox(height: 20),
-          const _Title('Pipeline'),
-          Card(
-            child: Column(
-              children: [
-                for (final s in LeadStatus.values)
-                  ListTile(
-                    dense: true,
-                    leading: _StatusDot(status: s),
-                    title: Text(s.label),
-                    trailing: Text(
-                      '${stats.byStatus[s] ?? 0}',
-                      style: const TextStyle(fontFamily: Brand.display, fontWeight: FontWeight.w800, fontSize: 18),
-                    ),
-                    onTap: () => widget.onLeads(LeadFilter(statuses: {s})),
-                  ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 20),
-          const _Title('Follow up today'),
-          if (due.isEmpty)
-            const Card(
-              child: Padding(
-                padding: EdgeInsets.all(16),
-                child: Text(
-                  'No follow-ups due. Set a follow-up date on a lead to see it here.',
-                  style: TextStyle(color: Brand.muted),
-                ),
-              ),
-            )
-          else
-            Card(
-              child: Column(
-                children: [
-                  for (final l in due.take(5))
-                    ListTile(
-                      title: Text(l.business.name, maxLines: 1, overflow: TextOverflow.ellipsis),
-                      subtitle: Text(
-                        '${l.status.label} · due ${formatDay(l.followUp!)}',
-                        style: const TextStyle(color: Brand.muted),
-                      ),
-                      trailing: const Icon(Icons.chevron_right),
-                      onTap: () => openLead(
-                        context,
-                        business: l.business,
-                        settings: widget.settings,
-                        services: widget.services,
-                      ),
-                    ),
-                ],
-              ),
-            ),
-          const SizedBox(height: 20),
-          const _Title('How it works'),
-          const Card(
-            child: Padding(
-              padding: EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _Step(n: 1, text: 'Search: pick a business type, country and city.'),
-                  _Step(n: 2, text: 'Open a business. The app checks its Maps profile, website, social media and SEO.'),
-                  _Step(n: 3, text: 'Check the audit and graphic. Tap any row to correct it.'),
-                  _Step(n: 4, text: 'Send on WhatsApp or by email, then set a status and follow-up date.'),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
+        ),
       ),
     );
   }
@@ -254,97 +322,62 @@ String formatDay(DateTime d) {
   return '${d.day} ${months[d.month - 1]}';
 }
 
-class _Title extends StatelessWidget {
-  const _Title(this.text);
-  final String text;
+class _MiniStat extends StatelessWidget {
+  const _MiniStat({required this.value, required this.label});
+  final int value;
+  final String label;
 
   @override
-  Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.only(bottom: 8),
-        child: Text(text, style: const TextStyle(fontFamily: Brand.display, fontWeight: FontWeight.w800, fontSize: 20)),
+  Widget build(BuildContext context) => Expanded(
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+          decoration: BoxDecoration(color: Colors.white.withAlpha(18), borderRadius: BorderRadius.circular(14)),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('$value', style: const TextStyle(color: Brand.white, fontSize: 20, fontWeight: FontWeight.w800)),
+              Text(label, style: const TextStyle(color: Brand.mist, fontSize: 12)),
+            ],
+          ),
+        ),
       );
 }
 
-class _SetupCard extends StatelessWidget {
-  const _SetupCard({required this.onSettings});
-  final VoidCallback onSettings;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(color: const Color(0xFFFBE4C2), borderRadius: BorderRadius.circular(16)),
-      child: Row(
-        children: [
-          const Expanded(
-            child: Text(
-              'Add your Google Places API key and agency details in Settings to start.',
-              style: TextStyle(color: Color(0xFF7A4300), fontWeight: FontWeight.w600),
-            ),
-          ),
-          TextButton(onPressed: onSettings, child: const Text('Set up')),
-        ],
-      ),
-    );
-  }
-}
-
-class _HeroCard extends StatelessWidget {
-  const _HeroCard({required this.onSearch});
-  final VoidCallback onSearch;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(color: Brand.navy, borderRadius: BorderRadius.circular(20)),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Text(
-            'Find your next client',
-            style: TextStyle(fontFamily: Brand.display, fontWeight: FontWeight.w800, fontSize: 24, color: Brand.cream),
-          ),
-          const SizedBox(height: 6),
-          const Text(
-            'Search any city in the world for businesses that need a website, design, reels or SEO.',
-            style: TextStyle(color: Brand.mist, height: 1.4),
-          ),
-          const SizedBox(height: 14),
-          FilledButton.icon(
-            style: FilledButton.styleFrom(backgroundColor: Brand.gold, foregroundColor: Brand.navy),
-            onPressed: onSearch,
-            icon: const Icon(Icons.travel_explore),
-            label: const Text('Start a search'),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _StatTile extends StatelessWidget {
-  const _StatTile({required this.label, required this.value, required this.onTap, this.highlight = false});
+class _ActionTile extends StatelessWidget {
+  const _ActionTile({required this.color, required this.icon, required this.label, required this.onTap, this.badge = 0});
+  final Color color;
+  final IconData icon;
   final String label;
-  final int value;
   final VoidCallback onTap;
-  final bool highlight;
+  final int badge;
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: highlight ? const Color(0xFFFBE4C2) : Brand.white,
-      clipBehavior: Clip.antiAlias,
+    return Material(
+      color: color,
+      borderRadius: BorderRadius.circular(18),
       child: InkWell(
+        borderRadius: BorderRadius.circular(18),
         onTap: onTap,
         child: Padding(
-          padding: const EdgeInsets.all(14),
+          padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('$value', style: const TextStyle(fontFamily: Brand.display, fontWeight: FontWeight.w800, fontSize: 26)),
-              Text(label, maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(color: Brand.ink)),
+              Row(
+                children: [
+                  Icon(icon, color: Brand.navy, size: 24),
+                  const Spacer(),
+                  if (badge > 0)
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                      decoration: BoxDecoration(color: const Color(0xFFFDE4E1), borderRadius: BorderRadius.circular(99)),
+                      child: Text('$badge', style: const TextStyle(color: Color(0xFF9F1C14), fontWeight: FontWeight.w800, fontSize: 12)),
+                    ),
+                ],
+              ),
+              const SizedBox(height: 14),
+              Text(label, style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 15, color: _ink)),
             ],
           ),
         ),
@@ -353,39 +386,65 @@ class _StatTile extends StatelessWidget {
   }
 }
 
-class _StatusDot extends StatelessWidget {
-  const _StatusDot({required this.status});
-  final LeadStatus status;
+class _FollowUpTile extends StatelessWidget {
+  const _FollowUpTile({required this.lead, required this.onTap});
+  final Lead lead;
+  final VoidCallback onTap;
 
   @override
-  Widget build(BuildContext context) => Container(
-        width: 14,
-        height: 14,
-        decoration: BoxDecoration(color: statusColor(status), shape: BoxShape.circle),
-      );
+  Widget build(BuildContext context) {
+    final name = lead.business.name;
+    final detail = lead.notes.trim().isNotEmpty ? lead.notes.trim().split('\n').first : '${lead.status.label} · due ${formatDay(lead.followUp!)}';
+    return Material(
+      color: Brand.white,
+      borderRadius: BorderRadius.circular(18),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(18),
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.all(14),
+          child: Row(
+            children: [
+              Container(
+                width: 42,
+                height: 42,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(color: Brand.soft, borderRadius: BorderRadius.circular(12)),
+                child: Text(name.isEmpty ? '?' : String.fromCharCode(name.runes.first).toUpperCase(),
+                    style: const TextStyle(fontWeight: FontWeight.w800, color: Brand.navy)),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(name, maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 15)),
+                    Text(detail, maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(color: _muted, fontSize: 12.5)),
+                  ],
+                ),
+              ),
+              Container(
+                width: 44,
+                height: 44,
+                decoration: BoxDecoration(color: Brand.navy, borderRadius: BorderRadius.circular(12)),
+                child: const Icon(Icons.chevron_right, color: Brand.white),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }
 
-class _Step extends StatelessWidget {
-  const _Step({required this.n, required this.text});
-  final int n;
+class _Empty extends StatelessWidget {
+  const _Empty(this.text);
   final String text;
 
   @override
-  Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.only(bottom: 8),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              width: 24,
-              height: 24,
-              alignment: Alignment.center,
-              decoration: const BoxDecoration(color: Brand.gold, shape: BoxShape.circle),
-              child: Text('$n', style: const TextStyle(fontWeight: FontWeight.w700, color: Brand.navy, fontSize: 13)),
-            ),
-            const SizedBox(width: 10),
-            Expanded(child: Text(text, style: const TextStyle(height: 1.35))),
-          ],
-        ),
+  Widget build(BuildContext context) => Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(color: Brand.white, borderRadius: BorderRadius.circular(18)),
+        child: Text(text, style: const TextStyle(color: _muted, height: 1.4)),
       );
 }

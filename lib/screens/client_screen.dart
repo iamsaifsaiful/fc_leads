@@ -7,6 +7,7 @@ import '../logic/messages.dart';
 import '../models/client.dart';
 import '../services/settings_controller.dart';
 import '../services/share_service.dart';
+import '../services/sync.dart';
 import '../theme.dart';
 import 'clients_screen.dart' show BillingPill;
 import 'dashboard_screen.dart' show formatDay;
@@ -56,6 +57,7 @@ class _ClientScreenState extends State<ClientScreen> {
   late DateTime _start = _base.startDate;
   late ClientStatus _status = _base.status;
   late List<Payment> _payments = [..._base.payments];
+  bool _counted = false;
 
   @override
   void initState() {
@@ -99,7 +101,12 @@ class _ClientScreenState extends State<ClientScreen> {
 
   Future<void> _save({bool close = true}) async {
     if (!(_form.currentState?.validate() ?? false)) return;
-    await widget.services.clients.save(_current);
+    final c = _current;
+    if (_isNew && c.leadId.isNotEmpty && !_counted) {
+      _counted = true;
+      widget.services.sync.record(Work.client, placeId: c.leadId, name: c.name, meta: formatMoney(c.monthlyFee, c.currency));
+    }
+    await widget.services.clients.save(c);
     if (!mounted) return;
     if (close) {
       Navigator.of(context).pop();
@@ -164,7 +171,7 @@ class _ClientScreenState extends State<ClientScreen> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('Payment due on day', style: TextStyle(fontFamily: Brand.display, fontWeight: FontWeight.w800, fontSize: 18)),
+              const Text('Payment due on day', style: TextStyle(fontFamily: Brand.ui, fontWeight: FontWeight.w800, fontSize: 18)),
               const SizedBox(height: 10),
               Wrap(
                 spacing: 6,
@@ -256,7 +263,7 @@ class _ClientScreenState extends State<ClientScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const Text('Payment reminder', style: TextStyle(fontFamily: Brand.display, fontWeight: FontWeight.w800, fontSize: 20)),
+              const Text('Payment reminder', style: TextStyle(fontFamily: Brand.ui, fontWeight: FontWeight.w800, fontSize: 20)),
               const SizedBox(height: 6),
               Text('To ${c.name} · ${c.phone.isEmpty ? 'no WhatsApp number' : c.phone}', style: const TextStyle(color: Brand.muted)),
               const SizedBox(height: 12),
@@ -311,7 +318,7 @@ class _ClientScreenState extends State<ClientScreen> {
 
   Widget _label(String t) => Padding(
         padding: const EdgeInsets.fromLTRB(0, 18, 0, 8),
-        child: Text(t, style: const TextStyle(fontFamily: Brand.display, fontWeight: FontWeight.w800, fontSize: 18)),
+        child: Text(t, style: const TextStyle(fontFamily: Brand.ui, fontWeight: FontWeight.w800, fontSize: 18)),
       );
 
   @override
