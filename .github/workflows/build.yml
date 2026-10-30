@@ -6,6 +6,9 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   android:
     name: Android APK
@@ -47,3 +50,19 @@ jobs:
         with:
           name: fc-leads-android
           path: build/app/outputs/flutter-apk/app-release.apk
+
+      # Every build on main becomes a GitHub release, so the newest APK is
+      # always at .../releases/latest/download/fc-leads.apk (no login needed).
+      - name: Publish release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cp build/app/outputs/flutter-apk/app-release.apk fc-leads.apk
+          TAG="build-${{ github.run_number }}"
+          gh release create "$TAG" fc-leads.apk \
+            --repo "${{ github.repository }}" \
+            --target "${{ github.sha }}" \
+            --title "FC Leads build ${{ github.run_number }}" \
+            --notes "$(git log -1 --pretty=%B)" \
+            --latest
