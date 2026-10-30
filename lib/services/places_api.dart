@@ -28,7 +28,7 @@ class PlacesApi {
       final j = await _api.post('/places/search', {
         'textQuery': query,
         if (pageToken != null) 'pageToken': pageToken,
-        if (regionCode != null && regionCode.isNotEmpty) 'regionCode': regionCode,
+        if (regionCode != null && regionCode.isNotEmpty) 'regionCode': regionCode.toLowerCase(),
       });
       return parsePage(j is Map ? Map<String, dynamic>.from(j) : const {});
     } on ApiException catch (e) {
