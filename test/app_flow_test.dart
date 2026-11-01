@@ -10,6 +10,7 @@ import 'package:fc_leads/services/settings_controller.dart';
 import 'package:fc_leads/services/settings_store.dart';
 import 'package:fc_leads/widgets/audit_graphic.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
@@ -203,6 +204,12 @@ void main() {
   testWidgets('an admin can add another admin', (tester) async {
     _bigScreen(tester);
     SharedPreferences.setMockInitialValues(_signedIn(_adminUser));
+    String? copied;
+    tester.binding.defaultBinaryMessenger.setMockMethodCallHandler(SystemChannels.platform, (call) async {
+      if (call.method == 'Clipboard.setData') copied = (call.arguments as Map)['text'] as String?;
+      return null;
+    });
+    addTearDown(() => tester.binding.defaultBinaryMessenger.setMockMethodCallHandler(SystemChannels.platform, null));
     final server = FakeServer(user: _adminUser);
     await tester.pumpWidget(_app(server));
     await tester.pumpAndSettle();
@@ -219,6 +226,8 @@ void main() {
     expect(server.lastAdd!['access'], 'admin');
     expect(server.lastAdd!['email'], 'tania@example.com');
     expect(find.text('Add an admin'), findsNothing);
+    expect(copied, startsWith('tania@example.com'));
+    expect(find.textContaining('Tania Haque can now sign in with Team or Admin'), findsOneWidget);
   });
 
   testWidgets('signed-in home screen shows the daily target', (tester) async {
