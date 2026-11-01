@@ -218,7 +218,7 @@ void main() {
     await tester.pumpAndSettle();
     expect(server.lastAdd!['access'], 'admin');
     expect(server.lastAdd!['email'], 'tania@example.com');
-    expect(find.textContaining('Tania Haque can now sign in with Team or Admin'), findsOneWidget);
+    expect(find.text('Add an admin'), findsNothing);
   });
 
   testWidgets('signed-in home screen shows the daily target', (tester) async {

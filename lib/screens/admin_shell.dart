@@ -908,7 +908,13 @@ class _AddMemberSheetState extends State<_AddMemberSheet> {
         password: _pass.text,
         admin: _asAdmin,
       );
-      if (!m.existing) await Clipboard.setData(ClipboardData(text: '${_email.text.trim()}\n${_pass.text}'));
+      if (!m.existing) {
+        try {
+          await Clipboard.setData(ClipboardData(text: '${_email.text.trim()}\n${_pass.text}'));
+        } catch (_) {
+          // Copying is a convenience; the account is already made.
+        }
+      }
       if (mounted) Navigator.of(context).pop(m);
     } on ApiException catch (e) {
       if (mounted) setState(() => _error = e.message);
