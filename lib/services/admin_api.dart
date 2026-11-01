@@ -41,6 +41,7 @@ class TeamMember {
     required this.initials,
     required this.email,
     required this.isTeam,
+    this.siteAdmin = false,
     required this.disabled,
     required this.lastActive,
     required this.counts,
@@ -53,6 +54,9 @@ class TeamMember {
 
   /// false = manager or site admin.
   final bool isTeam;
+
+  /// WordPress site administrator: always an admin, password set in WordPress.
+  final bool siteAdmin;
   final bool disabled;
   final DateTime? lastActive;
   final WorkCounts counts;
@@ -63,6 +67,7 @@ class TeamMember {
         initials: '${j['initials'] ?? ''}',
         email: '${j['email'] ?? ''}',
         isTeam: j['role'] == 'team',
+        siteAdmin: j['siteAdmin'] == true,
         disabled: j['disabled'] == true,
         lastActive: j['lastActive'] == null ? null : DateTime.tryParse('${j['lastActive']}')?.toLocal(),
         counts: WorkCounts.fromJson(j),
@@ -198,13 +203,26 @@ class AdminApi {
     return (j['today'] as List? ?? const []).whereType<Map>().map(TeamMember.fromJson).toList();
   }
 
-  Future<TeamMember> addMember({required String name, required String email, required String password}) async {
-    final j = await _api.post('/admin/team', {'name': name, 'email': email, 'password': password}) as Map;
-    return TeamMember.fromJson(j['member'] as Map);
+  /// [admin] gives reports and team management. [existing] in the reply
+  /// means the email already had an account and keeps its own password.
+  Future<({TeamMember member, bool existing})> addMember({
+    required String name,
+    required String email,
+    required String password,
+    bool admin = false,
+  }) async {
+    final j = await _api.post('/admin/team', {
+      'name': name,
+      'email': email,
+      'password': password,
+      'access': admin ? 'admin' : 'team',
+    }) as Map;
+    return (member: TeamMember.fromJson(j['member'] as Map), existing: j['existing'] == true);
   }
 
-  Future<TeamMember> updateMember(int id, {bool? disabled, String? password, String? name}) async {
+  Future<TeamMember> updateMember(int id, {bool? disabled, String? password, String? name, bool? admin}) async {
     final j = await _api.post('/admin/team/$id', {
+      if (admin != null) 'access': admin ? 'admin' : 'team',
       if (disabled != null) 'disabled': disabled,
       if (password != null) 'password': password,
       if (name != null) 'name': name,

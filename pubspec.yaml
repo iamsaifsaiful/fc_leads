@@ -1,7 +1,7 @@
 name: fc_leads
 description: Find local businesses on Google Maps, audit their online presence and send them a personalised graphic by WhatsApp or email.
 publish_to: 'none'
-version: 2.0.0+2
+version: 2.1.0+3
 
 environment:
   sdk: '>=3.6.0 <4.0.0'

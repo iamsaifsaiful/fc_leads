@@ -50,6 +50,7 @@ class FakeServer {
   Map<String, Object> user;
   final requests = <http.Request>[];
   Map<String, dynamic>? lastSearch;
+  Map<String, dynamic>? lastAdd;
 
   http.Response _json(Object body, [int status = 200]) =>
       http.Response(jsonEncode(body), status, headers: {'content-type': 'application/json'});
@@ -106,7 +107,21 @@ class FakeServer {
               'dailyTarget': 20,
             });
           case '/admin/team':
-            return _json({'items': []});
+            if (r.method == 'POST') {
+              lastAdd = jsonDecode(r.body) as Map<String, dynamic>;
+              return _json({
+                'member': {
+                  'id': 9,
+                  'name': lastAdd!['name'],
+                  'initials': 'TH',
+                  'email': lastAdd!['email'],
+                  'role': lastAdd!['access'] == 'admin' ? 'admin' : 'team',
+                  'disabled': false,
+                },
+                'existing': false,
+              });
+            }
+            return _json({'today': []});
         }
         if (path.startsWith('/leads/')) return _json({'ok': true});
         return _json({'code': 'rest_no_route', 'message': 'No route'}, 404);
@@ -183,6 +198,27 @@ void main() {
     expect(find.text('Team report'), findsOneWidget);
     expect(find.text('Rina Akter'), findsWidgets);
     expect(find.text('12'), findsWidgets);
+  });
+
+  testWidgets('an admin can add another admin', (tester) async {
+    _bigScreen(tester);
+    SharedPreferences.setMockInitialValues(_signedIn(_adminUser));
+    final server = FakeServer(user: _adminUser);
+    await tester.pumpWidget(_app(server));
+    await tester.pumpAndSettle();
+    await _tab(tester, 'Team');
+    await tester.tap(find.text('Add person'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Admin').last);
+    await tester.pumpAndSettle();
+    expect(find.text('Add an admin'), findsOneWidget);
+    await tester.enterText(find.widgetWithText(TextField, 'Name'), 'Tania Haque');
+    await tester.enterText(find.widgetWithText(TextField, 'Email'), 'tania@example.com');
+    await tester.tap(find.widgetWithText(FilledButton, 'Add admin'));
+    await tester.pumpAndSettle();
+    expect(server.lastAdd!['access'], 'admin');
+    expect(server.lastAdd!['email'], 'tania@example.com');
+    expect(find.textContaining('Tania Haque can now sign in with Team or Admin'), findsOneWidget);
   });
 
   testWidgets('signed-in home screen shows the daily target', (tester) async {

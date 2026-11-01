@@ -6,6 +6,7 @@ if (!defined('ABSPATH')) {
 add_action('admin_menu', 'fcl_admin_menu');
 add_action('admin_post_fcl_save_settings', 'fcl_handle_settings');
 add_action('admin_post_fcl_add_member', 'fcl_handle_add_member');
+add_action('admin_post_fcl_member_access', 'fcl_handle_member_access');
 add_action('admin_post_fcl_toggle_member', 'fcl_handle_toggle_member');
 
 function fcl_admin_menu()
@@ -162,27 +163,35 @@ function fcl_page_team()
     if ($msg !== '') {
         echo '<div class="notice notice-info"><p>' . esc_html($msg) . '</p></div>';
     }
-    echo '<p>Team members sign in to the app with <strong>Team</strong> and their email and password. Admins and FC Leads managers can also sign in with <strong>Admin</strong> to see reports.</p>';
+    echo '<p><strong>Team</strong> access: signs in to the app with the Team login and does the outreach work. <strong>Admin</strong> access: can also sign in with the Admin login to see reports, add people and manage the team. You can have as many admins as you need. WordPress site administrators are always admins.</p>';
 
-    echo '<h2>Add a team member</h2><form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
+    echo '<h2>Add a person</h2><form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
     wp_nonce_field('fcl_add_member');
     echo '<input type="hidden" name="action" value="fcl_add_member"><table class="form-table">
         <tr><th><label for="fcl_name">Name</label></th><td><input id="fcl_name" name="name" class="regular-text" required></td></tr>
         <tr><th><label for="fcl_email">Email</label></th><td><input id="fcl_email" name="email" type="email" class="regular-text" required></td></tr>
-        <tr><th><label for="fcl_pass">Password</label></th><td><input id="fcl_pass" name="password" type="text" class="regular-text" minlength="8" required value="' . esc_attr(wp_generate_password(12, false)) . '"><p class="description">Give this to the team member. They can change it from their WordPress profile.</p></td></tr>
+        <tr><th><label for="fcl_pass">Password</label></th><td><input id="fcl_pass" name="password" type="text" class="regular-text" minlength="8" required value="' . esc_attr(wp_generate_password(12, false)) . '"><p class="description">Give this to them. They can change it from their WordPress profile. If the email already has an account on this site, they keep their own password.</p></td></tr>
+        <tr><th>Access</th><td><label><input type="radio" name="access" value="team" checked> Team member</label><br><label><input type="radio" name="access" value="admin"> Admin (reports and team management)</label></td></tr>
         </table>';
-    submit_button('Add team member');
+    submit_button('Add');
     echo '</form>';
 
     echo '<h2>Team</h2><table class="widefat striped"><thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Last active</th><th></th></tr></thead><tbody>';
     foreach (fcl_team_users() as $u) {
         $row = fcl_member_row($u, []);
-        echo '<tr><td><strong>' . esc_html($row['name']) . '</strong>' . ($row['disabled'] ? ' <em>(turned off)</em>' : '') . '</td><td>' . esc_html($row['email']) . '</td><td>' . esc_html($row['role'] === 'team' ? 'Team' : 'Manager') . '</td><td>' . esc_html($row['lastActive'] ? human_time_diff(strtotime($row['lastActive'])) . ' ago' : 'never') . '</td><td>';
+        echo '<tr><td><strong>' . esc_html($row['name']) . '</strong>' . ($row['disabled'] ? ' <em>(turned off)</em>' : '') . '</td><td>' . esc_html($row['email']) . '</td><td>' . esc_html($row['siteAdmin'] ? 'Admin (site administrator)' : ($row['role'] === 'admin' ? 'Admin' : 'Team')) . '</td><td>' . esc_html($row['lastActive'] ? human_time_diff(strtotime($row['lastActive'])) . ' ago' : 'never') . '</td><td>';
         if ($u->ID !== get_current_user_id()) {
             echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '" style="display:inline">';
             wp_nonce_field('fcl_toggle_' . $u->ID);
             echo '<input type="hidden" name="action" value="fcl_toggle_member"><input type="hidden" name="user" value="' . (int) $u->ID . '">';
             echo '<button class="button">' . ($row['disabled'] ? 'Turn on' : 'Turn off') . '</button></form> ';
+            if (!$row['siteAdmin']) {
+                echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '" style="display:inline">';
+                wp_nonce_field('fcl_access_' . $u->ID);
+                echo '<input type="hidden" name="action" value="fcl_member_access"><input type="hidden" name="user" value="' . (int) $u->ID . '">';
+                echo '<input type="hidden" name="access" value="' . ($row['role'] === 'admin' ? 'team' : 'admin') . '">';
+                echo '<button class="button">' . ($row['role'] === 'admin' ? 'Make team member' : 'Make admin') . '</button></form> ';
+            }
         }
         echo '<a class="button" href="' . esc_url(get_edit_user_link($u->ID)) . '">Edit / password</a></td></tr>';
     }
@@ -195,12 +204,35 @@ function fcl_handle_add_member()
         wp_die('Not allowed');
     }
     check_admin_referer('fcl_add_member');
+    $existing = false;
+    $access = ($_POST['access'] ?? '') === 'admin' ? 'admin' : 'team';
     $id = fcl_add_member(
         wp_unslash($_POST['name'] ?? ''),
         wp_unslash($_POST['email'] ?? ''),
-        (string) wp_unslash($_POST['password'] ?? '')
+        (string) wp_unslash($_POST['password'] ?? ''),
+        $access,
+        $existing
     );
-    $msg = is_wp_error($id) ? $id->get_error_message() : 'Team member added. They can now sign in to the app.';
+    if (is_wp_error($id)) {
+        $msg = $id->get_error_message();
+    } else {
+        $msg = ($access === 'admin' ? 'Admin added.' : 'Team member added.')
+            . ($existing ? ' They already had an account here, so they sign in with their own password.' : ' They can now sign in to the app.');
+    }
+    wp_safe_redirect(add_query_arg('fcl_msg', rawurlencode($msg), admin_url('admin.php?page=fcl-team')));
+    exit;
+}
+
+function fcl_handle_member_access()
+{
+    if (!current_user_can('fcl_manage')) {
+        wp_die('Not allowed');
+    }
+    $id = (int) ($_POST['user'] ?? 0);
+    check_admin_referer('fcl_access_' . $id);
+    $access = ($_POST['access'] ?? '') === 'admin' ? 'admin' : 'team';
+    $r = fcl_set_access($id, $access, get_current_user_id());
+    $msg = is_wp_error($r) ? $r->get_error_message() : ($access === 'admin' ? 'Now an admin. They can use the Admin login.' : 'Now a team member. Their admin sign-in has ended.');
     wp_safe_redirect(add_query_arg('fcl_msg', rawurlencode($msg), admin_url('admin.php?page=fcl-team')));
     exit;
 }

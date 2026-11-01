@@ -206,19 +206,36 @@ function fcl_api_team(WP_REST_Request $req)
     return ['today' => $out];
 }
 
-/** Creates a team account: WordPress user with the "FC Leads team" role. */
-function fcl_add_member($name, $email, $password)
+/**
+ * Adds someone to the team. $access is 'team' (app only) or 'admin'
+ * (app + reports + team management). An email that already has a
+ * WordPress account (e.g. a co-founder) just gets FC Leads access and
+ * keeps their own password; $existing tells the caller.
+ */
+function fcl_add_member($name, $email, $password, $access = 'team', &$existing = false)
 {
+    $existing = false;
     $name = sanitize_text_field($name);
     $email = sanitize_email($email);
-    if ($name === '' || !is_email($email)) {
+    $access = $access === 'admin' ? 'admin' : 'team';
+    if (!is_email($email)) {
+        return fcl_error('fcl_invalid', 'Add a valid email.', 400);
+    }
+    $uid = email_exists($email);
+    if ($uid) {
+        $u = get_user_by('id', $uid);
+        if (user_can($u, 'fcl_work')) {
+            return fcl_error('fcl_exists', 'This person is already on the team. Change their access in the list.', 409);
+        }
+        $u->add_role($access === 'admin' ? 'fcl_manager' : 'fcl_worker');
+        $existing = true;
+        return (int) $uid;
+    }
+    if ($name === '') {
         return fcl_error('fcl_invalid', 'Add a name and a valid email.', 400);
     }
     if (strlen($password) < 8) {
         return fcl_error('fcl_weak', 'The password needs at least 8 characters.', 400);
-    }
-    if (email_exists($email)) {
-        return fcl_error('fcl_exists', 'An account with this email already exists.', 409);
     }
     $login = sanitize_user(strstr($email, '@', true), true);
     if ($login === '' || username_exists($login)) {
@@ -230,7 +247,7 @@ function fcl_add_member($name, $email, $password)
         'user_pass' => $password,
         'display_name' => $name,
         'first_name' => $name,
-        'role' => 'fcl_worker',
+        'role' => $access === 'admin' ? 'fcl_manager' : 'fcl_worker',
     ]);
     if (is_wp_error($id)) {
         return fcl_error('fcl_create_failed', $id->get_error_message(), 400);
@@ -238,16 +255,50 @@ function fcl_add_member($name, $email, $password)
     return (int) $id;
 }
 
+/**
+ * Makes a member a team member or an admin. Site administrators are always
+ * admins; nobody can change their own access.
+ */
+function fcl_set_access($id, $access, $by)
+{
+    $u = get_user_by('id', (int) $id);
+    if (!$u || !user_can($u, 'fcl_work')) {
+        return fcl_error('fcl_not_found', 'Team member not found.', 404);
+    }
+    if ((int) $id === (int) $by) {
+        return fcl_error('fcl_self', 'You cannot change your own access.', 400);
+    }
+    if (user_can($u, 'manage_options')) {
+        return fcl_error('fcl_site_admin', 'Site administrators are always FC Leads admins.', 400);
+    }
+    $access = $access === 'admin' ? 'admin' : 'team';
+    $u->remove_role('fcl_worker');
+    $u->remove_role('fcl_manager');
+    $u->add_role($access === 'admin' ? 'fcl_manager' : 'fcl_worker');
+    if ($access === 'team') {
+        fcl_end_sessions($u->ID); // An admin session must not outlive the access.
+    }
+    return true;
+}
+
 function fcl_api_team_add(WP_REST_Request $req)
 {
-    $id = fcl_add_member((string) $req->get_param('name'), (string) $req->get_param('email'), (string) $req->get_param('password'));
+    $existing = false;
+    $id = fcl_add_member(
+        (string) $req->get_param('name'),
+        (string) $req->get_param('email'),
+        (string) $req->get_param('password'),
+        (string) $req->get_param('access'),
+        $existing
+    );
     if (is_wp_error($id)) {
         return $id;
     }
-    return ['member' => fcl_member_row(get_user_by('id', $id), [])];
+    clean_user_cache($id);
+    return ['member' => fcl_member_row(get_user_by('id', $id), []), 'existing' => $existing];
 }
 
-/** POST /admin/team/{id} {name?, password?, disabled?} */
+/** POST /admin/team/{id} {name?, password?, disabled?, access?: team|admin} */
 function fcl_api_team_update(WP_REST_Request $req)
 {
     $id = (int) $req->get_param('id');
@@ -289,5 +340,13 @@ function fcl_api_team_update(WP_REST_Request $req)
     if (isset($update['user_pass'])) {
         fcl_end_sessions($id);
     }
+    $access = $req->get_param('access');
+    if (is_string($access) && $access !== '') {
+        $r = fcl_set_access($id, $access, $s['user']->ID);
+        if (is_wp_error($r)) {
+            return $r;
+        }
+    }
+    clean_user_cache($id);
     return ['member' => fcl_member_row(get_user_by('id', $id), [])];
 }

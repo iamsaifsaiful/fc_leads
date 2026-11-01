@@ -180,10 +180,10 @@ function fcl_iso($mysql_utc)
     return (new DateTimeImmutable($mysql_utc, new DateTimeZone('UTC')))->setTimezone(wp_timezone())->format(DATE_ATOM);
 }
 
-/** Everyone on the team: team role, managers, and anyone with activity. */
+/** Everyone on the team: team role, FC Leads admins, site admins, and anyone with activity. */
 function fcl_team_users($extra_ids = [])
 {
-    $users = get_users(['role__in' => ['fcl_worker', 'fcl_manager'], 'orderby' => 'display_name']);
+    $users = get_users(['role__in' => ['fcl_worker', 'fcl_manager', 'administrator'], 'orderby' => 'display_name']);
     $seen = [];
     foreach ($users as $u) {
         $seen[$u->ID] = true;
@@ -209,7 +209,8 @@ function fcl_member_row($u, $counts)
         'name' => $name,
         'initials' => fcl_initials($name),
         'email' => $u->user_email,
-        'role' => in_array('fcl_worker', (array) $u->roles, true) ? 'team' : 'manager',
+        'role' => user_can($u, 'fcl_manage') ? 'admin' : 'team',
+        'siteAdmin' => user_can($u, 'manage_options'),
         'disabled' => fcl_is_disabled($u->ID),
         'lastActive' => fcl_iso(get_user_meta($u->ID, 'fcl_last_active', true)),
     ], $c);

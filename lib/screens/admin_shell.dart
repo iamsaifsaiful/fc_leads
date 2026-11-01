@@ -682,14 +682,18 @@ class _TeamScreenState extends State<TeamScreen> {
     ..showSnackBar(SnackBar(content: Text(t)));
 
   Future<void> _add() async {
-    final added = await showModalBottomSheet<TeamMember>(
+    final added = await showModalBottomSheet<({TeamMember member, bool existing})>(
       context: context,
       isScrollControlled: true,
       showDragHandle: true,
       builder: (_) => _AddMemberSheet(admin: widget.services.admin),
     );
     if (added != null) {
-      _toast('${added.name} can now sign in with Team.');
+      final m = added.member;
+      final login = m.isTeam ? 'Team' : 'Team or Admin';
+      _toast(added.existing
+          ? '${m.name} already had an account. They sign in with $login using their own password.'
+          : '${m.name} can now sign in with $login. Login copied.');
       _load();
     }
   }
@@ -708,7 +712,22 @@ class _TeamScreenState extends State<TeamScreen> {
               title: const Text('See report'),
               onTap: () => Navigator.of(context).pop('report'),
             ),
-            if (m.isTeam)
+            if (m.id != me && !m.siteAdmin)
+              ListTile(
+                leading: Icon(m.isTeam ? Icons.admin_panel_settings_outlined : Icons.person_outline),
+                title: Text(m.isTeam ? 'Make admin' : 'Make team member'),
+                subtitle: Text(m.isTeam
+                    ? 'Can sign in with Admin, see reports and manage the team.'
+                    : 'Loses reports and team management. Signs them out now.'),
+                onTap: () => Navigator.of(context).pop('access'),
+              ),
+            if (m.siteAdmin)
+              const ListTile(
+                leading: Icon(Icons.verified_user_outlined),
+                title: Text('Website administrator'),
+                subtitle: Text('Always an admin. Change their password in WordPress.'),
+              ),
+            if (m.id != me && !m.siteAdmin)
               ListTile(
                 leading: const Icon(Icons.password),
                 title: const Text('Set a new password'),
@@ -732,6 +751,10 @@ class _TeamScreenState extends State<TeamScreen> {
           await Navigator.of(context).push(MaterialPageRoute<void>(
             builder: (_) => WorkerScreen(services: widget.services, memberId: m.id, name: m.name, period: Period.week),
           ));
+        case 'access':
+          final updated = await widget.services.admin.updateMember(m.id, admin: m.isTeam);
+          _toast(updated.isTeam ? '${m.name} is now a team member.' : '${m.name} is now an admin.');
+          _load();
         case 'toggle':
           await widget.services.admin.updateMember(m.id, disabled: !m.disabled);
           _toast(m.disabled ? 'Account turned on.' : 'Account turned off.');
@@ -772,7 +795,7 @@ class _TeamScreenState extends State<TeamScreen> {
         foregroundColor: Brand.white,
         onPressed: _add,
         icon: const Icon(Icons.person_add_alt, color: Brand.gold),
-        label: const Text('Add member', style: TextStyle(fontWeight: FontWeight.w700)),
+        label: const Text('Add person', style: TextStyle(fontWeight: FontWeight.w700)),
       ),
       body: RefreshIndicator(
         onRefresh: _load,
@@ -787,7 +810,7 @@ class _TeamScreenState extends State<TeamScreen> {
             else if (team.isEmpty)
               const Padding(
                 padding: EdgeInsets.all(32),
-                child: Text('No team members yet. Tap "Add member".', textAlign: TextAlign.center, style: TextStyle(color: _muted)),
+                child: Text('No team members yet. Tap "Add person".', textAlign: TextAlign.center, style: TextStyle(color: _muted)),
               )
             else ...[
               const Text('Today', style: TextStyle(fontSize: 13, color: _muted, fontWeight: FontWeight.w700)),
@@ -861,6 +884,7 @@ class _AddMemberSheetState extends State<_AddMemberSheet> {
   final _name = TextEditingController();
   final _email = TextEditingController();
   final _pass = TextEditingController(text: _newPassword());
+  bool _asAdmin = false;
   bool _busy = false;
   String? _error;
 
@@ -878,8 +902,13 @@ class _AddMemberSheetState extends State<_AddMemberSheet> {
       _error = null;
     });
     try {
-      final m = await widget.admin.addMember(name: _name.text.trim(), email: _email.text.trim(), password: _pass.text);
-      await Clipboard.setData(ClipboardData(text: '${_email.text.trim()}\n${_pass.text}'));
+      final m = await widget.admin.addMember(
+        name: _name.text.trim(),
+        email: _email.text.trim(),
+        password: _pass.text,
+        admin: _asAdmin,
+      );
+      if (!m.existing) await Clipboard.setData(ClipboardData(text: '${_email.text.trim()}\n${_pass.text}'));
       if (mounted) Navigator.of(context).pop(m);
     } on ApiException catch (e) {
       if (mounted) setState(() => _error = e.message);
@@ -896,11 +925,28 @@ class _AddMemberSheetState extends State<_AddMemberSheet> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Text('Add a team member', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800)),
-            const SizedBox(height: 6),
+            Text(_asAdmin ? 'Add an admin' : 'Add a team member', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800)),
+            const SizedBox(height: 14),
+            SegmentedButton<bool>(
+              segments: const [
+                ButtonSegment(value: false, icon: Icon(Icons.person_outline), label: Text('Team member')),
+                ButtonSegment(value: true, icon: Icon(Icons.admin_panel_settings_outlined), label: Text('Admin')),
+              ],
+              selected: {_asAdmin},
+              showSelectedIcon: false,
+              onSelectionChanged: (v) => setState(() => _asAdmin = v.first),
+            ),
+            const SizedBox(height: 10),
+            Text(
+              _asAdmin
+                  ? 'Signs in with Admin to see reports, add people and manage the team. Can also use Team to do outreach.'
+                  : 'Signs in with Team and does the outreach work. Cannot see reports.',
+              style: const TextStyle(color: _muted, height: 1.4),
+            ),
+            const SizedBox(height: 4),
             const Text(
-              'They sign in with Team using this email and password. The login is copied for you to send them.',
-              style: TextStyle(color: _muted, height: 1.4),
+              'The login is copied for you to send them. If the email already has an account on the website, they keep their own password.',
+              style: TextStyle(color: _muted, height: 1.4, fontSize: 12.5),
             ),
             const SizedBox(height: 16),
             TextField(controller: _name, textCapitalization: TextCapitalization.words, decoration: const InputDecoration(labelText: 'Name')),
@@ -913,7 +959,7 @@ class _AddMemberSheetState extends State<_AddMemberSheet> {
               Text(_error!, style: const TextStyle(color: Color(0xFF9F1C14), fontWeight: FontWeight.w600)),
             ],
             const SizedBox(height: 16),
-            FilledButton(onPressed: _busy ? null : _save, child: Text(_busy ? 'Adding…' : 'Add member')),
+            FilledButton(onPressed: _busy ? null : _save, child: Text(_busy ? 'Adding…' : (_asAdmin ? 'Add admin' : 'Add team member'))),
           ],
         ),
       ),

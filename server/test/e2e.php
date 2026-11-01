@@ -46,7 +46,7 @@ function wpopt($php)
 }
 
 // Clean slate for repeat runs.
-wpopt('global $wpdb; foreach (["sessions","leads","activity"] as $t) $wpdb->query("DELETE FROM {$wpdb->prefix}fcl_$t"); foreach (get_users(["role"=>"fcl_worker"]) as $u) { require_once ABSPATH."wp-admin/includes/user.php"; wp_delete_user($u->ID); } update_option("fcl_settings", []); foreach (["admin","nusrat@example.com","nobody"] as $l) delete_transient("fcl_fail_".md5(strtolower($l)."|127.0.0.1"));');
+wpopt('global $wpdb; foreach (["sessions","leads","activity"] as $t) $wpdb->query("DELETE FROM {$wpdb->prefix}fcl_$t"); foreach (get_users(["role__in"=>["fcl_worker","fcl_manager"]]) as $u) { require_once ABSPATH."wp-admin/includes/user.php"; wp_delete_user($u->ID); } update_option("fcl_settings", []); foreach (get_users(["search"=>"karim@example.com","search_columns"=>["user_email"]]) as $u) { require_once ABSPATH."wp-admin/includes/user.php"; wp_delete_user($u->ID); } foreach (["admin","nusrat@example.com","nobody","tania@example.com","karim@example.com"] as $l) delete_transient("fcl_fail_".md5(strtolower($l)."|127.0.0.1"));');
 
 // --- Login ---
 [$c] = req('POST', '/auth/login', ['login' => '', 'password' => '']);
@@ -184,6 +184,39 @@ req('POST', '/auth/logout', null, $team);
 [$c] = req('GET', '/me', null, $team);
 check('logout ends the session', $c === 401);
 
+// --- More than one admin ---
+[$c, $j] = req('POST', '/admin/team', ['name' => 'Tania Haque', 'email' => 'tania@example.com', 'password' => 'adminpass456', 'access' => 'admin'], $admin);
+check('admin adds a second admin', $c === 200 && $j['member']['role'] === 'admin', json_encode($j));
+$tid = $j['member']['id'] ?? 0;
+[$c, $j] = req('POST', '/auth/login', ['login' => 'tania@example.com', 'password' => 'adminpass456', 'role' => 'admin']);
+check('second admin signs in with Admin', $c === 200 && $j['user']['role'] === 'admin', json_encode($j));
+$admin2 = $j['token'] ?? '';
+[$c, $j] = req('GET', '/admin/report?period=day', null, $admin2);
+check('second admin sees reports', $c === 200 && isset($j['totals']));
+[$c, $j] = req('POST', '/auth/login', ['login' => 'tania@example.com', 'password' => 'adminpass456', 'role' => 'team']);
+check('an admin can also use the Team login', $c === 200 && $j['user']['role'] === 'team');
+[$c, $j] = req('POST', '/admin/team/' . $wid, ['access' => 'admin'], $admin2);
+check('second admin makes a team member an admin', $c === 200 && $j['member']['role'] === 'admin', json_encode($j));
+[$c] = req('POST', '/auth/login', ['login' => 'nusrat@example.com', 'password' => 'newpass12345', 'role' => 'admin']);
+check('promoted member can sign in as admin', $c === 200, $c);
+[$c, $j] = req('POST', '/admin/team/' . $wid, ['access' => 'team'], $admin);
+check('admin makes them a team member again', $c === 200 && $j['member']['role'] === 'team');
+[$c] = req('POST', '/auth/login', ['login' => 'nusrat@example.com', 'password' => 'newpass12345', 'role' => 'admin']);
+check('demoted member cannot use Admin login (403)', $c === 403, $c);
+[$c] = req('POST', '/admin/team/' . $tid, ['access' => 'team'], $admin2);
+check('nobody changes their own access', $c === 400, $c);
+[$c, $j] = req('POST', '/admin/team/1', ['access' => 'team'], $admin2);
+check('site administrator stays admin', $c === 400, $c);
+wpopt('wp_insert_user(["user_login"=>"karim","user_email"=>"karim@example.com","user_pass"=>"ownpass789","role"=>"editor"]);');
+[$c, $j] = req('POST', '/admin/team', ['name' => '', 'email' => 'karim@example.com', 'password' => '', 'access' => 'admin'], $admin);
+check('existing site user gets admin access, keeps password', $c === 200 && $j['existing'] === true && $j['member']['role'] === 'admin', json_encode($j));
+[$c] = req('POST', '/auth/login', ['login' => 'karim', 'password' => 'ownpass789', 'role' => 'admin']);
+check('existing user signs in as admin with own password', $c === 200, $c);
+[$c, $j] = req('GET', '/admin/team', null, $admin);
+$roles = [];
+foreach ($j['today'] ?? [] as $m) { $roles[$m['email']] = $m['role'] . (!empty($m['siteAdmin']) ? '*' : ''); }
+check('team list shows every admin', ($roles['tania@example.com'] ?? '') === 'admin' && ($roles['karim@example.com'] ?? '') === 'admin' && in_array('admin*', $roles, true), json_encode($roles));
+
 // --- Lockout after 5 wrong tries ---
 for ($i = 0; $i < 5; $i++) {
     req('POST', '/auth/login', ['login' => 'nobody', 'password' => 'x']);
@@ -193,7 +226,7 @@ check('locked after 5 wrong tries (429)', $c === 429, $c);
 
 // --- wp-admin pages render without errors ---
 $html = wpopt('require_once ABSPATH . "wp-admin/includes/admin.php"; wp_set_current_user(1); ob_start(); fcl_page_report(); $_GET["member"] = ' . (int) $wid . '; fcl_page_report(); unset($_GET["member"]); fcl_page_team(); fcl_page_settings(); echo ob_get_clean();');
-check('admin pages render', strpos($html, 'team report') !== false && strpos($html, 'Add a team member') !== false && strpos($html, 'Google Places API key') !== false && strpos($html, 'Fatal') === false && strpos($html, 'Warning') === false, substr($html, 0, 400));
+check('admin pages render', strpos($html, 'team report') !== false && strpos($html, 'Add a person') !== false && strpos($html, 'Make admin') !== false && strpos($html, 'Google Places API key') !== false && strpos($html, 'Fatal') === false && strpos($html, 'Warning') === false, substr($html, 0, 400));
 check('admin page lists the member', strpos($html, 'Nusrat Rahman') !== false);
 
 echo "\n$checks checks, $fails failed\n";
